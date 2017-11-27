@@ -51,7 +51,7 @@ public class MyIntercepterHandler implements HandlerInterceptor{
             Map data = new HashMap<String,String>();
             data.put("address",address);
             data.put("ip",ip);
-            data.put("visittime",visittime.toString());
+            data.put("visittime",new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(visittime));
             String rtn = HttpClientUtil.post(url_ipSave, data, "utf-8");
             if(rtn == null ||!rtn.contains("success")){
                 LOG.error("IP保存/更新出错: IP = " + ip);
