@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,15 +43,15 @@ public class MyIntercepterHandler implements HandlerInterceptor{
         //存入session||检查session中是否存在
         String visitIp = (String) httpServletRequest.getSession().getAttribute("visitIp");
         if(null == visitIp){
-            httpServletRequest.getSession().setAttribute("visitIp",visitIp);
+            httpServletRequest.getSession().setAttribute("visitIp",ip);
 
             String address = getAdress(ip);
             Date visittime = new Date();
 
-            Map data = new HashMap<String,Object>();
+            Map data = new HashMap<String,String>();
             data.put("address",address);
             data.put("ip",ip);
-            data.put("visittime",visittime);
+            data.put("visittime",visittime.toString());
             String rtn = HttpClientUtil.post(url_ipSave, data, "utf-8");
             if(rtn == null ||!rtn.contains("success")){
                 LOG.error("IP保存/更新出错: IP = " + ip);
