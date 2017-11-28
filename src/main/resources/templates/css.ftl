@@ -12,6 +12,7 @@
 
 <!--styles-->
 <link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="/css/owl.carousel.css" rel="stylesheet">
 <link href="/css/owl.theme.css" rel="stylesheet">
 <link href="/css/magnific-popup.css" rel="stylesheet">
@@ -22,7 +23,7 @@
 <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
 <!-- Bootstrap Core CSS -->
-<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<#--<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
 
 <!-- Additional fonts for this theme -->
 <link href="/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -37,7 +38,7 @@
 <#--博客内容的css样式引入-->
 <link rel="stylesheet" href="/css/blogcss/blog_basic.css">
 <link href="/css/blogcss/font-awesome.min.css" type="text/css" rel="stylesheet"/>
-
+<link href="/css/jquery-sinaEmotion-2.1.0.min.css" type="text/css" rel="stylesheet"/>
 <!-- Temporary navbar container fix until Bootstrap 4 is patched -->
 <style>
 
@@ -93,7 +94,7 @@
 <!-- Tether -->
 <script src="/lib/tether/tether.min.js"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 <!-- Theme JavaScript -->
 <script src="/js/clean-blog.min.js"></script>
 <script src="/js/jquery.serializejson.min.js"></script>

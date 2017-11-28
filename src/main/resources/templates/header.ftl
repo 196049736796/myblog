@@ -22,7 +22,7 @@
                     <a class="nav-link page-scroll" href="/p/about">关于</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="/p/contact">联系我</a>
+                    <a class="nav-link page-scroll" href="/board/initBoard">联系我</a>
                 </li>
             </ul>
         </div>

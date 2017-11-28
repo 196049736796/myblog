@@ -9,4 +9,6 @@ import java.util.Map;
  */
 public interface BoardMsgService {
     String save(Map json);
+
+    JSONObject boardList(Integer page, Integer size);
 }

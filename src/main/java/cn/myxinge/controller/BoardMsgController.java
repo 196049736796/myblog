@@ -1,17 +1,29 @@
 package cn.myxinge.controller;
 
 import cn.myxinge.service.BoardMsgService;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONPath;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Map;
 
 /**
  * Created by chenxinghua on 2017/11/23.
  */
-@RestController
+@Controller
+@RequestMapping("/board")
 public class BoardMsgController {
 
     private Logger LOG = LoggerFactory.getLogger(BoardMsgController.class);
@@ -35,6 +47,65 @@ public class BoardMsgController {
             return rtnJson;
         }
         return rtnJson;
+    }
+
+    /**留言分页返回-初始化*/
+    @RequestMapping("/initBoard")
+    public String initBoard(Integer page, Integer rows, Model m){
+        if(page == null){
+            page = 1;
+        }
+        if(rows == null){
+            rows = 6;
+        }
+        JSONObject jsonObject = boardList(page,rows);
+        m.addAttribute("boardCount", JSONPath.eval(jsonObject,"$.total"));
+        m.addAttribute("boardList",JSONPath.eval(jsonObject,"$.rows"));
+        m.addAttribute("page",page);
+        m.addAttribute("rows",rows);
+        return  "/contact";
+    }
+
+    /**留言分页返回、JSON*/
+    @RequestMapping("/list")
+    @ResponseBody
+    public JSONObject list(Integer page, Integer rows, Model m){
+        if(page == null){
+            page = 1;
+        }
+        if(rows == null){
+            rows = 6;
+        }
+        return  boardList(page,rows);
+    }
+
+    /**分页查询*/
+    private JSONObject boardList(Integer page, Integer rows){
+        JSONObject jsonObject = boardMsgService.boardList(page, rows);
+        Object eval = JSONPath.eval(jsonObject, "$.rows");
+
+        JSONArray rowsArr = new JSONArray();
+        if(eval instanceof  JSONArray){
+            rowsArr = (JSONArray) eval;
+        }else{
+            rowsArr.add(eval);
+        }
+
+        for(Object j : rowsArr){
+            JSONObject json  = (JSONObject) j;
+            JSONPath.set(json,"$.createtime",toDate(JSONPath.eval(json,"$.createtime")));
+        }
+        return jsonObject;
+    }
+
+    private Date toDate(Object eval) {
+        if(eval == null){
+            return null;
+        }
+        Long time = Long.parseLong(String.valueOf(eval));
+        Date date = new Date();
+        date.setTime(time);
+        return date;
     }
 }
 
