@@ -24,9 +24,8 @@
 <#include "header.ftl"/>
 
 <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+<div class="am-g am-g-fixed blog-fixed blog-content">
+    <div class="am-u-sm-12">
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我，坐标深圳，刚入行的小菜鸟一枚，突发奇想，想把自己见到的，掌握的东西以博客的形式记录下来，一来因本人比较懒，
                 对于新知识，重要技术等等不知道去总结，二来呢很多东西时间一长就会忘记，特别是it技术行业，每天接触到的，学的东西太多。因此，心血来潮
                 找域名，备案，运营这个网站。无奈写文章能力欠佳，技术仍在入门，有的时候博客自己都看不下去，不过我也会努力，有一句话叫做坚持21天做同一件事，就会形成一个习惯，我也不想只做一个想想族，于是就有了这个网站.(っ•̀ω•́)っ✎⁾⁾</p>

@@ -32,7 +32,7 @@
                     <img src="/images/01.jpg" alt="" class="am-u-sm-12">
                 </div>
                 <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
-                    <span><a href="" class="blog-color">article &nbsp;</a></span>
+                    <span><a href="" class="blog-color">@Post by &nbsp;</a></span>
                     <span> ${blog.auth} &nbsp;</span>
                     <span>${blog.createtime ?string('yyyy-MM-dd HH:mm:ss')}</span>
                     <h1><a href="/blog/${blog.url}">${blog.title}</a></h1>
