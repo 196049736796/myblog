@@ -1,31 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
-
-<#include "css.ftl"/>
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Xingchen's Blog</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    <link rel="stylesheet" href="/css/amazeui.min.css">
+    <link rel="stylesheet" href="/css/app.css">
 </head>
 
 <body>
 <#include "header.ftl"/>
-
-<!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/post-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-                <div class="post-heading">
-                    <#--<h1> ${blog.title}</h1>
-                    <h2 class="subheading"></h2>
-                    <span class="meta">Posted by <a
-                            href="#">${blog.auth}</a> on ${blog.createtime ?string('yyyy-MM-dd HH:mm:ss')}</span>-->
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-
 
 <!-- Post Content    col-lg-8 offset-lg-2 col-md-10 offset-md-1  -->
 <article>
@@ -38,9 +34,11 @@
     </div>
 </article>
 
-
 <#include "footer.ftl"/>
 
 </body>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/amazeui.min.js"></script>
 
 </html>

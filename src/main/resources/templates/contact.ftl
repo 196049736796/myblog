@@ -2,27 +2,25 @@
 <html lang="en">
 
 <head>
-    <#include "css.ftl"/>
-    <link href="/css/jquery-sinaEmotion-2.1.0.min.css" type="text/css" rel="stylesheet"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Xingchen's Blog</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    <link rel="stylesheet" href="/css/amazeui.min.css">
+    <link rel="stylesheet" href="/css/app.css">
 </head>
 
 <body>
 <#include "header.ftl"/>
-<!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/contact-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-                <div class="page-heading">
-                    <h1>Contact Me</h1>
-                    <hr class="small">
-                    <span class="subheading"></span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-
 <!-- Main Content -->
 <div class="container">
     <div class="row">
@@ -68,5 +66,7 @@
     </div>
 </div>
 <#include "footer.ftl"/>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/amazeui.min.js"></script>
 </body>
-<script src="/js/contact_me.js"></script>

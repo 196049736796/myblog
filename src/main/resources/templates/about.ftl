@@ -2,27 +2,26 @@
 <html lang="en">
 
 <head>
-<#include "css.ftl"/>
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Xingchen's Blog</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    <link rel="stylesheet" href="/css/amazeui.min.css">
+    <link rel="stylesheet" href="/css/app.css">
 </head>
+
 
 <body>
 <#include "header.ftl"/>
-
-<#--==================================================-->
-<!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/about-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-                <div class="page-heading">
-                    <h1>About Me</h1>
-                    <span class="subheading">This is what I do.</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
 
 <!-- Main Content -->
 <div class="container">
@@ -35,11 +34,15 @@
                 其他技术使用攻略，另外会有常用网址，工具集合等等。</p>
             <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;平时喜欢看一些知识科普，另外喜欢天文，小时候还想着往这个方向发展，无奈机缘巧合，入了it这个坑，不过也会在一些犄角旮旯看看天文书籍，听听天文电台，看看相关博客等等，
                 我最喜欢一部纪录片『宇宙时空之旅』，最喜欢的一部电影『星际穿越』。</p>
-            <p>喜欢交朋友，如果有志同道合的朋友，可以<a href="/p/contact" style="color: #00cd00">留言</a>，互相学习，共同进步，为中华民族软件崛起而敲代码<img src="http://img.baidu.com/hi/jx2/j_0007.gif"/>。</p>
+            <p>喜欢交朋友，如果有志同道合的朋友，可以<a href="/p/contact" style="color: #00cd00">留言</a>，互相学习，共同进步，为中华民族软件崛起而敲代码<img
+                    src="http://img.baidu.com/hi/jx2/j_0007.gif"/>。</p>
         </div>
     </div>
 </div>
-
-
-<#--============================-->
 <#include "footer.ftl"/>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/amazeui.min.js"></script>
+
+</body>
+</html>
