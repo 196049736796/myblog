@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="/css/amazeui.min.css">
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/my.css">
+    <link  rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/css/sinaFaceAndEffec.css" />
 </head>
 
 <body>
@@ -73,28 +75,28 @@
 
             <hr>
 
-            <form class="am-form am-g">
-                <h3 class="blog-comment">评论</h3>
-                <fieldset>
-                    <div class="am-form-group am-u-sm-4 blog-clear-left">
-                        <input type="text" class="" placeholder="名字">
+                <div id="content" style="width: 700px; height: auto;">
+                    <div class="wrap">
+                        <div class="comment">
+                            <div class="head-face">
+                                <img src="images/1.jpg" / >
+                                <p>星尘</p>
+                            </div>
+                            <div class="content">
+                                <div class="cont-box">
+                                    <textarea class="text" placeholder="随便说两句吧"></textarea>
+                                </div>
+                                <div class="tools-box">
+                                    <div class="operator-box-btn"><span class="face-icon"  >☺</span><span class="img-icon">▧</span></div>
+                                    <div class="submit-btn"><input type="button" onClick="out()"value="提交评论" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="info-show">
+                            <ul></ul>
+                        </div>
                     </div>
-                    <div class="am-form-group am-u-sm-4">
-                        <input type="email" class="" placeholder="邮箱">
-                    </div>
-
-                    <div class="am-form-group am-u-sm-4 blog-clear-right">
-                        <input type="password" class="" placeholder="网站">
-                    </div>
-
-                    <div class="am-form-group">
-                        <textarea class="" rows="5" placeholder="随便说点什么"></textarea>
-                    </div>
-
-                    <p><button type="submit" class="am-btn am-btn-default">发表评论</button></p>
-                </fieldset>
-            </form>
-
+                </div>
             <hr>
         </div>
     </div>
@@ -113,4 +115,30 @@
 <script src="/js/jquery.min.js"></script>
 <script src="/js/amazeui.min.js"></script>
 <script src="/js/my.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/sinaFaceAndEffec.js"></script>
+<script type="text/javascript">
+    // 绑定表情
+    $('.face-icon').SinaEmotion($('.text'));
+    // 测试本地解析
+    function out() {
+        var inputText = $('.text').val();
+        $('#info-show ul').append(reply(AnalyticEmotion(inputText)));
+    }
+
+    var html;
+    function reply(content){
+        html  = '<li>';
+        html += '<div class="head-face">';
+        html += '<img src="images/logo.png" / >';
+        html += '</div>';
+        html += '<div class="reply-cont">';
+        html += '<p class="username">星尘</p>';
+        html += '<p class="comment-body">'+content+'</p>';
+        html += '<p class="comment-footer">2016年10月5日　回复　点赞54　转发12</p>';
+        html += '</div>';
+        html += '</li>';
+        return html;
+    }
+</script>
 </html>
