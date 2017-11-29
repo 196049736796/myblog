@@ -32,6 +32,7 @@ public interface BlogService {
      */
     List<Blog> newerBlog(int n);
 
+    String getBlogContent(String sysyUrl);
 }
 
 

@@ -16,13 +16,11 @@
     <meta name="msapplication-TileColor" content="#0e90d2">
     <link rel="stylesheet" href="/css/amazeui.min.css">
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/my.css">
 </head>
 
 <body>
 <#include "header.ftl"/>
-
-<!-- Page Header -->
-
 <!-- Post Content    col-lg-8 offset-lg-2 col-md-10 offset-md-1  -->
 <article>
     <!-- content srart -->
@@ -31,26 +29,25 @@
             <article class="am-article blog-article-p">
                 <div class="am-article-hd">
                     <h1 class="am-article-title blog-text-center">${blog.title}</h1>
-                    <p class="am-article-meta blog-text-center">
+                    <p class="am-article-meta blog-text-center" style="font-size: smaller">
                         <span><a href="#" class="blog-color">@Post by &nbsp;</a></span>-
                         <span><a href="#">${blog.auth}  &nbsp;</a></span>-
                         <span><a href="#">${blog.createtime ?string('yyyy-MM-dd HH:mm:ss')}</a></span>
                     </p>
-                    <hr/>
                 </div>
 
-                <div class="am-article-bd">
-                    <img style="width: 100%;height: 500px" src="/images/17.jpg" alt="" class="blog-entry-img blog-article-margin">
-                    <iframe id="Iframe" src="http://119.23.62.228/${blog.sysyUrl}" width="100%" frameborder="0"
-                            height="auto"
-                            scrolling="no"></iframe>
+                <div class="am-article-bd" id="mainContent">
+                    <div id="img_content"><img id="b_img" style="width: 100%;height: auto;max-height: 500px" src="/images/22.jpg" alt="" class="blog-entry-img blog-article-margin"></div>
+                    ${content}
                 </div>
             </article>
 
+            <hr>
+            <div><a href="http://www.myxinge.cn/blog/${blog.url}">原文出自：星尘 www.myxinge.cn</a></div> 
             <#-----------------------------------------------文章结束-->
             <div class="am-g blog-article-widget blog-article-margin">
                 <div class="am-u-lg-4 am-u-md-5 am-u-sm-7 am-u-sm-centered blog-text-center">
-                    <span class="am-icon-tags"> &nbsp;</span><a href="#">标签</a> , <a href="#">TAG</a> , <a href="#">啦啦</a>
+                    <span class="am-icon-tags"> &nbsp;</span><a href="#">Springboot</a> , <a href="#">Mybatis</a> , <a href="#">框架整合</a>
                     <hr>
                     <a href=""><span class="am-icon-qq am-icon-fw am-primary blog-icon"></span></a>
                     <a href=""><span class="am-icon-wechat am-icon-fw blog-icon"></span></a>
@@ -70,28 +67,50 @@
             </div>
             <hr>
             <ul class="am-pagination blog-article-margin">
-                <li class="am-pagination-prev"><a href="#" class="">&laquo; 一切的回顾</a></li>
-                <li class="am-pagination-next"><a href="">不远的未来 &raquo;</a></li>
+                <li class="am-pagination-prev"><a href="#" class="">&laquo; 上一篇</a></li>
+                <li class="am-pagination-next"><a href="">下一篇 &raquo;</a></li>
             </ul>
+
+            <hr>
+
+            <form class="am-form am-g">
+                <h3 class="blog-comment">评论</h3>
+                <fieldset>
+                    <div class="am-form-group am-u-sm-4 blog-clear-left">
+                        <input type="text" class="" placeholder="名字">
+                    </div>
+                    <div class="am-form-group am-u-sm-4">
+                        <input type="email" class="" placeholder="邮箱">
+                    </div>
+
+                    <div class="am-form-group am-u-sm-4 blog-clear-right">
+                        <input type="password" class="" placeholder="网站">
+                    </div>
+
+                    <div class="am-form-group">
+                        <textarea class="" rows="5" placeholder="随便说点什么"></textarea>
+                    </div>
+
+                    <p><button type="submit" class="am-btn am-btn-default">发表评论</button></p>
+                </fieldset>
+            </form>
+
+            <hr>
         </div>
     </div>
 </article>
 
+<div style="display:none;" class="back-to" id="toolBackTop">
+    <a title="返回顶部" onclick="window.scrollTo(0,0);return false;" href="#top" class="back-top">
+        返回顶部</a>
+</div>
+
 <#include "footer.ftl"/>
 
-<script type="text/javascript">
-    window.onload = function () {
-        window.addEventListener('message', function (event) {
-            if (event.origin === "http://www.myxinge.cn") {
-                document.getElementById("Iframe").style.height = event.data + "px";
-            }
-        }, false);
-    }
-</script>
 
 </body>
 
 <script src="/js/jquery.min.js"></script>
 <script src="/js/amazeui.min.js"></script>
-
+<script src="/js/my.js"></script>
 </html>

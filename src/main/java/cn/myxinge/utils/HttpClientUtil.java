@@ -14,6 +14,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.HttpEntityWrapper;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
@@ -32,6 +33,7 @@ public class HttpClientUtil {
 
     /**
      * 发送get请求
+     *
      * @param uri 地址
      * @return 响应
      */
@@ -40,22 +42,22 @@ public class HttpClientUtil {
         try {
             // 创建httpget.
             HttpGet httpget = new HttpGet(uri);
+            //设置请求的报文头部的编码
+            httpget.setHeader(new BasicHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8"));
+            //设置期望服务端返回的编码
+            httpget.setHeader(new BasicHeader("Accept-Charset", "UTF-8"));
             System.out.println("executing request " + httpget.getURI());
             // 执行get请求.
             CloseableHttpResponse response = httpclient.execute(httpget);
             try {
                 // 获取响应实体
                 HttpEntity entity = response.getEntity();
-                System.out.println("--------------------------------------");
-                // 打印响应状态
-                System.out.println(response.getStatusLine());
                 if (entity != null) {
                     // 打印响应内容长度
                     System.out.println("Response content length: " + entity.getContentLength());
                     // 打印响应内容
                     return EntityUtils.toString(entity);
                 }
-                System.out.println("------------------------------------");
             } finally {
                 response.close();
             }
@@ -73,32 +75,33 @@ public class HttpClientUtil {
     /**
      * 发送POST请求
      */
-    public static String post(String url, Map<String,String> map, String charset){
+    public static String post(String url, Map<String, String> map, String charset) {
         HttpClient httpClient = null;
         HttpPost httpPost = null;
         String result = null;
-        try{
+        try {
             httpClient = HttpClients.createDefault();
             httpPost = new HttpPost(url);
             //设置参数
             List<NameValuePair> list = new ArrayList<NameValuePair>();
             Iterator iterator = map.entrySet().iterator();
-            while(iterator.hasNext()){
-                Map.Entry<String,String> elem = (Map.Entry<String, String>) iterator.next();
-                list.add(new BasicNameValuePair(elem.getKey(),elem.getValue()));
+            while (iterator.hasNext()) {
+                Map.Entry<String, String> elem = (Map.Entry<String, String>) iterator.next();
+                list.add(new BasicNameValuePair(elem.getKey(), elem.getValue()));
             }
-            if(list.size() > 0){
-                UrlEncodedFormEntity entity = new UrlEncodedFormEntity(list,charset);
+            if (list.size() > 0) {
+                UrlEncodedFormEntity entity = new UrlEncodedFormEntity(list, charset);
                 httpPost.setEntity(entity);
             }
+            System.out.println("executing request " + httpPost.getURI());
             HttpResponse response = httpClient.execute(httpPost);
-            if(response != null){
+            if (response != null) {
                 HttpEntity resEntity = response.getEntity();
-                if(resEntity != null){
-                    result = EntityUtils.toString(resEntity,charset);
+                if (resEntity != null) {
+                    result = EntityUtils.toString(resEntity, charset);
                 }
             }
-        }catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
         return result;

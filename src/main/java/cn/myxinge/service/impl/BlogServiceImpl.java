@@ -37,7 +37,7 @@ public class BlogServiceImpl implements BlogService {
         if (rtn == null) {
             throw new RuntimeException("后台处理失败或者博客不存在");
         }
-        return JSONObject.parseObject(rtn,Blog.class);
+        return JSONObject.parseObject(rtn, Blog.class);
     }
 
     @Override
@@ -52,7 +52,13 @@ public class BlogServiceImpl implements BlogService {
         if (rtn == null) {
             throw new RuntimeException("后台处理失败或者博客不存在");
         }
-        return JSONArray.parseArray(rtn,Blog.class);
+        return JSONArray.parseArray(rtn, Blog.class);
+    }
+
+    @Override
+    public String getBlogContent(String sysyUrl) {
+        String pre = "http://119.23.62.228/";
+        return HttpClientUtil.get(pre + sysyUrl);
     }
 }
 

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -19,9 +20,11 @@ public class BlogController {
     private BlogService blogService;
 
     @RequestMapping("/blog/{url}")
-    public String showBlog(@PathVariable String url, Model model) {
+    public String showBlog(@PathVariable String url, Model model) throws UnsupportedEncodingException {
         Blog blog = blogService.getBlog(url);
+        String content = blogService.getBlogContent(blog.getSysyUrl());
         model.addAttribute("blog", blog);
+        model.addAttribute("content", new String(content.getBytes("iso-8859-1"),"utf-8"));
         return "blog";
     }
 
