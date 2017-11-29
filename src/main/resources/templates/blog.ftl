@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="am-article-bd" id="mainContent">
-                    <div id="img_content"><img id="b_img" style="width: 100%;height: auto;max-height: 500px" src="/images/22.jpg" alt="" class="blog-entry-img blog-article-margin"></div>
+                    <div id="img_content"><img id="b_img" style="width: 100%;height: auto;max-height: 500px" src="/images/17.jpg" alt="" class="blog-entry-img blog-article-margin"></div>
                     ${content}
                 </div>
             </article>

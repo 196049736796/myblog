@@ -36,8 +36,4 @@ public class BlogController {
         return "show";
     }
 
-  /*  @RequestMapping("/error")
-    public String toError(){
-        return "error";
-    }*/
 }
