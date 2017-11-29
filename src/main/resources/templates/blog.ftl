@@ -58,7 +58,7 @@
             </div>
 
             <hr>
-            <div class="am-g blog-author blog-article-margin">
+           <#-- <div class="am-g blog-author blog-article-margin">
                 <div class="am-u-sm-3 am-u-md-3 am-u-lg-2">
                     <img src="/images/22.jpg" alt="" class="blog-author-img am-circle">
                 </div>
@@ -67,7 +67,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 </div>
             </div>
-            <hr>
+            <hr>-->
             <ul class="am-pagination blog-article-margin">
                 <li class="am-pagination-prev"><a href="#" class="">&laquo; 上一篇</a></li>
                 <li class="am-pagination-next"><a href="">下一篇 &raquo;</a></li>
@@ -75,11 +75,11 @@
 
             <hr>
 
-                <div id="content" style="width: 700px; height: auto;">
+                <div id="content" style="width: 100%; height: auto;">
                     <div class="wrap">
                         <div class="comment">
                             <div class="head-face">
-                                <img src="images/1.jpg" / >
+                                <img src="/images/logo.png" / >
                                 <p>星尘</p>
                             </div>
                             <div class="content">
@@ -130,7 +130,7 @@
     function reply(content){
         html  = '<li>';
         html += '<div class="head-face">';
-        html += '<img src="images/logo.png" / >';
+        html += '<img src="/images/logo.png" / >';
         html += '</div>';
         html += '<div class="reply-cont">';
         html += '<p class="username">星尘</p>';
