@@ -24,6 +24,7 @@ public class Blog {
     //1.上线 2.下线
     private Integer state;
     private String auth;
+    private String mainImgUrl;
 
     public Integer getId() {
         return id;
@@ -95,5 +96,13 @@ public class Blog {
 
     public void setSysyUrl(String sysyUrl) {
         this.sysyUrl = sysyUrl;
+    }
+
+    public String getMainImgUrl() {
+        return mainImgUrl;
+    }
+
+    public void setMainImgUrl(String mainImgUrl) {
+        this.mainImgUrl = mainImgUrl;
     }
 }

@@ -29,7 +29,7 @@
         <#list blogs as blog>
             <article class="am-g blog-entry-article">
                 <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
-                    <img src="/images/01.jpg" alt="" class="am-u-sm-12">
+                    <img src="http://www.myxinge.cn/${blog.mainImgUrl}" alt="" class="am-u-sm-12">
                 </div>
                 <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
                     <span><a href="" class="blog-color">@Post by &nbsp;</a></span>

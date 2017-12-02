@@ -4,7 +4,7 @@
 
     <div class="am-collapse am-topbar-collapse" id="blog-collapse">
         <ul class="am-nav am-nav-pills am-topbar-nav">
-            <li><img style="max-width:60px;max-height: 50px" src="/images/logo.png"></li>
+            <li><img style="max-width:60px;max-height: 50px" src="/images/logo-50.png"></li>
             <li class="am-active"><a href="/">首页</a></li>
             <li><a href="/p/blogs">归档</a></li>
             <li><a href="/p/tools">工具</a></li>

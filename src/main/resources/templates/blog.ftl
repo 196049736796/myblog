@@ -16,9 +16,9 @@
     <meta name="msapplication-TileColor" content="#0e90d2">
     <link rel="stylesheet" href="/css/amazeui.min.css">
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" type="text/css" href="/css/sinaFaceAndEffec.css" />
     <link rel="stylesheet" href="/css/my.css">
     <link  rel="stylesheet" href="/css/main.css" />
-    <link rel="stylesheet" type="text/css" href="/css/sinaFaceAndEffec.css" />
 </head>
 
 <body>
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="am-article-bd" id="mainContent">
-                    <div id="img_content"><img id="b_img" style="width: 100%;height: auto;max-height: 500px" src="/images/17.jpg" alt="" class="blog-entry-img blog-article-margin"></div>
+                    <div id="img_content"><img id="b_img" style="width: 100%;height: auto;max-height: 500px" src="http://www.myxinge.cn/${blog.mainImgUrl}" alt="" class="blog-entry-img blog-article-margin"></div>
                     ${content}
                 </div>
             </article>
@@ -79,7 +79,7 @@
                     <div class="wrap">
                         <div class="comment">
                             <div class="head-face">
-                                <img src="/images/logo.png" / >
+                                <img src="/images/logo-50.png" / >
                                 <p>星尘</p>
                             </div>
                             <div class="content">
@@ -87,7 +87,10 @@
                                     <textarea class="text" placeholder="随便说两句吧"></textarea>
                                 </div>
                                 <div class="tools-box">
-                                    <div class="operator-box-btn"><span class="face-icon"  >☺</span><span class="img-icon">▧</span></div>
+                                    <div class="operator-box-btn">
+                                        <span class="face-icon" >☺</span>
+                                        <span style="margin-left: 10px;height: 35px" class="img-icon"><img src="/images/sunny-26.png"></span>
+                                    </div>
                                     <div class="submit-btn"><input type="button" onClick="out()"value="提交评论" /></div>
                                 </div>
                             </div>
@@ -102,7 +105,7 @@
     </div>
 </article>
 
-<div style="display:none;" class="back-to" id="toolBackTop">
+<div style="display:none;width: 70px;height: 70px" class="back-to" id="toolBackTop">
     <a title="返回顶部" onclick="window.scrollTo(0,0);return false;" href="#top" class="back-top">
         返回顶部</a>
 </div>
@@ -130,7 +133,7 @@
     function reply(content){
         html  = '<li>';
         html += '<div class="head-face">';
-        html += '<img src="/images/logo.png" / >';
+        html += '<img src="/images/logo-50.png" / >';
         html += '</div>';
         html += '<div class="reply-cont">';
         html += '<p class="username">星尘</p>';

@@ -42,3 +42,4 @@ $(document).ready(function(){
 		$(".cont-box .text").insertContent('<img src="请在这里输入图片地址" alt=""/>', -10);
 	});
 });
+
