@@ -89,7 +89,6 @@
                                 <div class="tools-box">
                                     <div class="operator-box-btn">
                                         <span class="face-icon" >☺</span>
-                                        <span style="margin-left: 10px;height: 35px" class="img-icon"><img src="/images/sunny-26.png"></span>
                                     </div>
                                     <div class="submit-btn"><input type="button" onClick="out()"value="提交评论" /></div>
                                 </div>

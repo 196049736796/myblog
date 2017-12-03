@@ -28,7 +28,7 @@ public class MyIntercepterHandler implements HandlerInterceptor{
 
     MyIntercepterHandler(){
         System.out.println("init..");
-        this.url_ipSave = "http://www.myxinge.cn:8081/admin/visit/save";
+        this.url_ipSave = "http://127.0.0.1:8081/admin/visit/save";
     }
 
     private Logger LOG = LoggerFactory.getLogger(MyIntercepterHandler.class);
