@@ -14,4 +14,9 @@ public class PageControllrt {
     public String page(@PathVariable String page){
         return page;
     }
+
+    @RequestMapping("/error")
+    public String error(){
+        return "redirect:/404.html";
+    }
 }
