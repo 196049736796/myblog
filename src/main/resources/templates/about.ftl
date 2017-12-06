@@ -17,6 +17,7 @@
     <meta name="msapplication-TileColor" content="#0e90d2">
     <link rel="stylesheet" href="/css/amazeui.min.css">
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
 </head>
 
 
