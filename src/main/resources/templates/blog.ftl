@@ -41,11 +41,11 @@
                     </p>
                 </div>
 
-                <div class="am-article-bd" id="mainContent">
+               <#-- <div class="am-article-bd" id="mainContent">
                     <div id="img_content"><img id="b_img" style="width: 100%;height: auto;max-height: 500px"
                                                src="http://www.myxinge.cn/${blog.mainImgUrl}" alt=""
                                                class="blog-entry-img blog-article-margin"></div>
-                </div>
+                </div>-->
 
                 <div id="layout">
                     <div id="test-editormd-view2">
