@@ -38,7 +38,7 @@
         </div>
     </div>
 </footer>-->
-<footer class="blog-footer" style="max-height: 100px">
+<footer class="blog-footer">
     <div class="am-g am-g-fixed blog-fixed am-u-sm-centered blog-footer-padding">
     <#-- <div class="am-u-sm-12 am-u-md-4- am-u-lg-4">
          <h3>模板简介</h3>
