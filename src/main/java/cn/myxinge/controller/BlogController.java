@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
@@ -26,10 +27,16 @@ public class BlogController {
     @RequestMapping("/blog/{url}")
     public String showBlog(@PathVariable String url, Model model) throws UnsupportedEncodingException {
         Blog blog = blogService.getBlog(url);
-        String content = blogService.getBlogContent(blog.getSysyUrl());
         model.addAttribute("blog", blog);
-        model.addAttribute("content", new String(content.getBytes("iso-8859-1"),"utf-8"));
         return "blog";
+    }
+
+    @RequestMapping("/blog/content")
+    @ResponseBody
+    public String content(Model model,String sysyUrl) throws UnsupportedEncodingException {
+        if(sysyUrl == null){return null;}
+        String content = blogService.getBlogContent(sysyUrl);
+        return new String(content.getBytes("ISO-8859-1"),"UTF-8");
     }
 
     @RequestMapping("/")

@@ -32,32 +32,32 @@
     <div class="am-g am-g-fixed blog-fixed blog-content">
         <div class="am-u-sm-12">
             <article class="am-article blog-article-p">
-                <div class="am-article-hd">
+                <div class="am-article-hd" >
                     <h1 class="am-article-title blog-text-center">${blog.title}</h1>
-                    <p class="am-article-meta blog-text-center" style="font-size: smaller">
+                    <p class="am-article-meta blog-text-center" style="font-size: smaller;margin-top: 15px">
                         <span><a href="#" class="blog-color">@Post by &nbsp;</a></span>-
                         <span><a href="#">${blog.auth}  &nbsp;</a></span>-
                         <span><a href="#">${blog.createtime ?string('yyyy-MM-dd HH:mm:ss')}</a></span>
                     </p>
                 </div>
-
-               <#-- <div class="am-article-bd" id="mainContent">
+                <div style="width: 100%;margin: 20px" align="center"><hr style="width: 600px;"></div>
+                <#--  src="http://www.myxinge.cn/${blog.mainImgUrl}"  -->
+                <div class="am-article-bd" id="mainContent">
                     <div id="img_content"><img id="b_img" style="width: 100%;height: auto;max-height: 500px"
-                                               src="http://www.myxinge.cn/${blog.mainImgUrl}" alt=""
+                                                src="/images/17.jpg" alt=""
                                                class="blog-entry-img blog-article-margin"></div>
-                </div>-->
+                </div>
 
                 <div id="layout">
-                    <div id="test-editormd-view2">
+                    <div id="test-editormd-view">
                         <textarea id="append-test" style="display:none;">
-                        ${content}
                         </textarea>
                     </div>
                 </div>
             </article>
 
             <hr>
-            <div><a href="http://www.myxinge.cn/blog/${blog.url}">原文出自：星尘 www.myxinge.cn</a></div>
+            <div align="left"><a style="margin-left: 10px" href="http://www.myxinge.cn/blog/${blog.url}">原文出自：星尘 www.myxinge.cn</a></div>
              
         <#-----------------------------------------------文章结束-->
             <div class="am-g blog-article-widget blog-article-margin">
@@ -71,18 +71,6 @@
                 </div>
             </div>
 
-            <hr>
-            <div class="am-g blog-author blog-article-margin">
-                <div class="am-u-sm-3 am-u-md-3 am-u-lg-2">
-                    <img src="/images/22.jpg" alt="" class="blog-author-img am-circle">
-                </div>
-                <div class="am-u-sm-9 am-u-md-9 am-u-lg-10">
-                    <h3><span>作者 &nbsp;: &nbsp;</span><span class="blog-color">amazeui</span></h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat.</p>
-                </div>
-            </div>
             <hr>
             <ul class="am-pagination blog-article-margin">
                 <li class="am-pagination-prev"><a href="#" class="">&laquo; 上一篇</a></li>
@@ -173,8 +161,8 @@
     $(function () {
         var testEditormdView, testEditormdView2;
 
-        $.get("test.md", function (markdown) {
 
+        $.get("/blog/content?sysyUrl=${blog.sysyUrl}", function (markdown) {
             testEditormdView = editormd.markdownToHTML("test-editormd-view", {
                 markdown: markdown,//+ "\r\n" + $("#append-test").text(),
                 //htmlDecode      : true,       // 开启 HTML 标签解析，为了安全性，默认不开启

@@ -27,22 +27,23 @@
 <div class="am-g am-g-fixed blog-fixed">
     <div class="am-u-md-8 am-u-sm-12">
 
-        <#list blogs as blog>
-            <article class="am-g blog-entry-article">
-                <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
-                    <img src="http://www.myxinge.cn/${blog.mainImgUrl}" alt="" class="am-u-sm-12">
-                </div>
-                <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
-                    <span><a href="" class="blog-color">@Post by &nbsp;</a></span>
-                    <span> ${blog.auth} &nbsp;</span>
-                    <span>${blog.createtime ?string('yyyy-MM-dd HH:mm:ss')}</span>
-                    <h1><a href="/blog/${blog.url}">${blog.title}</a></h1>
-                    <p>${blog.subject}
-                    </p>
-                    <p><a href="" class="blog-continue">continue reading</a></p>
-                </div>
-            </article>
-        </#list>
+    <#list blogs as blog>
+        <article class="am-g blog-entry-article">
+            <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
+                <img src="http://www.myxinge.cn/${blog.mainImgUrl}"
+                     alt="" class="am-u-sm-12" style="height: 240px">
+            </div>
+            <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
+                <span><a href="" class="blog-color">@Post by &nbsp;</a></span>
+                <span> ${blog.auth} &nbsp;</span>
+                <span>${blog.createtime ?string('yyyy-MM-dd HH:mm:ss')}</span>
+                <h1><a href="/blog/${blog.url}">${blog.title}</a></h1>
+                <p>${blog.subject}
+                </p>
+                <p><a href="" class="blog-continue">continue reading</a></p>
+            </div>
+        </article>
+    </#list>
 
         <ul class="am-pagination">
             <li class="am-pagination-prev"><a href="">&laquo; 上一页</a></li>
@@ -53,8 +54,8 @@
     <div class="am-u-md-4 am-u-sm-12 blog-sidebar">
         <div class="blog-sidebar-widget blog-bor">
             <h2 class="blog-text-center blog-title"><span>Xingchen</span></h2>
-            <img src="/images/03.jpg" alt="about me" class="blog-entry-img" >
-            <p>码农自我安慰</p>
+            <img src="/images/03.png" alt="about me" class="blog-entry-img">
+            <p><#--码农自我安慰--></p>
             <p>
                 我的代码曾运行在几千万用户的机器上，作为一个程序员，还有什么比这更让人满足的呢？如果有，那就让这个用户数量再扩大 10 倍。
             </p>
