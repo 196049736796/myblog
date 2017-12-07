@@ -15,12 +15,11 @@
     <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
     <meta name="msapplication-TileColor" content="#0e90d2">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <link href="/css/style.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="/css/amazeui.min.css">
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" type="text/css" href="/css/sinaFaceAndEffec.css"/>
-    <link rel="stylesheet" href="/css/my.css">
     <link rel="stylesheet" href="/css/main.css"/>
-    <link rel="stylesheet" href="/css/style.css"/>
     <link rel="stylesheet" href="/css/editormd.preview.css"/>
 </head>
 
@@ -32,7 +31,7 @@
     <div class="am-g am-g-fixed blog-fixed blog-content">
         <div class="am-u-sm-12">
             <article class="am-article blog-article-p">
-                <div class="am-article-hd" >
+                <div class="am-article-hd">
                     <h1 class="am-article-title blog-text-center">${blog.title}</h1>
                     <p class="am-article-meta blog-text-center" style="font-size: smaller;margin-top: 15px">
                         <span><a href="#" class="blog-color">@Post by &nbsp;</a></span>-
@@ -40,11 +39,13 @@
                         <span><a href="#">${blog.createtime ?string('yyyy-MM-dd HH:mm:ss')}</a></span>
                     </p>
                 </div>
-                <div style="width: 100%;margin: 20px" align="center"><hr style="width: 600px;"></div>
-                <#--  src="http://www.myxinge.cn/${blog.mainImgUrl}"  -->
+                <div style="width: 100%;margin: 20px" align="center">
+                    <hr style="width: 600px;">
+                </div>
+            <#--  src="http://www.myxinge.cn/${blog.mainImgUrl}"  -->
                 <div class="am-article-bd" id="mainContent">
                     <div id="img_content"><img id="b_img" style="width: 100%;height: auto;max-height: 500px"
-                                                src="/images/17.jpg" alt=""
+                                               src="/images/17.jpg" alt=""
                                                class="blog-entry-img blog-article-margin"></div>
                 </div>
 
@@ -57,7 +58,7 @@
             </article>
 
             <hr>
-            <div align="left"><a style="margin-left: 10px" href="http://www.myxinge.cn/blog/${blog.url}">原文出自：星尘 www.myxinge.cn</a></div>
+            <div align="left"><a href="http://www.myxinge.cn/blog/${blog.url}">原文出自：星尘 www.myxinge.cn</a></div>
              
         <#-----------------------------------------------文章结束-->
             <div class="am-g blog-article-widget blog-article-margin">
@@ -73,17 +74,25 @@
 
             <hr>
             <ul class="am-pagination blog-article-margin">
-                <li class="am-pagination-prev"><a href="#" class="">&laquo; 上一篇</a></li>
-                <li class="am-pagination-next"><a href="">下一篇 &raquo;</a></li>
+                <li class="am-pagination-prev">
+                    <p>aaa</p>
+                    <a href="#" class="">&laquo; 上一篇</a>
+                </li>
+                <li class="am-pagination-next">
+                    <p>bbb</p>
+                    <a href="">下一篇 &raquo;</a>
+                </li>
             </ul>
 
             <hr>
 
-            <div id="content" style="width: 100%; height: auto;">
+            <h3>评论</h3>
+            <hr>
+            <div id="content" style="width: 100%; height: auto;margin-top: 15px">
                 <div class="wrap">
                     <div class="comment">
                         <div class="head-face">
-                            <img src="/images/logo-50.png" / >
+                            <img src="/images/common.png" / >
                             <p>星尘</p>
                         </div>
                         <div class="content">
@@ -108,21 +117,70 @@
     </div>
 </article>
 
-<div style="display:none;width: 70px;height: 70px" class="back-to" id="toolBackTop">
-    <a title="返回顶部" onclick="window.scrollTo(0,0);return false;" href="#top" class="back-top">
-        返回顶部</a>
-</div>
 
+<#--回到顶部-->
+<!-- asid start -->
+<div class="asid_share" id="asid_share">
+    <#--<div class="asid_share_box relative">
+        <a href="#"><img alt="我有话说" title="我有话说" class="adid_icon" src="/images/icon_say.png"></a>
+    </div>
+    <div class="asid_share_box relative">
+        <a href="#"><img alt="新版帮助" title="新版帮助" class="adid_icon" src="/images/icon_help.png"></a>
+        <div class="asid_share_triangle" style="display:none;">
+            <em class="border_sj">&#9670;</em>
+            <span class="con_sj">&#9670;</span>
+        </div>
+        <div class="asid_sha_layer" style="display:none;" id="custom-toc-container">
+        </div>
+    </div>-->
+    <div class="asid_share_box relative">
+        <a href="#"><img alt="扫二微码" title="扫二微码" class="adid_icon" src="/images/icon_sweep.png"></a>
+        <div class="asid_share_triangle" style="display:none;">
+            <em class="border_sj">&#9670;</em>
+            <span class="con_sj">&#9670;</span>
+        </div>
+        <div class="asid_sha_layer" style="width:250px;display:none;">
+            <p class="sweep_img"><img src="/images/weixin.png" width="220"></p>
+            <p class="pb6"><b>扫一扫上面的二维码图案，加我微信</b></p>
+        </div>
+    </div>
+    <div class="asid_share_box relative" style="display:none;">
+        <a href="#"><img alt="返回顶部" title="返回顶部" class="adid_icon" src="/images/icon_back.png"></a>
+    </div>
+</div>
+<!-- asid end -->
+<#------------------------------>
 <#include "footer.ftl"/>
 
 
 </body>
-
-<script src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/js/jQuery.hhShare.min.js"></script>
 <script src="/js/amazeui.min.js"></script>
-<script src="/js/my.js"></script>
 <script src="/js/main.js"></script>
 <script src="/js/sinaFaceAndEffec.js"></script>
+<script src="/lib/marked.min.js"></script>
+<script src="/lib/prettify.min.js"></script>
+<script src="/lib/raphael.min.js"></script>
+<script src="/lib/underscore.min.js"></script>
+<script src="/lib/sequence-diagram.min.js"></script>
+<script src="/lib/flowchart.min.js"></script>
+<script src="/lib/jquery.flowchart.min.js"></script>
+<script src="/js/editormd.js"></script>
+<script type="text/javascript">
+    $(function(){
+        //图片滚动特效
+        $('#asid_share').hhShare({
+            cenBox     : 'asid_share_box',  //里边的小层
+            icon       : 'adid_icon',
+            addClass   : 'red_bag',
+            titleClass : 'asid_title',
+            triangle   : 'asid_share_triangle', //鼠标划过显示图层，边上的小三角
+            showBox    : 'asid_sha_layer' //鼠标划过显示图层
+        });
+    });
+</script>
+
 <script type="text/javascript">
     // 绑定表情
     $('.face-icon').SinaEmotion($('.text'));
@@ -136,7 +194,7 @@
     function reply(content) {
         html = '<li>';
         html += '<div class="head-face">';
-        html += '<img src="/images/logo-50.png" / >';
+        html += '<img src="/images/common.png"/>';
         html += '</div>';
         html += '<div class="reply-cont">';
         html += '<p class="username">星尘</p>';
@@ -148,15 +206,6 @@
     }
 </script>
 </html>
-<script src="/js/jquery.min.js"></script>
-<script src="/lib/marked.min.js"></script>
-<script src="/lib/prettify.min.js"></script>
-<script src="/lib/raphael.min.js"></script>
-<script src="/lib/underscore.min.js"></script>
-<script src="/lib/sequence-diagram.min.js"></script>
-<script src="/lib/flowchart.min.js"></script>
-<script src="/lib/jquery.flowchart.min.js"></script>
-<script src="/js/editormd.js"></script>
 <script type="text/javascript">
     $(function () {
         var testEditormdView, testEditormdView2;
