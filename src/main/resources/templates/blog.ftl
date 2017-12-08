@@ -126,6 +126,7 @@
         </article>
     </div>
 
+    <div id="s"></div>
     <div class="am-u-md-3 am-u-sm-12 blog-sidebar fix-top" id="myDiv" style="padding:0 0 0 0;">
         <div class="blog-sidebar-widget blog-bor" style="margin-bottom:0;">
             <h2 class="blog-text-center blog-title"><span>目录</span></h2>
@@ -197,9 +198,11 @@
             showBox: 'asid_sha_layer' //鼠标划过显示图层
         });
 
-        var fixtop = $(".fix-top");
-        fixtop.scrollFix({distanceTop: 0});
-
+        var fix = $(".fix-top");
+        fix.scrollFix({
+            distanceTop: $("#s").outerHeight() + 10,
+            zIndex: 998
+        });
     });
 </script>
 
