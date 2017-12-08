@@ -524,7 +524,6 @@ dfn[title] {
 
 /* Spacing for block elements */
 p,
-hr,
 ul,
 ol,
 dl,
@@ -537,7 +536,6 @@ figure {
 }
 
 * + p,
-* + hr,
 * + ul,
 * + ol,
 * + dl,

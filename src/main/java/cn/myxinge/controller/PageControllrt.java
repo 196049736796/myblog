@@ -8,15 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by chenxinghua on 2017/11/17.
  */
 @Controller
-@RequestMapping("/p")
 public class PageControllrt {
-    @RequestMapping("/{page}")
+    @RequestMapping("/p/{page}")
     public String page(@PathVariable String page){
         return page;
     }
 
-    @RequestMapping("/error")
-    public String error(){
-        return "redirect:/404.html";
-    }
 }

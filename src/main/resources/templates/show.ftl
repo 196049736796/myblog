@@ -26,29 +26,43 @@
 <!-- content srart -->
 <div class="am-g am-g-fixed blog-fixed">
     <div class="am-u-md-8 am-u-sm-12">
-
-    <#list blogs as blog>
-        <article class="am-g blog-entry-article">
-            <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
-                <img src="http://www.myxinge.cn/${blog.mainImgUrl}"
-                     alt="" class="am-u-sm-12" style="height: 240px">
-            </div>
-            <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
-                <span><a href="" class="blog-color">@Post by &nbsp;</a></span>
-                <span> ${blog.auth} &nbsp;</span>
-                <span>${blog.createtime ?string('yyyy-MM-dd HH:mm:ss')}</span>
-                <h1><a href="/blog/${blog.url}">${blog.title}</a></h1>
-                <p>${blog.subject}
-                </p>
-                <p><a href="" class="blog-continue">continue reading</a></p>
-            </div>
-        </article>
-    </#list>
-
+    <#if blogs?size == 0>
+        <div style="width: 100%;margin-top: 40px;margin-bottom: 50px">
+            <hr>
+            <h3 align="center">该页面暂无博客信息</h3>
+            <hr>
+        </div>
+    <#else >
+        <#list blogs as blog>
+            <article class="am-g blog-entry-article">
+                <div class="am-u-lg-5 am-u-md-12 am-u-sm-12 blog-entry-img">
+                    <img src="http://www.myxinge.cn/${blog.mainImgUrl}"
+                         alt="" class="am-u-sm-12" style="height: 240px">
+                </div>
+                <div class="am-u-lg-7 am-u-md-12 am-u-sm-12 blog-entry-text">
+                    <span><a href="" class="blog-color">@Post by &nbsp;</a></span>
+                    <span> ${blog.auth} &nbsp;</span>
+                    <span>${blog.createtime ?string('yyyy-MM-dd HH:mm:ss')}</span>
+                    <h1><a href="/blog/${blog.url}">${blog.title}</a></h1>
+                    <p>${blog.subject}
+                    </p>
+                    <p><a href="" class="blog-continue">continue reading</a></p>
+                </div>
+            </article>
+        </#list>
         <ul class="am-pagination">
-            <li class="am-pagination-prev"><a href="">&laquo; 上一页</a></li>
-            <li class="am-pagination-next"><a href="">下一页 &raquo;</a></li>
+            <#if (curPage>1)>
+                <li class="am-pagination-prev"><a href="/blog/pe/${curPage-1}">&laquo; 上一页</a></li>
+            <#else >
+                <li class="am-disabled" style="float: left;"><a href="">&laquo; 木有上一页啦</a></li>
+            </#if>
+            <#if (curPage<totalPage)>
+                <li class="am-pagination-next"><a href="/blog/pe/${curPage+1}">下一页 &raquo;</a></li>
+            <#else >
+                <li class="am-disabled" style="float: right;"><a href="">木有下一页啦 &raquo;</a></li>
+            </#if>
         </ul>
+    </#if>
     </div>
 
     <div class="am-u-md-4 am-u-sm-12 blog-sidebar">
@@ -64,9 +78,9 @@
             <h2 class="blog-text-center blog-title"><span>Contact ME</span></h2>
             <p>
                 <a href=""><span class="am-icon-qq am-icon-fw am-primary blog-icon"></span></a>
-                <a href=""><span class="am-icon-github am-icon-fw blog-icon"></span></a>
+                <a href="https://github.com/xingchen0085/" target="_blank"><span
+                        class="am-icon-github am-icon-fw blog-icon"></span></a>
                 <a href=""><span class="am-icon-weibo am-icon-fw blog-icon"></span></a>
-                <a href=""><span class="am-icon-reddit am-icon-fw blog-icon"></span></a>
                 <a href=""><span class="am-icon-weixin am-icon-fw blog-icon"></span></a>
             </p>
         </div>

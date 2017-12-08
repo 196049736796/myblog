@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,40 +27,68 @@ public class BlogController {
     private BlogService blogService;
 
     @RequestMapping("/blog/{url}")
-    public String showBlog(@PathVariable String url, Model model) throws UnsupportedEncodingException {
+    public String showBlog(@PathVariable String url, Model model, HttpServletResponse rps) throws UnsupportedEncodingException {
         Blog blog = blogService.getBlog(url);
+        if(null == blog){
+            rps.setStatus(404);
+            return "/error";
+        }
         model.addAttribute("blog", blog);
         return "blog";
     }
 
     @RequestMapping("/blog/content")
     @ResponseBody
-    public String content(Model model,String sysyUrl) throws UnsupportedEncodingException {
-        if(sysyUrl == null){return null;}
+    public String content(Model model, String sysyUrl) throws UnsupportedEncodingException {
+        if (sysyUrl == null) {
+            return null;
+        }
         String content = blogService.getBlogContent(sysyUrl);
-        return new String(content.getBytes("ISO-8859-1"),"UTF-8");
+        return new String(content.getBytes("ISO-8859-1"), "UTF-8");
     }
 
     @RequestMapping("/")
-    public String indexBlog(Model model,Integer page,Integer rows) {
-        JSONObject json = pageBlog(null,1,5);
-        Object eval = JSONPath.eval(json, "$.total");
-        Object content = JSONPath.eval(json, "$.rows");
-        if(null != eval){
-            model.addAttribute("total",Long.parseLong(String.valueOf(eval)));
+    public String indexBlog(Model model) {
+        return pageHandler(model, 1, 5);
+    }
+
+    @RequestMapping("blog/pe/{page}")
+    public String pageHandler(Model model, @PathVariable Integer page, Integer rows) {
+        if (null == page) {
+            page = 1;
         }
-        if(null != content){
-            if(content instanceof JSONArray){
-                model.addAttribute("blogs",JSONArray.parseArray(String.valueOf(content),Blog.class));
+        if (null == rows) {
+            rows = 5;
+        }
+
+        JSONObject json = pageBlog(null, page, rows);
+        Long eval = Long.parseLong(String.valueOf(JSONPath.eval(json, "$.total")));
+        Object content = JSONPath.eval(json, "$.rows");
+        if (null != eval) {
+            model.addAttribute("total", eval);
+        }
+        if (null != content) {
+            if (content instanceof JSONArray) {
+                if (((JSONArray) content).size() != 0) {
+                    List<Blog> blogs = JSONArray.parseArray(String.valueOf(content), Blog.class);
+                    model.addAttribute("blogs", blogs);
+                } else {
+                    model.addAttribute("blogs", new ArrayList<>());
+                }
             }
         }
+        //当前页
+        model.addAttribute("curPage", page);
+        //最大页
+        Long totalPage = eval % rows == 0 ? eval / rows : (eval / rows) + 1;
+        model.addAttribute("totalPage", totalPage);
+
         return "show";
     }
 
-    @RequestMapping("/blog/pe/{page}")
-    public JSONObject pageBlog(Blog blog,@PathVariable Integer page,Integer rows) {
-        if(null == page){page = 1;}
-        if(null == rows){rows = 5;}
+
+    private JSONObject pageBlog(Blog blog, @PathVariable Integer page, Integer rows) {
+
         JSONObject json = blogService.pageBlog(page, rows);
         return json;
     }
