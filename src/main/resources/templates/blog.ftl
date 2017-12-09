@@ -197,9 +197,6 @@
             showBox: 'asid_sha_layer' //鼠标划过显示图层
         });
 
-        var fixtop = $(".fix-top");
-        fixtop.scrollFix({distanceTop: 0});
-
     });
 </script>
 
@@ -248,22 +245,9 @@
                 flowChart: true,  // 默认不解析
                 sequenceDiagram: true,  // 默认不解析
             });
-
-            //console.log("返回一个 jQuery 实例 =>", testEditormdView);
-
-            // 获取Markdown源码
-            //console.log(testEditormdView.getMarkdown());
-
-            //alert(testEditormdView.getMarkdown());
+            var fixtop = $(".fix-top");
+            fixtop.scrollFix({distanceTop: 0});
         });
 
-        testEditormdView2 = editormd.markdownToHTML("test-editormd-view2", {
-            htmlDecode: "style,script,iframe",  // you can filter tags decode
-            emoji: true,
-            taskList: true,
-            tex: true,  // 默认不解析
-            flowChart: true,  // 默认不解析
-            sequenceDiagram: true,  // 默认不解析
-        });
     });
 </script>

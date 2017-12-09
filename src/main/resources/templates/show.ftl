@@ -54,12 +54,12 @@
             <#if (curPage>1)>
                 <li class="am-pagination-prev"><a href="/blog/pe/${curPage-1}">&laquo; 上一页</a></li>
             <#else >
-                <li class="am-disabled" style="float: left;"><a href="">&laquo; 木有上一页啦</a></li>
+                <li class="am-disabled" style="float: left;"><a href="">&laquo; 木有上一页</a></li>
             </#if>
             <#if (curPage<totalPage)>
                 <li class="am-pagination-next"><a href="/blog/pe/${curPage+1}">下一页 &raquo;</a></li>
             <#else >
-                <li class="am-disabled" style="float: right;"><a href="">木有下一页啦 &raquo;</a></li>
+                <li class="am-disabled" style="float: right;"><a href="">木有下一页 &raquo;</a></li>
             </#if>
         </ul>
     </#if>
