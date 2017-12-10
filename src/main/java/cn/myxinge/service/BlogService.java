@@ -4,6 +4,7 @@ import cn.myxinge.entity.Blog;
 import com.alibaba.fastjson.JSONObject;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by chenxinghua on 2017/11/9.
@@ -15,7 +16,7 @@ public interface BlogService {
      * @param url
      * @return
      */
-    Blog getBlog(String url);
+    JSONObject getBlog(String url);
 
     /**
      * 获取所有博客

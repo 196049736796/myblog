@@ -38,24 +38,31 @@ public class MyIntercepterHandler implements HandlerInterceptor{
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         LOG.info("Request: " + httpServletRequest.getRequestURL());
 
-        String ip = getIp(httpServletRequest);
+        final String ip = getIp(httpServletRequest);
 
         //存入session||检查session中是否存在
         String visitIp = (String) httpServletRequest.getSession().getAttribute("visitIp");
         if(null == visitIp){
             httpServletRequest.getSession().setAttribute("visitIp",ip);
 
-            String address = getAdress(ip);
-            Date visittime = new Date();
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    String address = getAdress(ip);
+                    Date visittime = new Date();
 
-            Map data = new HashMap<String,String>();
-            data.put("address",address);
-            data.put("ip",ip);
-            data.put("visittime",new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(visittime));
-            String rtn = HttpClientUtil.post(url_ipSave, data, "utf-8");
-            if(rtn == null ||!rtn.contains("success")){
-                LOG.error("IP保存/更新出错: IP = " + ip);
-            }
+                    Map data = new HashMap<String,String>();
+                    data.put("address",address);
+                    data.put("ip",ip);
+                    data.put("visittime",new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(visittime));
+                    String rtn = HttpClientUtil.post(url_ipSave, data, "utf-8");
+                    if(rtn == null ||!rtn.contains("success")){
+                        LOG.error("IP保存/更新出错: IP = " + ip);
+                    }
+                }
+            });
+            thread.start();
+            LOG.info("开启一条线程存储IP -> "+thread.getName());
         }
 
         return true;
