@@ -40,7 +40,7 @@ public class WriteMyLog {
         } catch (Throwable e) {
             LOG.error("\n----->method："
                     + joinPoint.getSignature()
-                    + "thows Exception： " + e.getCause().toString());
+                    + "thows Exception： " + e);
         } finally {
 
         }

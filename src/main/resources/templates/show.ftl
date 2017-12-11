@@ -54,12 +54,12 @@
             <#if (curPage>1)>
                 <li class="am-pagination-prev"><a href="/blog/pe/${curPage-1}">&laquo; 上一页</a></li>
             <#else >
-                <li class="am-disabled" style="float: left;"><a href="">&laquo; 木有上一页啦</a></li>
+                <li class="am-disabled" style="float: left;"><a href="">&laquo; 木有上一页</a></li>
             </#if>
             <#if (curPage<totalPage)>
                 <li class="am-pagination-next"><a href="/blog/pe/${curPage+1}">下一页 &raquo;</a></li>
             <#else >
-                <li class="am-disabled" style="float: right;"><a href="">木有下一页啦 &raquo;</a></li>
+                <li class="am-disabled" style="float: right;"><a href="">木有下一页 &raquo;</a></li>
             </#if>
         </ul>
     </#if>
@@ -95,16 +95,6 @@
                 <a href="" class="blog-tag">开源框架</a>
             </div>
         </div>
-        <!--
-        <div class="blog-sidebar-widget blog-bor">
-            <h2 class="blog-title"><span>么么哒</span></h2>
-            <ul class="am-list">
-                <li><a href="#">每个人都有一个死角， 自己走不出来，别人也闯不进去。</a></li>
-                <li><a href="#">我把最深沉的秘密放在那里。</a></li>
-                <li><a href="#">你不懂我，我不怪你。</a></li>
-                <li><a href="#">每个人都有一道伤口， 或深或浅，盖上布，以为不存在。</a></li>
-            </ul>
-        </div>-->
     </div>
 </div>
 <!-- content end -->

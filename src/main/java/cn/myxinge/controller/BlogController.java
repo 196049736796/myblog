@@ -5,7 +5,6 @@ import cn.myxinge.service.BlogService;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONPath;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,12 +28,14 @@ public class BlogController {
 
     @RequestMapping("/blog/{url}")
     public String showBlog(@PathVariable String url, Model model, HttpServletResponse rps) throws UnsupportedEncodingException {
-        Blog blog = blogService.getBlog(url);
-        if(null == blog){
+        JSONObject json = blogService.getBlog(url);
+        if (null == json) {
             rps.setStatus(404);
             return "/error";
         }
-        model.addAttribute("blog", blog);
+        model.addAttribute("blog", (JSONObject) JSONPath.eval(json, "$.curBlog"));
+        model.addAttribute("preBlog", (JSONObject) JSONPath.eval(json, "$.preAndNext.preBlog"));
+        model.addAttribute("nextBlog", (JSONObject) JSONPath.eval(json, "$.preAndNext.nextBlog"));
         return "blog";
     }
 
@@ -93,3 +95,7 @@ public class BlogController {
         return json;
     }
 }
+
+
+
+

@@ -82,12 +82,22 @@
                     <hr>
                     <ul class="am-pagination blog-article-margin">
                         <li class="am-pagination-prev">
-                            <p>aaa</p>
-                            <a href="" class="">&laquo; 上一篇</a>
+                        <#if preBlog??>
+                            <p style="font-size: smaller;color: blue">${preBlog.title!}</p>
+                            <a href="/blog/${preBlog.url!}" class="">&laquo; 上一篇</a>
+                        <#else>
+                            <p>没有上一篇了</p>
+                            <a disabled="disabled"class="am-btn am-btn-default am-disabled">&laquo; 上一篇</a>
+                        </#if>
                         </li>
                         <li class="am-pagination-next">
-                            <p>bbb</p>
-                            <a href="">下一篇 &raquo;</a>
+                        <#if nextBlog??>
+                            <p style="font-size: smaller;color: blue">${nextBlog.title!}</p>
+                            <a href="/blog/${nextBlog.url!}">下一篇 &raquo;</a>
+                        <#else>
+                            <p>没有下一篇了</p>
+                            <a disabled="disabled" class="am-btn am-btn-default am-disabled">下一篇 &raquo;</a>
+                        </#if>
                         </li>
                     </ul>
 
@@ -125,8 +135,7 @@
             </div>
         </article>
     </div>
-
-    <div id="s"></div>
+<#--右侧目录-->
     <div class="am-u-md-3 am-u-sm-12 blog-sidebar fix-top" id="myDiv" style="padding:0 0 0 0;">
         <div class="blog-sidebar-widget blog-bor" style="margin-bottom:0;">
             <h2 class="blog-text-center blog-title"><span>目录</span></h2>
@@ -186,25 +195,6 @@
 <script src="/lib/flowchart.min.js"></script>
 <script src="/lib/jquery.flowchart.min.js"></script>
 <script src="/js/editormd.js"></script>
-<script type="text/javascript">
-    $(function () {
-        //图片滚动特效
-        $('#asid_share').hhShare({
-            cenBox: 'asid_share_box',  //里边的小层
-            icon: 'adid_icon',
-            addClass: 'red_bag',
-            titleClass: 'asid_title',
-            triangle: 'asid_share_triangle', //鼠标划过显示图层，边上的小三角
-            showBox: 'asid_sha_layer' //鼠标划过显示图层
-        });
-
-        var fix = $(".fix-top");
-        fix.scrollFix({
-            distanceTop: $("#s").outerHeight() + 10,
-            zIndex: 998
-        });
-    });
-</script>
 
 <script type="text/javascript">
     // 绑定表情
@@ -233,6 +223,17 @@
 </html>
 <script type="text/javascript">
     $(function () {
+
+        //图片滚动特效
+        $('#asid_share').hhShare({
+            cenBox: 'asid_share_box',  //里边的小层
+            icon: 'adid_icon',
+            addClass: 'red_bag',
+            titleClass: 'asid_title',
+            triangle: 'asid_share_triangle', //鼠标划过显示图层，边上的小三角
+            showBox: 'asid_sha_layer' //鼠标划过显示图层
+        });
+
         var testEditormdView, testEditormdView2;
         $.get("/blog/content?sysyUrl=${blog.sysyUrl}", function (markdown) {
             testEditormdView = editormd.markdownToHTML("test-editormd-view", {
@@ -251,22 +252,14 @@
                 flowChart: true,  // 默认不解析
                 sequenceDiagram: true,  // 默认不解析
             });
-
-            //console.log("返回一个 jQuery 实例 =>", testEditormdView);
-
-            // 获取Markdown源码
-            //console.log(testEditormdView.getMarkdown());
-
-            //alert(testEditormdView.getMarkdown());
+            var fixtop = $(".fix-top");
+            fixtop.scrollFix({distanceTop: 0});
         });
 
-        testEditormdView2 = editormd.markdownToHTML("test-editormd-view2", {
-            htmlDecode: "style,script,iframe",  // you can filter tags decode
-            emoji: true,
-            taskList: true,
-            tex: true,  // 默认不解析
-            flowChart: true,  // 默认不解析
-            sequenceDiagram: true,  // 默认不解析
-        });
+        //窗口大小改变时触发
+        window.onresize = function () {
+            var fixtop = $(".fix-top");
+            fixtop.scrollFix({distanceTop: 0});
+        }
     });
 </script>
