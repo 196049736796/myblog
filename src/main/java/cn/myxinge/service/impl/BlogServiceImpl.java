@@ -68,13 +68,6 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public JSONObject pageBlog(int page, int rows) {
         String rtn = HttpClientUtil.get(url_blogPage + "?page=" + page + "&rows=" + rows);
-
-        try {
-            JedisUtil.cachData(rtn,this.getClass().getMethod("pageBlog",int.class,int.class));
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        }
-
         try {
             JSONObject json = JSONObject.parseObject(rtn);
 
