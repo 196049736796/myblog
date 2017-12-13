@@ -30,26 +30,56 @@
         <div class="am-u-sm-12">
             <h1 class="blog-text-center">-- 存档 --</h1>
 
-        <#list archivesList as archives>
+            
             <div class="timeline-year">
-                <h1>${archives.year}</h1>
+                <h1>2017</h1>
                 <hr>
                 <ul>
-                    <h3>1月</h3>
+                    <h3>12月</h3>
                     <hr>
-
-                    <#list archives.datas as blog>
-                        <li>
-                            <span class="am-u-sm-4 am-u-md-2 timeline-span">${blog.createtime ?date}</span>
-                            <span class="am-u-sm-8 am-u-md-6"><a href="/blog/${blog.url}">${blog.title}</a></span>
-                            <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">暂无分类</span>
-                            <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">${blog.auth}</span>
-                        </li>
-                    </#list>
+                    <li>
+                        <span class="am-u-sm-4 am-u-md-2 timeline-span">2015/10/18</span>
+                        <span class="am-u-sm-8 am-u-md-6"><a href="#">君埋泉下泥销骨，我寄人间雪满头</a></span>
+                        <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">风又起</span>
+                        <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">amazeui</span>
+                    </li>
+                    <li>
+                        <span class="am-u-sm-4 am-u-md-2 timeline-span">2015/10/10</span>
+                        <span class="am-u-sm-8 am-u-md-6"><a href="#">不为无益之事，何以遣有涯之生。</a></span>
+                        <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">灯火阑珊</span>
+                        <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">LWXYFER</span>
+                    </li>
+                    <li>
+                        <span class="am-u-sm-4 am-u-md-2 timeline-span">2015/10/5</span>
+                        <span class="am-u-sm-8 am-u-md-6"><a href="#">一想到你，我这张丑脸上就泛起微笑</a></span>
+                        <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">凌晨四点钟</span>
+                        <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">二师兄</span>
+                    </li>
+                </ul>
+                <ul>
+                    <h3>11月</h3>
+                    <hr>
+                    <li>
+                        <span class="am-u-sm-4 am-u-md-2 timeline-span">2015/10/18</span>
+                        <span class="am-u-sm-8 am-u-md-6"><a href="#">君埋泉下泥销骨，我寄人间雪满头</a></span>
+                        <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">风又起</span>
+                        <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">amazeui</span>
+                    </li>
+                    <li>
+                        <span class="am-u-sm-4 am-u-md-2 timeline-span">2015/10/10</span>
+                        <span class="am-u-sm-8 am-u-md-6"><a href="#">不为无益之事，何以遣有涯之生。</a></span>
+                        <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">灯火阑珊</span>
+                        <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">LWXYFER</span>
+                    </li>
+                    <li>
+                        <span class="am-u-sm-4 am-u-md-2 timeline-span">2015/10/5</span>
+                        <span class="am-u-sm-8 am-u-md-6"><a href="#">一想到你，我这张丑脸上就泛起微笑</a></span>
+                        <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">凌晨四点钟</span>
+                        <span class="am-u-sm-4 am-u-md-2 am-hide-sm-only">二师兄</span>
+                    </li>
                 </ul>
                 <br>
             </div>
-        </#list>
         </div>
 </article>
 
