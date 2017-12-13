@@ -32,6 +32,9 @@ public class BlogServiceImpl implements BlogService {
     @Value("${url_blogPage}")
     private String url_blogPage;
 
+    @Value("${url_archives}")
+    private String url_archives;
+
     @Override
     public JSONObject getBlog(String url) {
 
@@ -76,6 +79,12 @@ public class BlogServiceImpl implements BlogService {
             LOG.error("无法查到数据 或者返回的数据不是json", e);
         }
         return null;
+    }
+
+    @Override
+    public String archives() {
+        String rtn = HttpClientUtil.get(url_archives);
+        return rtn;
     }
 }
 

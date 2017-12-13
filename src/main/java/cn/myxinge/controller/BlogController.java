@@ -5,6 +5,8 @@ import cn.myxinge.service.BlogService;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONPath;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,9 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by chenxinghua on 2017/11/9.
@@ -25,6 +25,7 @@ import java.util.List;
 public class BlogController {
     @Autowired
     private BlogService blogService;
+    private Logger LOG = LoggerFactory.getLogger(BlogController.class);
 
     @RequestMapping("/blog/{url}")
     public String showBlog(@PathVariable String url, Model model, HttpServletResponse rps) throws UnsupportedEncodingException {
@@ -33,7 +34,9 @@ public class BlogController {
             rps.setStatus(404);
             return "/error";
         }
-        model.addAttribute("blog", (JSONObject) JSONPath.eval(json, "$.curBlog"));
+        Object o = JSONPath.eval(json, "$.curBlog");
+        Blog curBlog = JSONObject.parseObject(String.valueOf(o), Blog.class);
+        model.addAttribute("blog", curBlog);
         model.addAttribute("preBlog", (JSONObject) JSONPath.eval(json, "$.preAndNext.preBlog"));
         model.addAttribute("nextBlog", (JSONObject) JSONPath.eval(json, "$.preAndNext.nextBlog"));
         return "blog";
@@ -86,6 +89,21 @@ public class BlogController {
         model.addAttribute("totalPage", totalPage);
 
         return "show";
+    }
+
+    @RequestMapping("/pe/archives")
+    public String archives(Model model) {
+        try {
+            String rtn = blogService.archives();
+
+            //todo
+
+            model.addAttribute("archivesList", null);
+        } catch (Exception e) {
+            LOG.error("归档信息获取失败，发生异常：", e);
+        }
+
+        return "blogs";
     }
 
 

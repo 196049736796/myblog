@@ -80,7 +80,7 @@
                 <a href=""><span class="am-icon-qq am-icon-fw am-primary blog-icon"></span></a>
                 <a href="https://github.com/xingchen0085/" target="_blank"><span
                         class="am-icon-github am-icon-fw blog-icon"></span></a>
-                <a href=""><span class="am-icon-weibo am-icon-fw blog-icon"></span></a>
+                <a href="https://weibo.com/p/1005055313772543/home?from=page_100505&mod=TAB&is_all=1#place"><span class="am-icon-weibo am-icon-fw blog-icon"></span></a>
                 <a href=""><span class="am-icon-weixin am-icon-fw blog-icon"></span></a>
             </p>
         </div>

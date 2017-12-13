@@ -27,6 +27,8 @@ public interface BlogService {
     String getBlogContent(String sysyUrl);
 
      JSONObject pageBlog(int page, int rows);
+
+    String archives();
 }
 
 
