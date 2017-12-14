@@ -41,6 +41,10 @@ public class JedisUtil {
         }
         return rtn;
     }
+
+    public static String flushall() {
+        return  jedis.flushAll();
+    }
 }
 
 

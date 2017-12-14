@@ -95,9 +95,8 @@ public class BlogController {
     public String archives(Model model) {
         try {
             String rtn = blogService.archives();
-
-            //todo
-            model.addAttribute("archivesList", JSONObject.parseArray(rtn, Blog.class));
+            JSONArray jsonArray = JSONObject.parseArray(rtn);
+            model.addAttribute("archivesList", jsonArray);
         } catch (Exception e) {
             LOG.error("归档信息获取失败，发生异常：", e);
         }

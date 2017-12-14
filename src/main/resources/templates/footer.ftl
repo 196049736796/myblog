@@ -1,5 +1,5 @@
 
-<footer class="blog-footer" style="height: 60px">
+<footer class="blog-footer">
     <div class="am-g am-g-fixed blog-fixed am-u-sm-centered">
 
         <div class="blog-text-center">© 星尘

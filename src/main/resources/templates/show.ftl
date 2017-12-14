@@ -35,18 +35,18 @@
     <#else >
         <#list blogs as blog>
             <article class="am-g blog-entry-article">
-                <div class="am-u-lg-5 am-u-md-12 am-u-sm-12 blog-entry-img">
+                <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
                     <img src="http://www.myxinge.cn/${blog.mainImgUrl}"
-                         alt="" class="am-u-sm-12" style="height: 240px">
+                         alt="" class="am-u-sm-12">
                 </div>
-                <div class="am-u-lg-7 am-u-md-12 am-u-sm-12 blog-entry-text">
+                <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
+                    <h1><a href="/blog/${blog.url}">${blog.title}</a></h1>
+                    <p style="font-size:small">${blog.subject}</p>
+                    <p style="font-size:small">
                     <span><a href="" class="blog-color">@Post by &nbsp;</a></span>
                     <span> ${blog.auth} &nbsp;</span>
                     <span>${blog.createtime ?string('yyyy-MM-dd HH:mm:ss')}</span>
-                    <h1><a href="/blog/${blog.url}">${blog.title}</a></h1>
-                    <p>${blog.subject}
                     </p>
-                    <p><a href="" class="blog-continue">continue reading</a></p>
                 </div>
             </article>
         </#list>
@@ -80,7 +80,8 @@
                 <a href=""><span class="am-icon-qq am-icon-fw am-primary blog-icon"></span></a>
                 <a href="https://github.com/xingchen0085/" target="_blank"><span
                         class="am-icon-github am-icon-fw blog-icon"></span></a>
-                <a href="https://weibo.com/p/1005055313772543/home?from=page_100505&mod=TAB&is_all=1#place"><span class="am-icon-weibo am-icon-fw blog-icon"></span></a>
+                <a href="https://weibo.com/p/1005055313772543/home?from=page_100505&mod=TAB&is_all=1#place"><span
+                        class="am-icon-weibo am-icon-fw blog-icon"></span></a>
                 <a href=""><span class="am-icon-weixin am-icon-fw blog-icon"></span></a>
             </p>
         </div>
