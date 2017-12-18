@@ -30,12 +30,12 @@ public class BlogController {
     @RequestMapping("/blog/{url}")
     public String showBlog(@PathVariable String url, Model model, HttpServletResponse rps) throws UnsupportedEncodingException {
         JSONObject json = blogService.getBlog(url);
-        if (null == json) {
+        Object eval = JSONPath.eval(json, "$.curBlog");
+        if (null == eval) {
             rps.setStatus(404);
             return "/error";
         }
-        Object o = JSONPath.eval(json, "$.curBlog");
-        Blog curBlog = JSONObject.parseObject(String.valueOf(o), Blog.class);
+        Blog curBlog = JSONObject.parseObject(String.valueOf(eval), Blog.class);
         model.addAttribute("blog", curBlog);
         model.addAttribute("preBlog", (JSONObject) JSONPath.eval(json, "$.preAndNext.preBlog"));
         model.addAttribute("nextBlog", (JSONObject) JSONPath.eval(json, "$.preAndNext.nextBlog"));
