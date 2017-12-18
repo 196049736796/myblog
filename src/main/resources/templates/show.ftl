@@ -35,11 +35,7 @@
     <#else >
         <#list blogs as blog>
             <article class="am-g blog-entry-article">
-                <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
-                    <img src="http://www.myxinge.cn/${blog.mainImgUrl}"
-                         alt="" class="am-u-sm-12">
-                </div>
-                <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
+                <div class="am-u-lg-8 am-u-md-8 am-u-sm-12 blog-entry-text">
                     <h2><a href="/blog/${blog.url}">${blog.title}</a></h2>
                     <p style="font-size:small;word-break:break-all;">
                         ${blog.subject}
@@ -49,6 +45,11 @@
                         <span> ${blog.auth} &nbsp;</span>
                         <span>${blog.createtime ?string('yyyy-MM-dd HH:mm:ss')}</span>
                     </p>
+                </div>
+
+                <div class="am-u-lg-4 am-u-md-4 am-u-sm-12 blog-entry-img">
+                    <img src="http://www.myxinge.cn/${blog.mainImgUrl}"
+                         alt="" class="am-u-sm-12">
                 </div>
             </article>
         </#list>

@@ -39,7 +39,7 @@ public class BlogController {
         model.addAttribute("blog", curBlog);
         model.addAttribute("preBlog", (JSONObject) JSONPath.eval(json, "$.preAndNext.preBlog"));
         model.addAttribute("nextBlog", (JSONObject) JSONPath.eval(json, "$.preAndNext.nextBlog"));
-        return "blog";
+        return "blog2";
     }
 
     @RequestMapping("/blog/content")

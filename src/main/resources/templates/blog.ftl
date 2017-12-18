@@ -87,7 +87,7 @@
                             <a href="/blog/${preBlog.url!}" class="">&laquo; 上一篇</a>
                         <#else>
                             <p>没有上一篇了</p>
-                            <a disabled="disabled"class="am-btn am-btn-default am-disabled">&laquo; 上一篇</a>
+                            <a disabled="disabled" class="am-btn am-btn-default am-disabled">&laquo; 上一篇</a>
                         </#if>
                         </li>
                         <li class="am-pagination-next">
@@ -109,7 +109,8 @@
                         <div class="wrap">
                             <div class="comment">
                                 <div class="head-face">
-                                    <img src="/images/common.png" / >
+                                    <img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80"
+                                         class="am-comment-avatar" width="48" height="48" / >
                                     <p>星尘</p>
                                 </div>
                                 <div class="content">
@@ -126,7 +127,48 @@
                                 </div>
                             </div>
                             <div id="info-show">
-                                <ul></ul>
+                                <ul class="am-comments-list">
+                                    <li class="am-comment">
+                                        <a href="#link-to-user-home">
+                                            <img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80"
+                                                 alt="" class="am-comment-avatar" width="48" height="48">
+                                        </a>
+                                        <div class="am-comment-main">
+                                            <header class="am-comment-hd">
+                                                <div class="am-comment-meta">
+                                                    <a href="#link-to-user" class="am-comment-author">某人</a> 评论于
+                                                    <time datetime="2013-07-27T04:54:29-07:00"
+                                                          title="2013年7月27日 下午7:54 格林尼治标准时间+0800">
+                                                        2014-7-12 15:30
+                                                    </time>
+                                                </div>
+                                            </header>
+                                            <div class="am-comment-bd">
+                                                <p>《永远的蝴蝶》一文，还吸收散文特长，多采用第一人称，淡化情节，体现一种思想寄托和艺术追求。</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="am-comment">
+                                        <a href="#link-to-user-home">
+                                            <img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80"
+                                                 alt="" class="am-comment-avatar" width="48" height="48">
+                                        </a>
+                                        <div class="am-comment-main">
+                                            <header class="am-comment-hd">
+                                                <div class="am-comment-meta">
+                                                    <a href="#link-to-user" class="am-comment-author">路人甲</a> 评论于
+                                                    <time datetime="2013-07-27T04:54:29-07:00"
+                                                          title="2013年7月27日 下午7:54 格林尼治标准时间+0800">
+                                                        2014-7-13 0:03
+                                                    </time>
+                                                </div>
+                                            </header>
+                                            <div class="am-comment-bd">
+                                                <p>感觉仿佛是自身的遭遇一样，催人泪下</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -136,30 +178,19 @@
         </article>
     </div>
 <#--右侧目录-->
-    <div class="am-u-md-3 am-u-sm-12 blog-sidebar fix-top" id="myDiv" style="padding:0 0 0 0;">
+    <div class="am-u-md-3 am-u-sm-0 blog-sidebar fix-top" id="myDiv" style="padding:0 0 0 0;">
         <div class="blog-sidebar-widget blog-bor" style="margin-bottom:0;">
             <h2 class="blog-text-center blog-title"><span>目录</span></h2>
         </div>
-        <div class="blog-sidebar-widget blog-bor" style="text-align: left" id="custom-toc-container">
-        </div>
+        <div class="blog-sidebar-widget blog-bor style=" text-align: left
+        " id="custom-toc-container">
     </div>
+</div>
 </div>
 
 <#--回到顶部-->
 <!-- asid start -->
 <div class="asid_share" id="asid_share">
-<#--<div class="asid_share_box relative">
-    <a href="#"><img alt="我有话说" title="我有话说" class="adid_icon" src="/images/icon_say.png"></a>
-</div>
-<div class="asid_share_box relative">
-    <a href="#"><img alt="新版帮助" title="新版帮助" class="adid_icon" src="/images/icon_help.png"></a>
-    <div class="asid_share_triangle" style="display:none;">
-        <em class="border_sj">&#9670;</em>
-        <span class="con_sj">&#9670;</span>
-    </div>
-    <div class="asid_sha_layer" style="display:none;" id="custom-toc-container">
-    </div>
-</div>-->
     <div class="asid_share_box relative">
         <a href="#"><img alt="扫二微码" title="扫二微码" class="adid_icon" src="/images/icon_sweep.png"></a>
         <div class="asid_share_triangle" style="display:none;">
@@ -205,18 +236,16 @@
         $('#info-show ul').append(reply(AnalyticEmotion(inputText)));
     }
 
-    var html;
+
     function reply(content) {
-        html = '<li>';
-        html += '<div class="head-face">';
-        html += '<img src="/images/common.png"/>';
-        html += '</div>';
-        html += '<div class="reply-cont">';
-        html += '<p class="username">星尘</p>';
-        html += '<p class="comment-body">' + content + '</p>';
-        html += '<p class="comment-footer">2016年10月5日　回复　点赞54　转发12</p>';
-        html += '</div>';
-        html += '</li>';
+        var html = "<li class=\"am-comment\">" +
+                "<a href=\"#link-to-user-home\">" +
+                "<img src=\"http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80\"" +
+                " alt=\"\" class=\"am-comment-avatar\" width=\"48\" height=\"48\"><\/a><div class=\"am-comment-main\">" +
+                "<header class=\"am-comment-hd\"><div class=\"am-comment-meta\"><a href=\"#link-to-user\" class=\"am-comment-author\">" +
+                "某人<\/a> 评论于 <time datetime=\"2013-07-27T04:54:29-07:00\" title=\"2013年7月27日 下午7:54 格林尼治标准时间+0800\">2014-7-12 15:30" +
+                "<\/time><\/div><\/header><div class=\"am-comment-bd\"><p>《永远的蝴蝶》一文，还吸收散文特长，多采用第一人称，淡化情节，体现一种思想寄托和艺术追求。" +
+                "<\/p><\/div><\/div><\/li>\n";
         return html;
     }
 </script>
