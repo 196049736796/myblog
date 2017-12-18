@@ -146,7 +146,7 @@
     </div>
     <div class="am-u-md-3 am-u-md-pull-9 my-sidebar" style="padding:0 0 0 0;" >
         <div class="am-offcanvas" id="sidebar">
-            <ul class="am-nav">
+            <ul class="am-nav" >
                 <li class="am-nav-header">目录</li>
             </ul>
             <div class="am-offcanvas-bar" id="custom-toc-container">
