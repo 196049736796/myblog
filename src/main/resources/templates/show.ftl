@@ -40,12 +40,14 @@
                          alt="" class="am-u-sm-12">
                 </div>
                 <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
-                    <h1><a href="/blog/${blog.url}">${blog.title}</a></h1>
-                    <p style="font-size:small">${blog.subject}</p>
+                    <h2><a href="/blog/${blog.url}">${blog.title}</a></h2>
+                    <p style="font-size:small;word-break:break-all;">
+                        ${blog.subject}
+                    </p>
                     <p style="font-size:small">
-                    <span><a href="" class="blog-color">@Post by &nbsp;</a></span>
-                    <span> ${blog.auth} &nbsp;</span>
-                    <span>${blog.createtime ?string('yyyy-MM-dd HH:mm:ss')}</span>
+                        <span><a href="" class="blog-color">@Post by &nbsp;</a></span>
+                        <span> ${blog.auth} &nbsp;</span>
+                        <span>${blog.createtime ?string('yyyy-MM-dd HH:mm:ss')}</span>
                     </p>
                 </div>
             </article>
