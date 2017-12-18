@@ -1,6 +1,7 @@
 package cn.myxinge.common.intercepter;
 
 import cn.myxinge.utils.HttpClientUtil;
+import cn.myxinge.utils.UnicodeUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONPath;
 import org.slf4j.Logger;
@@ -35,20 +36,26 @@ public class MyIntercepterHandler implements HandlerInterceptor {
 
     //进入前
     @Override
-    public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
+    public boolean preHandle(final HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         LOG.info("Request: " + httpServletRequest.getRequestURL());
-
-        final String ip = getIp(httpServletRequest);
 
         //存入session||检查session中是否存在
         String visitIp = (String) httpServletRequest.getSession().getAttribute("visitIp");
-        if (null == visitIp) {
-            httpServletRequest.getSession().setAttribute("visitIp", ip);
+        if (null == visitIp) {                                                                  //当session过期后才记录IP信息
 
-            Thread thread = new Thread(new Runnable() {
+            final JSONObject result = getIp(httpServletRequest);
+            if (null == result) {
+                return true;
+            }
+            LOG.info("IP:" + result.toJSONString());
+            httpServletRequest.getSession().setAttribute("visitIp", result.toJSONString());
+
+            Thread thread = new Thread(new Runnable() {                                         //开启线程，即时失败也要响应客户端
                 @Override
                 public void run() {
-                    String address = getAdress(ip);
+
+                    String address = result.getString("cname");
+                    String ip = result.getString("cip");
                     Date visittime = new Date();
 
                     Map data = new HashMap<String, String>();
@@ -86,68 +93,19 @@ public class MyIntercepterHandler implements HandlerInterceptor {
      * @param request
      * @return
      */
-    private String getIp(HttpServletRequest request) {
-        String ipAddress = request.getHeader("x-forwarded-for");
-        if (ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
-            ipAddress = request.getHeader("Proxy-Client-IP");
+    private JSONObject getIp(HttpServletRequest request) {
+        //获取本机外网IP
+        String rtn = HttpClientUtil.get("https://ipip.yy.com/get_ip_info.php");
+        if (rtn != null && rtn.contains("{") && rtn.contains("}")) {
+            int start = rtn.indexOf("{");
+            int end = rtn.indexOf("}") + 1;
+            String result = rtn.substring(start, end);
+            JSONObject Ipaddress = JSONObject.parseObject(result);
+            return Ipaddress;
+        } else {
+            LOG.error("https://ipip.yy.com/get_ip_info.php --> IP查询有误");
         }
-        if (ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
-            ipAddress = request.getHeader("WL-Proxy-Client-IP");
-        }
-        if (ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
-            ipAddress = request.getRemoteAddr();
-            if (ipAddress.equals("127.0.0.1") || ipAddress.equals("0:0:0:0:0:0:0:1")) {
-                //根据网卡取本机配置的IP
-//                InetAddress inet=null;
-//                try {
-//                    inet = InetAddress.getLocalHost();
-//                } catch (UnknownHostException e) {
-//                    e.printStackTrace();
-//                }
-//                ipAddress= inet.getHostAddress();
-                //获取本机外网IP
-                String rtn = HttpClientUtil.get("http://2017.ip138.com/ic.asp");
-                if (rtn != null && rtn.contains("[") && rtn.contains("]")) {
-                    int s = rtn.indexOf("[");
-                    int e = rtn.indexOf("]");
-
-                    return rtn.substring(s + 1, e);
-                } else {
-                    LOG.error("http://2017.ip138.com/ic.asp --> 地址无法查询IP");
-                }
-            }
-        }
-        //对于通过多个代理的情况，第一个IP为客户端真实IP,多个IP按照','分割
-        if (ipAddress != null && ipAddress.length() > 15) { //"***.***.***.***".length() = 15
-            if (ipAddress.indexOf(",") > 0) {
-                ipAddress = ipAddress.substring(0, ipAddress.indexOf(","));
-            }
-        }
-        return ipAddress;
-    }
-
-    /**
-     * IP地址
-     */
-    private String getAdress(String ip) {
-        JSONObject address = null;
-        //IP地址
-        try {
-            String rtn = HttpClientUtil.get("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip=" + ip);
-            address = JSONObject.parseObject(rtn);
-
-            String country = (String) JSONPath.eval(address, "$.country");
-            String province = (String) JSONPath.eval(address, "$.province");
-            String city = (String) JSONPath.eval(address, "$.city");
-
-            return country + "." + province + "." + city;
-
-        } catch (Exception e) {
-            LOG.error("IP解析错误:IP = " + ip);
-        }
-
-        return "该IP解析失败";
-
+        return null;
     }
 }
 

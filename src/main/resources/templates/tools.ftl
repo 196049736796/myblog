@@ -24,7 +24,7 @@
 <article>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12" style="height: 500px;">
                 工具页面尚在规划，暂时无法访问。
             </div>
         </div>
