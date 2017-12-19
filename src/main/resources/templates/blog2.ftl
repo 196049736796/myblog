@@ -31,9 +31,6 @@
         .comment_footer a {
             margin-left: 15px;
         }
-        div{
-            border: solid 1px red;
-        }
     </style>
 </head>
 <body class="chang_fontSize">

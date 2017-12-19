@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/css/app.css">
 </head>
 
-<body id="blog">
+<body id="blog" class="chang_fontSize">
 
 <#include "header.ftl"/>
 
@@ -107,6 +107,7 @@
 <#include "footer.ftl"/>
 
 <script src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/zoomFontSize.js"></script>
 <script src="/js/amazeui.min.js"></script>
 </body>
 </html>

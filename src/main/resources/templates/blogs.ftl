@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="/css/app.css">
 </head>
 
-<body>
+<body class="chang_fontSize">
 <#include "header.ftl"/>
 
 <!-- Post Content    col-lg-8 offset-lg-2 col-md-10 offset-md-1  -->
@@ -58,6 +58,7 @@
 </body>
 
 <script src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/zoomFontSize.js"></script>
 <script src="/js/amazeui.min.js"></script>
 <script type="text/javascript">
     $(function () {

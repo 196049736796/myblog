@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="/css/editormd.preview.css"/>
 </head>
 
-<body>
+<body class="chang_fontSize">
 <#include "header.ftl"/>
 
 <!-- content srart -->
@@ -213,6 +213,7 @@
 
 </body>
 <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/js/zoomFontSize.js"></script>
 <script type="text/javascript" src="/js/scrollfix.js"></script>
 <script type="text/javascript" src="/js/jQuery.hhShare.min.js"></script>
 <script src="/js/amazeui.min.js"></script>
