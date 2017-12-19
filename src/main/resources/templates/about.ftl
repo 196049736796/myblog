@@ -25,9 +25,9 @@
 <#include "header.ftl"/>
 
 <!-- Main Content -->
-<div style="width: 100%">
+<#--<div style="width: 100%">
     <img src="/images/banner2.jpg" width="100%" height="400px">
-</div>
+</div>-->
 <div class="am-g am-g-fixed blog-fixed blog-content" style="margin-top: 16px">
     <div class="am-u-sm-12">
         <h2>About Me</h2>
