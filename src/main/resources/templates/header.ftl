@@ -1,8 +1,7 @@
-
 <header class="am-topbar am-topbar-fixed-top">
     <nav class="am-g am-g-fixed blog-fixed blog-nav">
         <h1 class="am-topbar-brand">
-            <a href="/">Xingchen</a>
+            <a href="/">X.</a>
         </h1>
         <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
                 data-am-collapse="{target: '#blog-collapse'}"><span class="am-sr-only">导航切换</span> <span
@@ -18,9 +17,25 @@
             </ul>
             <form class="am-topbar-form am-topbar-right am-form-inline" role="search">
                 <div class="am-form-group">
-                    <input style="height: 32.8px" type="text" class="am-form-field am-input-sm" placeholder="搜索">
+                    <input type="text" class="am-form-field am-input-sm" placeholder="搜索">
                 </div>
             </form>
+            <div class="am-topbar-right">
+                <a href="/log.html">
+                    <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm">登录</button>
+                </a>
+            </div>
+
+            <div class="am-topbar-right">
+                <div class="am-dropdown" data-am-dropdown="{boundary: '.am-topbar'}">
+                    <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle"
+                            data-am-dropdown-toggle>星尘 <span class="am-icon-caret-down"></span></button>
+                    <ul class="am-dropdown-content">
+                        <li><a href="#">收到回复</a></li>
+                        <li><a href="#">随便看看</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </nav>
 </header>

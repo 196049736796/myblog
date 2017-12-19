@@ -24,13 +24,14 @@
     <style type="text/css">
         .comment_footer {
             margin-top: 10px;
-            font-size: 20%;
+            font-size: 30%;
             width: 100%;
         }
 
         .comment_footer a {
             margin-left: 15px;
         }
+
     </style>
 </head>
 <body class="chang_fontSize">
@@ -60,79 +61,77 @@
                 <hr/>
                 <div align="left"><a href="http://www.myxinge.cn/blog/${blog.url}">原文出自：星尘 www.myxinge.cn</a></div>
             </div>
+        </div>
 
-        <#-- 文章结束 -->
-            <div class="am-g blog-article-widget blog-article-margin">
-                <div class="am-u-lg-4 am-u-md-5 am-u-sm-7 am-u-sm-centered blog-text-center">
-                    <span class="am-icon-tags"> &nbsp;</span><a href="#">Springboot</a> , <a
-                        href="#">Mybatis</a> , <a
-                        href="#">框架整合</a>
-                    <hr>
-                    <a href="#"><span class="am-icon-qq am-icon-fw am-primary blog-icon"></span></a>
-                    <a href="#"><span class="am-icon-wechat am-icon-fw blog-icon"></span></a>
-                    <a href="#"><span class="am-icon-weibo am-icon-fw blog-icon"></span></a>
-                </div>
+    <#-- 文章结束 -->
+        <div class="am-g blog-article-widget blog-article-margin">
+            <div class="am-u-lg-4 am-u-md-5 am-u-sm-7 am-u-sm-centered blog-text-center">
+                <span class="am-icon-tags"> &nbsp;</span><a href="#">Springboot</a> , <a
+                    href="#">Mybatis</a> , <a
+                    href="#">框架整合</a>
+                <hr>
+                <a href="#"><span class="am-icon-qq am-icon-fw am-primary blog-icon"></span></a>
+                <a href="#"><span class="am-icon-wechat am-icon-fw blog-icon"></span></a>
+                <a href="#"><span class="am-icon-weibo am-icon-fw blog-icon"></span></a>
             </div>
+        </div>
 
 
-        <#--评论-->
+    <#--评论-->
+        <div id="content" class="am-u-md-12 am-u-sm-12 am-u-sm-centered" style="margin-top: 15px">
             <h3>评论(99+)</h3>
             <hr>
-            <div id="content" class="am-u-md-12 am-u-sm-12 am-u-sm-centered" style="margin-top: 15px">
-                <div class="comment am-u-md-12 am-u-sm-12 am-u-sm-centered">
-                    <div style="float: left;width: 5%;height: 120px">
-                        <div><img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80"
-                                  class="am-comment-avatar"/>
-                            <div style="text-align: center;font-size: 30%;margin-top: 10px">星尘0085</div>
-                        </div>
-                    </div>
-                    <div class="content">
-                        <div class="cont-box">
-                            <textarea class="text" placeholder="写下你的评论"></textarea>
-                        </div>
-                        <div class="tools-box">
-                            <div class="operator-box-btn">
-                                <span class="face-icon">☺</span>
-                            </div>
-                            <div class="submit-btn"><input style="vertical-align: top" type="button" onClick="out()"
-                                                           value="提交"/>
-                            </div>
-                        </div>
+            <div class="comment am-u-md-12 am-u-sm-12 am-u-sm-centered">
+                <div style="float: left;width: 5%;height: 120px">
+                    <div><img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80"
+                              class="am-comment-avatar"/>
+                        <div style="text-align: center;font-size: 30%;margin-top: 10px">星尘0085</div>
                     </div>
                 </div>
-                <div id="info-show" class="am-u-md-12 am-u-sm-12 am-u-sm-centered">
-                    <hr>
-                    <ul class="am-comments-list">
-                        <li class="am-comment">
-                            <a href="#link-to-user-home">
-                                <img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80"
-                                     alt="" class="am-comment-avatar" width="48" height="48">
-                            </a>
-                            <div class="am-comment-main">
-                                <header class="am-comment-hd">
-                                    <div class="am-comment-meta">
-                                        <a href="#link-to-user" class="am-comment-author">某人</a>
-
-                                    </div>
-                                </header>
-                                <div class="am-comment-bd">
-                                    <p style="font-size: 100%">《永远的蝴蝶》一文，还吸收散文特长，多采用第一人称，淡化情节，体现一种思想寄托和艺术追求。</p>
-                                    <div class="comment_footer">
-                                        <time style="float: left" datetime="2013-07-27T04:54:29-07:00"
-                                              title="2013年7月27日 下午7:54 格林尼治标准时间+0800">
-                                            2014-7-12 15:30
-                                        </time>
-                                        <span style="float: right"><a href="#">回复(99+)</a><a href="#">点赞(99+)</a><a
-                                                href="#">删除</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+                <div class="content">
+                    <div class="cont-box">
+                        <textarea class="text" placeholder="写下你的评论"></textarea>
+                    </div>
+                    <div class="tools-box">
+                        <div class="operator-box-btn">
+                            <span class="face-icon">☺</span>
+                        </div>
+                        <div class="submit-btn"><input style="vertical-align: top" type="button" onClick="out()"
+                                                       value="提交"/>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div id="info-show" class="am-u-md-12 am-u-sm-12 am-u-sm-centered">
+                <hr>
+                <ul class="am-comments-list">
+                    <li class="am-comment">
+                        <a href="#link-to-user-home">
+                            <img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80"
+                                 alt="" class="am-comment-avatar" width="48" height="48">
+                        </a>
+                        <div class="am-comment-main">
+                            <header class="am-comment-hd">
+                                <div class="am-comment-meta">
+                                    <a href="#link-to-user" class="am-comment-author">某人</a>
 
-
+                                </div>
+                            </header>
+                            <div class="am-comment-bd">
+                                <p style="font-size: 100%">《永远的蝴蝶》一文，还吸收散文特长，多采用第一人称，淡化情节，体现一种思想寄托和艺术追求。</p>
+                                <div class="comment_footer">
+                                    <time style="float: left" datetime="2013-07-27T04:54:29-07:00"
+                                          title="2013年7月27日 下午7:54 格林尼治标准时间+0800">
+                                        2014-7-12 15:30
+                                    </time>
+                                    <span style="float: right"><a href="#">回复(99+)</a><a href="#">点赞(99+)</a><a
+                                            href="#">删除</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -206,8 +205,6 @@
 <script type="text/javascript">
     $(function () {
 
-        getDiv();
-
         //图片滚动特效
         $('#asid_share').hhShare({
             cenBox: 'asid_share_box',  //里边的小层
@@ -237,25 +234,5 @@
                 sequenceDiagram: true,  // 默认不解析
             });
         });
-
-        window.addEventListener("orientationchange", function () {
-            getDiv();
-        }, false);
     });
-
-    $(window).resize(function () {
-        getDiv();
-    });
-
-    function getDiv() {
-        var width = $(document.body).outerWidth(true);
-        var height = $(document.body).outerHeight(true);
-        console.log("width:" + width + ",height:" + height);
-        /*var i = width > height ? width : height;
-        if (width > 650) {
-            $("#mulu").hide();
-        } else {
-            $("#mulu").show();
-        }*/
-    }
 </script>

@@ -3156,7 +3156,8 @@
     background: #f6f6f6;
     padding: 3px;
     border-radius: 3px;
-    font-size: 14px;
+    /*font-size: 14px;*/
+    font-size: 100%;
 }
 
 .editormd-preview-container pre, .editormd-html-preview pre {
