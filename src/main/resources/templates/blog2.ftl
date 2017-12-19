@@ -21,83 +21,24 @@
     <link rel="stylesheet" type="text/css" href="/css/sinaFaceAndEffec.css"/>
     <link rel="stylesheet" href="/css/main.css"/>
     <link rel="stylesheet" href="/css/editormd.preview.css"/>
-    <style>
-        @media only screen and (min-width: 641px) {
-            .am-offcanvas {
-                display: block;
-                position: static;
-                background: none;
-            }
-
-            .am-offcanvas-bar {
-                position: static;
-                width: auto;
-                background: none;
-                -webkit-transform: translate3d(0, 0, 0);
-                -ms-transform: translate3d(0, 0, 0);
-                transform: translate3d(0, 0, 0);
-            }
-            .am-offcanvas-bar:after {
-                content: none;
-            }
-
+    <style type="text/css">
+        .comment_footer {
+            margin-top: 10px;
+            font-size: 20%;
+            width: 100%;
         }
 
-        @media only screen and (max-width: 640px) {
-            .am-offcanvas-bar .am-nav>li>a {
-                color:#ccc;
-                border-radius: 0;
-                border-top: 1px solid rgba(0,0,0,.3);
-                box-shadow: inset 0 1px 0 rgba(255,255,255,.05)
-            }
-
-            .am-offcanvas-bar .am-nav>li>a:hover {
-                background: #404040;
-                color: #fff
-            }
-
-            .am-offcanvas-bar .am-nav>li.am-nav-header {
-                color: #777;
-                background: #404040;
-                box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
-                text-shadow: 0 1px 0 rgba(0,0,0,.5);
-                border-top: 1px solid rgba(0,0,0,.3);
-                font-weight: 400;
-                font-size: 75%
-            }
-
-            .am-offcanvas-bar .am-nav>li.am-active>a {
-                background: #1a1a1a;
-                color: #fff;
-                box-shadow: inset 0 1px 3px rgba(0,0,0,.3)
-            }
-
-            .am-offcanvas-bar .am-nav>li+li {
-                margin-top: 0;
-            }
+        .comment_footer a {
+            margin-left: 15px;
         }
-
-        .my-head {
-            margin-top: 40px;
-            text-align: center;
+        div{
+            border: solid 1px red;
         }
-
-        .my-button {
-            position: fixed;
-            top: 0;
-            right: 0;
-            border-radius: 0;
-        }
-        .my-sidebar {
-            padding-right: 0;
-            border-right: 1px solid #eeeeee;
-        }
-
     </style>
 </head>
-<body>
+<body class="chang_fontSize">
 <#include "header.ftl"/>
-<header class="am-g my-head">
+<header class="am-g" style="margin-top: 40px; text-align: center;">
     <div class="am-u-sm-12 am-article">
         <h1 class="am-article-title">${blog.title}</h1>
         <p class="am-article-meta">${blog.auth}</p>
@@ -105,7 +46,7 @@
 </header>
 <hr class="am-article-divider"/>
 <div class="am-g am-g-fixed blog-fixed blog-content main">
-    <div class="am-u-md-9 am-u-md-push-3">
+    <div class="am-u-md-12">
         <div class="am-g">
             <div class="am-u-sm-11 am-u-sm-centered">
                 <div class="am-cf am-article">
@@ -120,43 +61,124 @@
                     </div>
                 </div>
                 <hr/>
+                <div align="left"><a href="http://www.myxinge.cn/blog/${blog.url}">原文出自：星尘 www.myxinge.cn</a></div>
+            </div>
 
-            <#--回到顶部-->
-                <!-- asid start -->
-                <div class="asid_share" id="asid_share">
-                    <div class="asid_share_box relative">
-                        <a href="#"><img alt="扫二微码" title="扫二微码" class="adid_icon" src="/images/icon_sweep.png"></a>
-                        <div class="asid_share_triangle" style="display:none;">
-                            <em class="border_sj">&#9670;</em>
-                            <span class="con_sj">&#9670;</span>
-                        </div>
-                        <div class="asid_sha_layer" style="width:250px;display:none;">
-                            <p class="sweep_img"><img src="/images/weiixn.png" width="220"></p>
-                            <p class="pb6"><b>扫一扫上面的二维码图案，加我微信</b></p>
+        <#-- 文章结束 -->
+            <div class="am-g blog-article-widget blog-article-margin">
+                <div class="am-u-lg-4 am-u-md-5 am-u-sm-7 am-u-sm-centered blog-text-center">
+                    <span class="am-icon-tags"> &nbsp;</span><a href="#">Springboot</a> , <a
+                        href="#">Mybatis</a> , <a
+                        href="#">框架整合</a>
+                    <hr>
+                    <a href="#"><span class="am-icon-qq am-icon-fw am-primary blog-icon"></span></a>
+                    <a href="#"><span class="am-icon-wechat am-icon-fw blog-icon"></span></a>
+                    <a href="#"><span class="am-icon-weibo am-icon-fw blog-icon"></span></a>
+                </div>
+            </div>
+
+
+        <#--评论-->
+            <h3>评论(99+)</h3>
+            <hr>
+            <div id="content" class="am-u-md-12 am-u-sm-12 am-u-sm-centered" style="margin-top: 15px">
+                <div class="comment am-u-md-12 am-u-sm-12 am-u-sm-centered">
+                    <div style="float: left;width: 5%;height: 120px">
+                        <div><img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80"
+                                  class="am-comment-avatar"/>
+                            <div style="text-align: center;font-size: 30%;margin-top: 10px">星尘0085</div>
                         </div>
                     </div>
-                    <div class="asid_share_box relative" style="display:none;">
-                        <a href="#"><img alt="返回顶部" title="返回顶部" class="adid_icon" src="/images/icon_back.png"></a>
+                    <div class="content">
+                        <div class="cont-box">
+                            <textarea class="text" placeholder="写下你的评论"></textarea>
+                        </div>
+                        <div class="tools-box">
+                            <div class="operator-box-btn">
+                                <span class="face-icon">☺</span>
+                            </div>
+                            <div class="submit-btn"><input style="vertical-align: top" type="button" onClick="out()"
+                                                           value="提交"/>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div id="info-show" class="am-u-md-12 am-u-sm-12 am-u-sm-centered">
+                    <hr>
+                    <ul class="am-comments-list">
+                        <li class="am-comment">
+                            <a href="#link-to-user-home">
+                                <img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80"
+                                     alt="" class="am-comment-avatar" width="48" height="48">
+                            </a>
+                            <div class="am-comment-main">
+                                <header class="am-comment-hd">
+                                    <div class="am-comment-meta">
+                                        <a href="#link-to-user" class="am-comment-author">某人</a>
+
+                                    </div>
+                                </header>
+                                <div class="am-comment-bd">
+                                    <p style="font-size: 100%">《永远的蝴蝶》一文，还吸收散文特长，多采用第一人称，淡化情节，体现一种思想寄托和艺术追求。</p>
+                                    <div class="comment_footer">
+                                        <time style="float: left" datetime="2013-07-27T04:54:29-07:00"
+                                              title="2013年7月27日 下午7:54 格林尼治标准时间+0800">
+                                            2014-7-12 15:30
+                                        </time>
+                                        <span style="float: right"><a href="#">回复(99+)</a><a href="#">点赞(99+)</a><a
+                                                href="#">删除</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
 
+        </div>
+    </div>
+
+
+    <!-- 侧边栏内容 -->
+    <div id="sidebar" class="am-offcanvas">
+        <div class="am-offcanvas-bar">
+            <div class="am-offcanvas-content" id="custom-toc-container">
             </div>
         </div>
     </div>
-    <div class="am-u-md-3 am-u-md-pull-9 my-sidebar" style="padding:0 0 0 0;" >
-        <div class="am-offcanvas" id="sidebar">
-            <ul class="am-nav" >
-                <li class="am-nav-header">目录</li>
-            </ul>
-            <div class="am-offcanvas-bar" id="custom-toc-container">
-            </div>
+
+</div>
+<#--回到顶部-->
+<!-- asid start -->
+<div class="asid_share" id="asid_share">
+    <div class="asid_share_box relative" id="mulu">
+        <a href="#sidebar" data-am-offcanvas><img style="width: 30px;height: 30px" alt="目录" title="目录"
+                                                  class="adid_icon" src="/images/list.png"
+        ></a>
+    </div>
+
+    <div class="asid_share_box relative">
+        <a href="#"><img alt="扫二微码" title="扫二微码" class="adid_icon" src="/images/icon_sweep.png">
+        </a>
+        <div class="asid_share_triangle" style="display:none;">
+            <em class="border_sj">&#9670;</em>
+            <span class="con_sj">&#9670;</span>
         </div>
+        <div class="asid_sha_layer" style="width:250px;display:none;">
+            <p class="sweep_img"><img src="/images/weiixn.png" width="220"></p>
+            <p class="pb6"><b>扫一扫上面的二维码图案，加我微信</b></p>
+        </div>
+    </div>
+    <div class="asid_share_box relative" style="display:none;">
+        <a href="#"><img alt="返回顶部" title="返回顶部" class="adid_icon" src="/images/icon_back.png"></a>
     </div>
 </div>
+
 <#include "footer.ftl"/>
 </body>
 <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/js/zoomFontSize.js"></script>
 <script type="text/javascript" src="/js/jQuery.hhShare.min.js"></script>
 <script src="/js/amazeui.min.js"></script>
 <script src="/js/main.js"></script>
@@ -169,10 +191,25 @@
 <script src="/lib/flowchart.min.js"></script>
 <script src="/lib/jquery.flowchart.min.js"></script>
 <script src="/js/editormd.js"></script>
-
 </html>
 <script type="text/javascript">
+    // 绑定表情
+    $('.face-icon').SinaEmotion($('.text'));
+    // 测试本地解析
+    function out() {
+        var inputText = $('.text').val();
+        $('#info-show ul').append(reply(AnalyticEmotion(inputText)));
+    }
+
+    function reply(content) {
+        var html = "<li class=\"am-comment\"><a href=\"#link-to-user-home\"><img src=\"http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80\" alt=\"\" class=\"am-comment-avatar\" width=\"48\" height=\"48\"><\/a><div class=\"am-comment-main\"><header class=\"am-comment-hd\"><div class=\"am-comment-meta\"><a href=\"#link-to-user\" class=\"am-comment-author\">某人<\/a><\/div><\/header><div class=\"am-comment-bd\"><p style=\"font-size:100%\">" + content + "<\/p><div class=\"comment_footer\"><time style=\"float:left\" datetime=\"2013-07-27T04:54:29-07:00\" title=\"2013年7月27日 下午7:54 格林尼治标准时间+0800\">2014-7-12 15:30<\/time> <span style=\"float:right\"><a href=\"#\">回复(99+)<\/a><a href=\"#\">点赞(99+)<\/a><a href=\"#\">删除<\/a><\/span><\/div><\/div><\/div><\/li>\n";
+        return html;
+    }
+</script>
+<script type="text/javascript">
     $(function () {
+
+        getDiv();
 
         //图片滚动特效
         $('#asid_share').hhShare({
@@ -202,14 +239,26 @@
                 flowChart: true,  // 默认不解析
                 sequenceDiagram: true,  // 默认不解析
             });
-            var fixtop = $(".fix-top");
-            fixtop.scrollFix({distanceTop: 0});
         });
 
-        //窗口大小改变时触发
-        window.onresize = function () {
-            var fixtop = $(".fix-top");
-            fixtop.scrollFix({distanceTop: 0});
-        }
+        window.addEventListener("orientationchange", function () {
+            getDiv();
+        }, false);
     });
+
+    $(window).resize(function () {
+        getDiv();
+    });
+
+    function getDiv() {
+        var width = $(document.body).outerWidth(true);
+        var height = $(document.body).outerHeight(true);
+        console.log("width:" + width + ",height:" + height);
+        /*var i = width > height ? width : height;
+        if (width > 650) {
+            $("#mulu").hide();
+        } else {
+            $("#mulu").show();
+        }*/
+    }
 </script>

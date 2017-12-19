@@ -35,10 +35,10 @@
     <#else >
         <#list blogs as blog>
             <article class="am-g blog-entry-article">
-                <div class="am-u-lg-8 am-u-md-8 am-u-sm-12 blog-entry-text">
+                <div class="am-u-lg-8 am-u-md-8 am-u-sm-8">
                     <h2><a href="/blog/${blog.url}">${blog.title}</a></h2>
                     <p style="font-size:small;word-break:break-all;">
-                        ${blog.subject}
+                    ${blog.subject}
                     </p>
                     <p style="font-size:small">
                         <span><a href="" class="blog-color">@Post by &nbsp;</a></span>
@@ -47,7 +47,7 @@
                     </p>
                 </div>
 
-                <div class="am-u-lg-4 am-u-md-4 am-u-sm-12 blog-entry-img">
+                <div class="am-u-lg-4 am-u-md-4 am-u-sm-4">
                     <img src="http://www.myxinge.cn/${blog.mainImgUrl}"
                          alt="" class="am-u-sm-12">
                 </div>
