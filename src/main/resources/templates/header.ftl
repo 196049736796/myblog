@@ -20,22 +20,29 @@
                     <input type="text" class="am-form-field am-input-sm" placeholder="搜索">
                 </div>
             </form>
+
+        <#if loginU??>
+            <div class="am-topbar-right">
+                <div class="am-dropdown" data-am-dropdown="{boundary: '.am-topbar'}">
+                    <#--<img class="am-comment-avatar" width="48" height="48" src="${loginU.avatar_url}" alt="">-->
+                    <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle"
+                            data-am-dropdown-toggle>${loginU.name}
+                        <span class="am-icon-caret-down"></span></button>
+                    <ul class="am-dropdown-content">
+                        <li><a href="#">提到我的(99+)</a></li>
+                        <li><a href="#">帐号设置</a></li>
+                        <li><a href="#">退出</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        <#else >
             <div class="am-topbar-right">
                 <a href="/log.html">
                     <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm">登录</button>
                 </a>
             </div>
-
-            <div class="am-topbar-right">
-                <div class="am-dropdown" data-am-dropdown="{boundary: '.am-topbar'}">
-                    <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle"
-                            data-am-dropdown-toggle>星尘 <span class="am-icon-caret-down"></span></button>
-                    <ul class="am-dropdown-content">
-                        <li><a href="#">收到回复</a></li>
-                        <li><a href="#">随便看看</a></li>
-                    </ul>
-                </div>
-            </div>
+        </#if>
         </div>
     </nav>
 </header>

@@ -1,5 +1,6 @@
 package cn.myxinge.common.intercepter;
 
+import cn.myxinge.entity.User;
 import cn.myxinge.utils.HttpClientUtil;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONPath;
@@ -21,7 +22,7 @@ import java.util.Map;
 
 /**
  * Created by chenxinghua on 2017/11/24.
- * 拦截器 拦截请求，获取请求者IP地址
+ * 拦截器 拦截请求，获取请求者IP地址 ， 检查是否登录
  */
 public class MyIntercepterHandler implements HandlerInterceptor {
 
@@ -79,7 +80,18 @@ public class MyIntercepterHandler implements HandlerInterceptor {
     //controller之后
     @Override
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {
-
+        //检查是否登录
+        Object loginU = httpServletRequest.getSession().getAttribute("loginU");
+        if (loginU != null) {
+            User u = (User) loginU;
+            String name = u.getName();
+            if (name.length() > 10) {
+                name = name.substring(0, 10) + "...";
+                u.setName(name);
+            }
+            //加入reqquest的值中
+            httpServletRequest.setAttribute("loginU", loginU);
+        }
     }
 
     //响应后
@@ -99,7 +111,7 @@ public class MyIntercepterHandler implements HandlerInterceptor {
         LOG.info("x-forwarded-for ip: " + ip);
         if (ip != null && ip.length() != 0 && !"unknown".equalsIgnoreCase(ip)) {
             // 多次反向代理后会有多个ip值，第一个ip才是真实ip
-            if( ip.indexOf(",")!=-1 ){
+            if (ip.indexOf(",") != -1) {
                 ip = ip.split(",")[0];
             }
         }
@@ -159,7 +171,7 @@ public class MyIntercepterHandler implements HandlerInterceptor {
             String province = (String) JSONPath.eval(address, "$.province");
             String city = (String) JSONPath.eval(address, "$.city");
 
-            if(country == null){
+            if (country == null) {
                 return "无法联网解析该IP地址";
             }
 

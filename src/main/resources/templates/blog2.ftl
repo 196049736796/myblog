@@ -48,9 +48,9 @@
         <div class="am-g">
             <div class="am-u-sm-11 am-u-sm-centered">
                 <div class="am-cf am-article">
-                    <#--<div class="am-align-left">
-                        <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" alt="" width="240">
-                    </div>-->
+                <#--<div class="am-align-left">
+                    <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" alt="" width="240">
+                </div>-->
                     <div id="layout">
                         <div id="test-editormd-view">
                         <textarea id="append-test" style="display:none;">
@@ -81,68 +81,71 @@
         <div id="content" class="am-u-md-12 am-u-sm-12 am-u-sm-centered" style="margin-top: 15px">
             <h3>评论(99+)</h3>
             <hr>
-            <div class="comment am-u-md-12 am-u-sm-12 am-u-sm-centered">
-                <div style="float: left;width: 5%;height: 120px">
-                    <div><img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80"
-                              class="am-comment-avatar"/>
-                        <div style="text-align: center;font-size: 30%;margin-top: 10px">星尘0085</div>
-                    </div>
-                </div>
-                <div class="content">
-                    <div class="cont-box">
-                        <textarea class="text" placeholder="写下你的评论"></textarea>
-                    </div>
-                    <div class="tools-box">
-                        <div class="operator-box-btn">
-                            <span class="face-icon">☺</span>
-                        </div>
-                        <div class="submit-btn"><input style="vertical-align: top" type="button" onClick="out()"
-                                                       value="提交"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="info-show" class="am-u-md-12 am-u-sm-12 am-u-sm-centered">
-                <hr>
-                <ul class="am-comments-list">
-                    <li class="am-comment">
-                        <a href="#link-to-user-home">
-                            <img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80"
-                                 alt="" class="am-comment-avatar" width="48" height="48">
-                        </a>
-                        <div class="am-comment-main">
-                            <header class="am-comment-hd">
-                                <div class="am-comment-meta">
-                                    <a href="#link-to-user" class="am-comment-author">某人</a>
+        <div class="comment am-u-md-12 am-u-sm-12 am-u-sm-centered">
+        <div style="float: left;width: 5%;height: 120px">
 
-                                </div>
-                            </header>
-                            <div class="am-comment-bd">
-                                <p style="font-size: 100%">《永远的蝴蝶》一文，还吸收散文特长，多采用第一人称，淡化情节，体现一种思想寄托和艺术追求。</p>
-                                <div class="comment_footer">
-                                    <time style="float: left" datetime="2013-07-27T04:54:29-07:00"
-                                          title="2013年7月27日 下午7:54 格林尼治标准时间+0800">
-                                        2014-7-12 15:30
-                                    </time>
-                                    <span style="float: right"><a href="#">回复(99+)</a><a href="#">点赞(99+)</a><a
-                                            href="#">删除</a></span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+        <#--已登陆-->
+        <#if loginU??>
+            <div><img src="${loginU.avatar_url}"
+                      class="am-comment-avatar"/>
+                <div style="text-align: center;font-size: 30%;margin-top: 10px">${loginU.name}</div>
             </div>
         </div>
-    </div>
+            <div class="content">
+                <div class="cont-box">
+                    <textarea class="text" placeholder="写下你的评论"></textarea>
+                </div>
+                <div class="tools-box">
+                    <div class="operator-box-btn">
+                        <span class="face-icon">☺</span>
+                    </div>
+                    <div class="submit-btn"><input style="vertical-align: top" type="button" onClick="out()"
+                                                   value="提交"/>
+                    </div>
+                </div>
+            </div>
 
 
-    <!-- 侧边栏内容 -->
-    <div id="sidebar" class="am-offcanvas">
-        <div class="am-offcanvas-bar">
-            <div class="am-offcanvas-content" id="custom-toc-container">
+
+        <#--未登录-->
+        <#else >
+            <div><img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80"
+                      class="am-comment-avatar"/>
+                <div style="text-align: center;font-size: 30%;margin-top: 10px">未登录</div>
             </div>
         </div>
+            <div class="content">
+                <div class="cont-box">
+                    <textarea class="text" placeholder="需要先登录哦"></textarea>
+                </div>
+                <div class="tools-box">
+                    <div class="operator-box-btn">
+                        <span class="face-icon">☺</span>
+                    </div>
+                    <div class="submit-btn">
+                        <a href="/log.html"><input style="vertical-align: top" type="button"
+                                                   value="登录"/></a>
+                    </div>
+                </div>
+            </div>
+        </#if>
+        </div>
+        <div id="info-show" class="am-u-md-12 am-u-sm-12 am-u-sm-centered">
+            <hr>
+            <ul class="am-comments-list">
+            </ul>
+        </div>
     </div>
+</div>
+
+
+<!-- 侧边栏内容 -->
+<div id="sidebar" class="am-offcanvas">
+    <div class="am-offcanvas-bar">
+        <div class="am-offcanvas-content" id="custom-toc-container">
+        </div>
+    </div>
+</div>
 
 </div>
 <#--回到顶部-->
@@ -198,7 +201,8 @@
     }
 
     function reply(content) {
-        var html = "<li class=\"am-comment\"><a href=\"#link-to-user-home\"><img src=\"http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80\" alt=\"\" class=\"am-comment-avatar\" width=\"48\" height=\"48\"><\/a><div class=\"am-comment-main\"><header class=\"am-comment-hd\"><div class=\"am-comment-meta\"><a href=\"#link-to-user\" class=\"am-comment-author\">某人<\/a><\/div><\/header><div class=\"am-comment-bd\"><p style=\"font-size:100%\">" + content + "<\/p><div class=\"comment_footer\"><time style=\"float:left\" datetime=\"2013-07-27T04:54:29-07:00\" title=\"2013年7月27日 下午7:54 格林尼治标准时间+0800\">2014-7-12 15:30<\/time> <span style=\"float:right\"><a href=\"#\">回复(99+)<\/a><a href=\"#\">点赞(99+)<\/a><a href=\"#\">删除<\/a><\/span><\/div><\/div><\/div><\/li>\n";
+        var html = "<li class=\"am-comment\"><a href=\"#link-to-user-home\">" +
+                "<img src=\"${loginU.avatar_url}\" alt=\"\" class=\"am-comment-avatar\" width=\"48\" height=\"48\"><\/a><div class=\"am-comment-main\"><header class=\"am-comment-hd\"><div class=\"am-comment-meta\"><a href=\"#link-to-user\" class=\"am-comment-author\">${loginU.name}<\/a><\/div><\/header><div class=\"am-comment-bd\"><p style=\"font-size:100%\">" + content + "<\/p><div class=\"comment_footer\"><time style=\"float:left\" datetime=\"2013-07-27T04:54:29-07:00\" title=\"2013年7月27日 下午7:54 格林尼治标准时间+0800\">2014-7-12 15:30<\/time> <span style=\"float:right\"><a href=\"#\">回复(99+)<\/a><a href=\"#\">点赞(99+)<\/a><a href=\"#\">删除<\/a><\/span><\/div><\/div><\/div><\/li>\n";
         return html;
     }
 </script>
