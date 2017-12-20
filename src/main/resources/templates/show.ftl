@@ -49,7 +49,7 @@
 
                 <div class="am-u-lg-4 am-u-md-4 am-u-sm-4">
                     <img src="http://www.myxinge.cn/${blog.mainImgUrl}"
-                         alt="" class="am-u-sm-12">
+                         alt="" class="am-img-thumbnail am-radius">
                 </div>
             </article>
         </#list>
@@ -78,15 +78,62 @@
             </p>
         </div>
         <div class="blog-sidebar-widget blog-bor">
-            <h2 class="blog-text-center blog-title"><span>Contact ME</span></h2>
-            <p>
-                <a href=""><span class="am-icon-qq am-icon-fw am-primary blog-icon"></span></a>
-                <a href="https://github.com/xingchen0085/" target="_blank"><span
-                        class="am-icon-github am-icon-fw blog-icon"></span></a>
-                <a href="https://weibo.com/p/1005055313772543/home?from=page_100505&mod=TAB&is_all=1#place"><span
-                        class="am-icon-weibo am-icon-fw blog-icon"></span></a>
-                <a href=""><span class="am-icon-weixin am-icon-fw blog-icon"></span></a>
-            </p>
+            <h2 class="blog-text-center blog-title"><span>My Repositories</span></h2>
+            <div>
+                <a href="https://github.com/xingchen0085/boot-demo" target="_blank">
+                    <div class="am-panel am-panel-primary" data-am-scrollspy="{animation: 'fade'}">
+
+                        <div class="am-panel-hd">
+                            boot-demo
+                        </div>
+                        <div class="am-panel-bd">
+                            SpringBoot入门使用
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div>
+                <a href="https://github.com/xingchen0085/boot-demo" target="_blank">
+                    <div class="am-panel am-panel-primary" data-am-scrollspy="{animation: 'fade'}">
+
+                        <div class="am-panel-hd">
+                            boot-demo
+                        </div>
+                        <div class="am-panel-bd">
+                            SpringBoot入门使用
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div>
+                <a href="https://github.com/xingchen0085/boot-demo" target="_blank">
+                    <div class="am-panel am-panel-primary" data-am-scrollspy="{animation: 'fade'}">
+
+                        <div class="am-panel-hd">
+                            boot-demo
+                        </div>
+                        <div class="am-panel-bd">
+                            SpringBoot入门使用
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div>
+                <a href="https://github.com/xingchen0085/boot-demo" target="_blank">
+                    <div class="am-panel am-panel-primary" data-am-scrollspy="{animation: 'fade'}">
+
+                        <div class="am-panel-hd">
+                            boot-demo
+                        </div>
+                        <div class="am-panel-bd">
+                            SpringBoot入门使用
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
         <div class="blog-clear-margin blog-sidebar-widget blog-bor am-g ">
             <h2 class="blog-title"><span>TAG cloud</span></h2>

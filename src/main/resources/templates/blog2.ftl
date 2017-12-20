@@ -48,9 +48,9 @@
         <div class="am-g">
             <div class="am-u-sm-11 am-u-sm-centered">
                 <div class="am-cf am-article">
-                    <div class="am-align-left">
+                    <#--<div class="am-align-left">
                         <img src="http://s.amazeui.org/media/i/demos/bing-1.jpg" alt="" width="240">
-                    </div>
+                    </div>-->
                     <div id="layout">
                         <div id="test-editormd-view">
                         <textarea id="append-test" style="display:none;">
