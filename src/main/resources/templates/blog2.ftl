@@ -191,6 +191,7 @@
 <script src="/lib/jquery.flowchart.min.js"></script>
 <script src="/js/editormd.js"></script>
 </html>
+<#if loginU??>
 <script type="text/javascript">
     // 绑定表情
     $('.face-icon').SinaEmotion($('.text'));
@@ -206,6 +207,8 @@
         return html;
     }
 </script>
+</#if>
+
 <script type="text/javascript">
     $(function () {
 

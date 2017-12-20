@@ -52,26 +52,7 @@ public class MyIntercepterHandler implements HandlerInterceptor {
         String visitIp = (String) httpServletRequest.getSession().getAttribute("visitIp");
         if (null == visitIp || !visitIp.equals(ip)) {
             httpServletRequest.getSession().setAttribute("visitIp", ip);
-
-            Thread thread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    String address = getAdress(ip);
-                    Date visittime = new Date();
-
-                    Map data = new HashMap<String, String>();
-                    data.put("address", address);
-                    data.put("ip", ip);
-                    data.put("visittime", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(visittime));
-                    String rtn = HttpClientUtil.post(url_ipSave, data, "utf-8");
-                    if (rtn == null || !rtn.contains("success")) {
-                        LOG.error("IP保存/更新出错: IP = " + ip);
-                    }
-                }
-            });
-
-            thread.start();
-            LOG.info("线程" + thread.getName() + ": 正在存储IP信息");
+            saveIp(ip);
         }
 
         return true;
@@ -142,7 +123,7 @@ public class MyIntercepterHandler implements HandlerInterceptor {
         LOG.info("获取客户端ip: " + ip);
 
         //本机：几乎不可能执行到这里哦
-        if ("127.0.0.1".equals(ip) || "0:0:0:0:0:0:0:1".equals(ip)) {
+       /* if ("127.0.0.1".equals(ip) || "0:0:0:0:0:0:0:1".equals(ip)) {
             //获取本机外网IP
             String rtn = HttpClientUtil.get("https://ipip.yy.com/get_ip_info.php");
             if (rtn != null && rtn.contains("{") && rtn.contains("}")) {
@@ -152,7 +133,7 @@ public class MyIntercepterHandler implements HandlerInterceptor {
                 JSONObject Ipaddress = JSONObject.parseObject(result);
                 return Ipaddress.getString("cip");
             }
-        }
+        }*/
         return ip;
     }
 
@@ -160,6 +141,10 @@ public class MyIntercepterHandler implements HandlerInterceptor {
      * IP地址
      */
     private String getAdress(String ip) {
+
+        if ("127.0.0.1".equals(ip) || "0:0:0:0:0:0:0:1".equals(ip)) {
+            return "本机";
+        }
 
         JSONObject address = null;
         //IP地址
@@ -182,6 +167,32 @@ public class MyIntercepterHandler implements HandlerInterceptor {
         }
 
         return "该IP解析失败";
+    }
+
+    /**
+     * 存储IP
+     * @param ip
+     */
+    private void saveIp(final String ip) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String address = getAdress(ip);
+                Date visittime = new Date();
+
+                Map data = new HashMap<String, String>();
+                data.put("address", address);
+                data.put("ip", ip);
+                data.put("visittime", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(visittime));
+                String rtn = HttpClientUtil.post(url_ipSave, data, "utf-8");
+                if (rtn == null || !rtn.contains("success")) {
+                    LOG.error("IP保存/更新出错: IP = " + ip);
+                }
+            }
+        });
+
+        thread.start();
+        LOG.info("线程" + thread.getName() + ": 正在存储IP信息");
     }
 }
 

@@ -8,6 +8,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>注册</title>
+
     <!-- Set render engine for 360 browser -->
     <meta name="renderer" content="webkit">
 
@@ -31,7 +32,7 @@
         }
     </style>
 </head>
-<body class="chang_fontSize" style="background-color: #F1F1F1;">
+<body class="chang_fontSize" style="background-color: #F1F1F1;"><!--1px 1px 10px #aaa-->
 <header>
     <div class="log-re">
         <a href="/log.html">
@@ -44,17 +45,18 @@
     <div class="am-g">
         <div class="am-u-lg-3 am-u-md-6 am-u-sm-8 am-u-sm-centered log-content">
             <h2 class="log-title am-animation-slide-top">注册</h2>
-            <form class="am-form" id="log-form" action="/u/reg" method="post">
-                <div class="am-input-group am-radius am-animation-slide-left">
-                    <input type="email" id="doc-vld-email-2-1" name="email" class="am-radius"
-                           data-validation-message="请输入正确邮箱地址" placeholder="邮箱" required/>
+            <form class="am-form" id="log-form">
+                <div class="am-input-group am-radius am-animation-slide-left ">
+                    <input type="email" name="email" id="doc-vld-email-2-1" class="am-radius"
+                           data-validation-message="请输入正确邮箱地址"
+                           placeholder="邮箱" required/>
                     <span class="am-input-group-label log-icon am-radius"><i
                             class="am-icon-user am-icon-sm am-icon-fw"></i></span>
                 </div>
                 <br>
                 <div class="am-input-group am-animation-slide-left log-animation-delay">
                     <input type="password" id="log-password" name="pwd" class="am-form-field am-radius log-input"
-                           placeholder="密码" minlength="11" required>
+                           placeholder="密码" minlength="8" required>
                     <span class="am-input-group-label log-icon am-radius"><i
                             class="am-icon-lock am-icon-sm am-icon-fw"></i></span>
                 </div>
@@ -67,18 +69,25 @@
                             class="am-icon-lock am-icon-sm am-icon-fw"></i></span>
                 </div>
                 <br>
-                <button type="submit"
-                        class="am-btn am-btn-primary am-btn-block am-btn-lg am-radius am-animation-slide-bottom log-animation-delay-b">
-                    注 册
+                <button id="regBtn"
+                        class="am-btn am-btn-primary am-btn-block">
+                    注册
                 </button>
-                <br>
-                <!--<div class="am-btn-group am-animation-slide-bottom log-animation-delay-b">
-                    <p>支持第三方注册</p>
-                    <a href="#" class="am-btn am-btn-secondary am-btn-sm"><i class="am-icon-github am-icon-sm"></i>
-                        Github</a>
-                </div>-->
             </form>
             <div style="height: 15px"></div>
+        </div>
+    </div>
+
+    <!--alert-->
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">提示</div>
+            <div class="am-modal-bd">
+                你好，系统已经向&nbsp;<span id="emailText" style="color: red"></span>&nbsp;发送了一封确认邮件，请按照邮件提示完成后续注册.
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
         </div>
     </div>
 
@@ -92,11 +101,11 @@
 
 
 <!--[if (gte IE 9)|!(IE)]><!-->
-<script src="/js/jquery.min.js"></script>
 <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="/js/zoomFontSize.js"></script>
+<script src="/js/jquery.serializejson.min.js"></script>
 <script src="/js/amazeui.ie8polyfill.min.js"></script>
 <script src="/js/amazeui.min.js"></script>
 <script src="/js/app.js"></script>
+<script type="text/javascript" src="/js/zoomFontSize.js"></script>
 </body>
 </html>
