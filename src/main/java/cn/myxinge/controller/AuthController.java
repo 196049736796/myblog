@@ -1,13 +1,20 @@
 package cn.myxinge.controller;
 
 import cn.myxinge.entity.User;
+import cn.myxinge.service.UserService;
 import cn.myxinge.utils.HttpClientUtil;
+import cn.myxinge.utils.ResponseUtil;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,6 +26,9 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping("/u")
 public class AuthController {
+
+    @Autowired
+    private UserService userService;
 
     private Logger LOG = LoggerFactory.getLogger(AuthController.class);
 
@@ -69,8 +79,68 @@ public class AuthController {
         //数据处理
         User user = jsonHandler(userInfo);
 
-        request.getSession().setAttribute("loginU",user);
+        request.getSession().setAttribute("loginU", user);
         return "/";
+    }
+
+    @RequestMapping("/reg")
+    @ResponseBody
+    public JSONObject reg(User user, String repwd) {
+        if (null != user) {
+            if (StringUtils.isEmpty(user.getEmail())) {
+                return ResponseUtil.returnJson(false, "require email");
+            }
+            if (StringUtils.isEmpty(user.getPwd())) {
+                return ResponseUtil.returnJson(false, "require password");
+            }
+            if (StringUtils.isEmpty(repwd)) {
+                if (!repwd.equals(user.getPwd())) {
+                    return ResponseUtil.returnJson(false, "password is not same");
+                }
+            }
+        }
+        //发送请求
+        String rtn = userService.reg(user);
+        if (!rtn.equals("1")) {
+            return ResponseUtil.returnJson(false, "system error");
+        }
+
+        return ResponseUtil.returnJson(true, "success");
+    }
+
+    @RequestMapping("/log")
+    @ResponseBody
+    public JSONObject log(User user, HttpServletRequest request) {
+        try {
+            if (null != user) {
+                if (StringUtils.isEmpty(user.getEmail())) {
+                    return ResponseUtil.returnJson(false, "require email");
+                }
+                if (StringUtils.isEmpty(user.getPwd())) {
+                    return ResponseUtil.returnJson(false, "require password");
+                }
+            }
+
+            //加密
+            Md5Hash md5Hash = new Md5Hash(user.getPwd(), user.getEmail(), 2);
+
+            user.setPwd(md5Hash.toHex());
+            JSONObject rtnJson = JSONObject.parseObject(userService.log(user));
+            User login = null;
+            String msg = rtnJson.getString("success");
+            if ("success".equals(msg)) {
+                login = JSONObject.parseObject(rtnJson.getString("userInfo"), User.class);
+            } else {
+                return ResponseUtil.returnJson(false, msg);
+            }
+
+            request.getSession().setAttribute("loginU", login);
+
+            return ResponseUtil.returnJson(true, "success");
+        } catch (Exception e) {
+            LOG.error("登录发生异常", e);
+            return ResponseUtil.returnJson(false, "system error");
+        }
     }
 
 

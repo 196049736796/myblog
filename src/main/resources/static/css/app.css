@@ -125,9 +125,9 @@ body {
     background-color: white;
     margin-top:15%;
     text-align:center;
-    border-radius: 4px;
-    box-shadow: 1px 1px 10px #aaa;
-    z-index: 9999;
+    border-radius: 6px;
+    box-shadow: 2px 2px 10px #aaa;
+    /*z-index: 9999;*/
 }
 .log-button {
     background-color:transparent;   

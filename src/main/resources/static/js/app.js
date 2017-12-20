@@ -30,13 +30,57 @@ $(function () {
         }
     });
 
+    //reg
     $("#regBtn").click(function () {
         if (isF) {
             var data = $('#log-form').serializeJSON();
-            alert(data);
+            $.ajax({
+                url: "/u/reg",
+                data: data,
+                dataType: "json",
+                type: "post",
+                success: function (rtn) {
+                    $("#msg").html("你好，系统已经向<span style='margin-left: 5px;margin-right: 5px;color: red'>" + data.email
+                        + "</span>发送了一封确认邮件，请按照邮件提示完成后续注册。");
+                    //打开
+                    $('#my-alert').modal();
+                },
+                error: function () {
+                    alert("注册失败，网络错误，请稍后再试。");
+                }
+            });
         }
     });
+
+    //log
+    $("#logBtn").click(function () {
+        if (isF) {
+            var data = $('#log-form').serializeJSON();
+            $.ajax({
+                url: "/u/log",
+                data: data,
+                dataType: "json",
+                type: "post",
+                success: function (rtn) {
+                    alert(rtn.message);
+                },
+                error: function () {
+                    alert("登录失败，网络错误，请稍后再试。");
+                }
+            });
+        }
+    });
+
+    $("#github_auth").click(function () {
+        location.href = "https://github.com/login/oauth/authorize?client_id=f898f0826d59b3e21233&state=0&redirect_uri=http://localhost:8091/u/auth";
+    });
 });
+
+function ok() {
+    $('#my-alert').modal("close");
+    location.href = "/log.html";
+}
+
 
 
 

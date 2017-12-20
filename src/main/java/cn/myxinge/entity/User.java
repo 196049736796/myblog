@@ -7,13 +7,27 @@ import java.util.Date;
  */
 public class User {
 
+    public static final String STATE_UNACTIVATED = "0";//未激活
+    public static final String STATE_ACTIVATED = "1";//已激活
+    public static final String STATE_INVAITED = "-1";//无法使用
+    private String email;
     private String login;//账号
-    private String password;
+    private String pwd;
     private String name;
     private String html_url;
     private String avatar_url;
     private Date created_at;
     private Date updated_at;
+    private String state;
+
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
 
     public String getLogin() {
         return login;
@@ -23,12 +37,12 @@ public class User {
         this.login = login;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPwd() {
+        return pwd;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
     }
 
     public String getName() {
@@ -69,5 +83,13 @@ public class User {
 
     public void setAvatar_url(String avatar_url) {
         this.avatar_url = avatar_url;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -24,7 +24,7 @@
     <style type="text/css">
         .comment_footer {
             margin-top: 10px;
-            font-size: 30%;
+            font-size: 85%;
             width: 100%;
         }
 
@@ -47,7 +47,7 @@
             <div style="float: left;width: 5%;height: 120px">
                 <div><img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80"
                           class="am-comment-avatar"/>
-                    <div style="text-align: center;font-size: 30%;margin-top: 10px">星尘0085</div>
+                    <div style="text-align: center;font-size: 85%;margin-top: 10px">星尘0085</div>
                 </div>
             </div>
             <div class="content">

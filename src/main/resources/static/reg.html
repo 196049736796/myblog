@@ -46,6 +46,14 @@
         <div class="am-u-lg-3 am-u-md-6 am-u-sm-8 am-u-sm-centered log-content">
             <h2 class="log-title am-animation-slide-top">注册</h2>
             <form class="am-form" id="log-form">
+
+                <div class="am-input-group am-radius am-animation-slide-left ">
+                    <input type="text" name="name" class="am-form-field am-radius log-input"
+                           placeholder="昵称" minlength="1" maxlength="10" required/>
+                    <span class="am-input-group-label log-icon am-radius"><i
+                            class="am-icon-user am-icon-sm am-icon-fw"></i></span>
+                </div>
+                <br>
                 <div class="am-input-group am-radius am-animation-slide-left ">
                     <input type="email" name="email" id="doc-vld-email-2-1" class="am-radius"
                            data-validation-message="请输入正确邮箱地址"
@@ -79,14 +87,14 @@
     </div>
 
     <!--alert-->
-    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert" style="z-index: 10000">
         <div class="am-modal-dialog">
             <div class="am-modal-hd">提示</div>
-            <div class="am-modal-bd">
-                你好，系统已经向&nbsp;<span id="emailText" style="color: red"></span>&nbsp;发送了一封确认邮件，请按照邮件提示完成后续注册.
+            <div class="am-modal-bd" id="msg">
+
             </div>
             <div class="am-modal-footer">
-                <span class="am-modal-btn">确定</span>
+                <button style="margin-top: 5px" type="button" onclick="ok()" class="am-btn am-btn-primary">我知道了</button>
             </div>
         </div>
     </div>

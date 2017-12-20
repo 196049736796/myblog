@@ -24,7 +24,7 @@
     <style type="text/css">
         .comment_footer {
             margin-top: 10px;
-            font-size: 30%;
+            font-size: 85%;
             width: 100%;
         }
 
@@ -88,7 +88,7 @@
         <#if loginU??>
             <div><img src="${loginU.avatar_url}"
                       class="am-comment-avatar"/>
-                <div style="text-align: center;font-size: 30%;margin-top: 10px">${loginU.name}</div>
+                <div style="text-align: center;font-size: 85%;margin-top: 10px">${loginU.name}</div>
             </div>
         </div>
             <div class="content">
@@ -111,7 +111,7 @@
         <#else >
             <div><img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80"
                       class="am-comment-avatar"/>
-                <div style="text-align: center;font-size: 30%;margin-top: 10px">未登录</div>
+                <div style="text-align: center;font-size: 85%;margin-top: 10px">未登录</div>
             </div>
         </div>
             <div class="content">
