@@ -80,42 +80,14 @@
         <div class="blog-sidebar-widget blog-bor">
             <h2 class="blog-text-center blog-title"><span>My Repositories</span></h2>
             <div>
-                <a href="https://github.com/xingchen0085/boot-demo" target="_blank">
-                    <div class="am-panel am-panel-primary" data-am-scrollspy="{animation: 'fade'}">
+                <a href="javascript:void(0);" target="_blank">
+                    <div class="am-panel am-panel-danger" data-am-scrollspy="{animation: 'fade'}">
 
                         <div class="am-panel-hd">
-                            boot-demo
+                            说明
                         </div>
                         <div class="am-panel-bd">
-                            SpringBoot入门使用
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div>
-                <a href="https://github.com/xingchen0085/boot-demo" target="_blank">
-                    <div class="am-panel am-panel-primary" data-am-scrollspy="{animation: 'fade'}">
-
-                        <div class="am-panel-hd">
-                            boot-demo
-                        </div>
-                        <div class="am-panel-bd">
-                            SpringBoot入门使用
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div>
-                <a href="https://github.com/xingchen0085/boot-demo" target="_blank">
-                    <div class="am-panel am-panel-primary" data-am-scrollspy="{animation: 'fade'}">
-
-                        <div class="am-panel-hd">
-                            boot-demo
-                        </div>
-                        <div class="am-panel-bd">
-                            SpringBoot入门使用
+                            <p>网站尚在开发，评论留言功能尚不可用，且未完全优化，可能会有卡顿。</p>
                         </div>
                     </div>
                 </a>
