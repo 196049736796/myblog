@@ -23,12 +23,17 @@
     <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
     <link rel="stylesheet" href="/css/amazeui.min.css">
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/jquery.mloading.css">
     <style type="text/css">
         .my-footer {
             border-top: 1px solid #eeeeee;
             padding: 10px 0;
             margin-top: 50px;
             text-align: center;
+        }
+
+        .am-input-group-label {
+            height: 36px;
         }
     </style>
 </head>
@@ -55,7 +60,7 @@
                 </div>
                 <br>
                 <div class="am-input-group am-radius am-animation-slide-left ">
-                    <input type="email" name="email" id="doc-vld-email-2-1" class="am-radius"
+                    <input type="email" name="email" id="doc-vld-email-2-1" class="am-radius js-ajax-validate"
                            data-validation-message="请输入正确邮箱地址"
                            placeholder="邮箱" required/>
                     <span class="am-input-group-label log-icon am-radius"><i
@@ -91,7 +96,6 @@
         <div class="am-modal-dialog">
             <div class="am-modal-hd">提示</div>
             <div class="am-modal-bd" id="msg">
-
             </div>
             <div class="am-modal-footer">
                 <button style="margin-top: 5px" type="button" onclick="ok()" class="am-btn am-btn-primary">我知道了</button>
@@ -110,6 +114,11 @@
 
 <!--[if (gte IE 9)|!(IE)]><!-->
 <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+<script src="/js/jquery.mloading.js"></script>
+<script type="text/javascript">
+    msg = "你好，系统已经向<span style='margin-left: 5px;margin-right: 5px;color: red'>{email}</span>发送了一封确认邮件，请按照邮件提示完成后续注册。";
+    url = "/u/reg";
+</script>
 <script src="/js/jquery.serializejson.min.js"></script>
 <script src="/js/amazeui.ie8polyfill.min.js"></script>
 <script src="/js/amazeui.min.js"></script>

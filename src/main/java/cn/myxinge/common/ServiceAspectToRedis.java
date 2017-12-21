@@ -29,7 +29,7 @@ public class ServiceAspectToRedis {
      * 定义一个切入点
      */
     // @Pointcut("execution (* findById*(..))")
-    @Pointcut("execution(* cn.myxinge.service.impl..*(..))")
+    @Pointcut("execution(* cn.myxinge.service.impl.BlogServiceImpl.*(..))")
     public void excudeService() {
     }
 
@@ -54,15 +54,17 @@ public class ServiceAspectToRedis {
         }
         //缓存存在，直接返回
         if (null != cache) {
-            LOG.info("当前方法：" +currentMethod.getName() +",从Redis中获取数据成功.");
-            if(currentMethod.getReturnType() == JSONObject.class){
+            LOG.info("当前方法：" + currentMethod.getName() + ",从Redis中获取数据成功.");
+            if (currentMethod.getReturnType() == JSONObject.class) {
                 return JSONObject.parseObject(cache);
             }
             return cache;
         } else {//不存在查询后返回
             try {
                 Object proceed = joinPoint.proceed();
-                JedisUtil.cachData(key,proceed.toString());
+                if (proceed != null) {
+                    JedisUtil.cachData(key, proceed.toString());
+                }
                 return proceed;
             } catch (Throwable e) {
                 LOG.error("\n----->method："

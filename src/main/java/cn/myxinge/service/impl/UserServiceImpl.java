@@ -3,7 +3,6 @@ package cn.myxinge.service.impl;
 import cn.myxinge.entity.User;
 import cn.myxinge.service.UserService;
 import cn.myxinge.utils.HttpClientUtil;
-import com.alibaba.fastjson.JSONObject;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -21,6 +20,9 @@ public class UserServiceImpl implements UserService {
 
     @Value("${url_log}")
     private String url_log;
+
+    @Value("${url_confirm}")
+    private String url_confirm;
 
     @Override
     public String reg(User user) {
@@ -40,6 +42,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public String log(User user) {
         return HttpClientUtil.get(url_log.concat("?email=").concat(user.getEmail()).concat("&pwd=").concat(user.getPwd()));
+    }
+
+    @Override
+    public String confirm(User user) {
+        Map<String, String> map = new HashMap<>();
+        map.put("email", user.getEmail());
+        map.put("confirm_id", user.getConfirm_id());
+        String rtn = HttpClientUtil.post(url_confirm, map, "utf-8");
+        return rtn;
     }
 }
 

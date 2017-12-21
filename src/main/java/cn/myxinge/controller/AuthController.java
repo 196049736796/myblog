@@ -11,7 +11,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -102,10 +104,10 @@ public class AuthController {
         //发送请求
         String rtn = userService.reg(user);
         if (!rtn.equals("1")) {
-            return ResponseUtil.returnJson(false, "system error");
+            return ResponseUtil.returnJson(false, rtn);
         }
 
-        return ResponseUtil.returnJson(true, "success");
+        return ResponseUtil.returnJson(true, rtn);
     }
 
     @RequestMapping("/log")
@@ -136,10 +138,45 @@ public class AuthController {
 
             request.getSession().setAttribute("loginU", login);
 
-            return ResponseUtil.returnJson(true, "success");
+            return ResponseUtil.returnJson(true, "登陆成功");
         } catch (Exception e) {
             LOG.error("登录发生异常", e);
             return ResponseUtil.returnJson(false, "system error");
+        }
+    }
+
+    @RequestMapping("/confirm")
+    public String confirm(User user, Model model) {
+        String message = null;
+        try {
+            if (null != user) {
+                if (StringUtils.isEmpty(user.getEmail())) {
+                    message = "邮箱未注册，激活失败！";
+                }
+                if (StringUtils.isEmpty(user.getConfirm_id())) {
+                    message = "激活码为空，激活失败！";
+                }
+            }
+
+            //查询并更新
+            String rtn = userService.confirm(user);
+
+            JSONObject jsonObject = JSONObject.parseObject(rtn);
+            User c_user = null;
+            if ("1".equals(jsonObject.getString("success"))) {
+                message = "激活成功！";
+                c_user = JSONObject.parseObject(jsonObject.getString("userInfo"), User.class);
+                model.addAttribute("c_user", c_user);
+            } else {
+                message = jsonObject.getString("success");
+            }
+
+            model.addAttribute("message", message);
+            return "confirm";
+        } catch (Exception e) {
+            LOG.error("激活发生异常", e);
+            message = "激活失败,请稍候再试.";
+            return "confirm";
         }
     }
 

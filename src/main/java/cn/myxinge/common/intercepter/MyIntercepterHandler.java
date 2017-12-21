@@ -98,29 +98,29 @@ public class MyIntercepterHandler implements HandlerInterceptor {
         }
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("Proxy-Client-IP");
-            LOG.info("Proxy-Client-IP ip: " + ip);
+//            LOG.info("Proxy-Client-IP ip: " + ip);
         }
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("WL-Proxy-Client-IP");
-            LOG.info("WL-Proxy-Client-IP ip: " + ip);
+//            LOG.info("WL-Proxy-Client-IP ip: " + ip);
         }
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("HTTP_CLIENT_IP");
-            LOG.info("HTTP_CLIENT_IP ip: " + ip);
+//            LOG.info("HTTP_CLIENT_IP ip: " + ip);
         }
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("HTTP_X_FORWARDED_FOR");
-            LOG.info("HTTP_X_FORWARDED_FOR ip: " + ip);
+//            LOG.info("HTTP_X_FORWARDED_FOR ip: " + ip);
         }
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("X-Real-IP");
-            LOG.info("X-Real-IP ip: " + ip);
+//            LOG.info("X-Real-IP ip: " + ip);
         }
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getRemoteAddr();
-            LOG.info("getRemoteAddr ip: " + ip);
+//            LOG.info("getRemoteAddr ip: " + ip);
         }
-        LOG.info("获取客户端ip: " + ip);
+        LOG.info("获取客户端IP: " + ip);
 
         //本机：几乎不可能执行到这里哦
        /* if ("127.0.0.1".equals(ip) || "0:0:0:0:0:0:0:1".equals(ip)) {
@@ -171,6 +171,7 @@ public class MyIntercepterHandler implements HandlerInterceptor {
 
     /**
      * 存储IP
+     *
      * @param ip
      */
     private void saveIp(final String ip) {
