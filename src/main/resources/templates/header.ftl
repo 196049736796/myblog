@@ -30,8 +30,8 @@
                         <span class="am-icon-caret-down"></span></button>
                     <ul class="am-dropdown-content">
                         <li><a href="#">提到我的(99+)</a></li>
-                        <li><a href="#">帐号设置</a></li>
-                        <li><a href="#">退出</a></li>
+                        <li><a href="/p/userInfo">帐号设置</a></li>
+                        <li><a href="/u/logout">退出</a></li>
                     </ul>
                 </div>
             </div>

@@ -180,6 +180,12 @@ public class AuthController {
         }
     }
 
+    @RequestMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        request.getSession().setAttribute("loginU", null);
+        return "/";
+    }
+
 
     private User jsonHandler(String userInfo) {
         User user = null;
