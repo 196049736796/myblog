@@ -50,6 +50,15 @@
              style="margin-top:15px;height: auto;background-color: white">
             <div style="height: 10px"></div>
             <p style="font-size: 20px" align="left">账号设置</p>
+
+        <#-- 是否是第三方登录 -->
+        <#if loginU.isxing??>
+        <#else >
+            <div class="am-alert" data-am-alert>
+                <button type="button" class="am-close">&times;</button>
+                <p>说明：如果您是第三方登录账号,无法再此页面更改资料哦。当您在第三方更改后，资料会同步到本网站。</p>
+            </div>
+        </#if>
             <div class="am-tabs" data-am-tabs>
                 <ul class="am-tabs-nav am-nav am-nav-tabs">
                     <li class="am-active"><a href="#tab-4-1">基础设置</a></li>
@@ -59,22 +68,50 @@
                 <div class="am-tabs-bd am-tabs-bd-ofv">
                     <div class="am-tab-panel am-active" id="tab-4-1">
                         <form class="am-form am-form-horizontal">
-                            <div class="am-form-group am-form-feedback">
+
+                        <#-- 是否是第三方登录 -->
+                        <#if loginU.isxing??>
+                            <div class="am-form-group">
                                 <label for="name" class="am-u-md-2 am-u-sm-4 am-form-label"
                                        style="text-align: left">昵称</label>
                                 <div class="am-u-md-10 am-u-sm-8">
-                                    <input type="password" id="name" class="am-form-field" name="name" placeholder="昵称">
+                                    <input type="text" value="${loginU.name!''}" id="name" class="am-form-field"
+                                           name="name">
                                 </div>
                             </div>
+                        <#else >
+                            <div class="am-u-md-2 am-u-sm-4"
+                                 style="text-align: left">
+                                <div style="height: 15px;"></div>
+                                <b>昵称</b></div>
+                            <div class="am-u-md-10 am-u-sm-8">
+                                <div style="height: 15px;"></div>
+                                <i class="am-icon-calendar"></i>
+                            ${loginU.name!''}
+                            </div>
+                        </#if>
                             <hr>
+
+                        <#if loginU.isxing??>
                             <div class="am-form-group">
                                 <label for="html_url" class="am-u-md-2 am-u-sm-4 am-form-label"
                                        style="text-align: left">主页地址</label>
                                 <div class="am-u-md-10 am-u-sm-8">
-                                    <input type="text" name="html_url" class="am-form-field" id="html_url"
-                                           placeholder="地址">
+                                    <input type="text" name="html_url" value="${loginU.html_url!''}"
+                                           class="am-form-field" id="html_url">
                                 </div>
                             </div>
+                        <#else >
+                            <div class="am-u-md-2 am-u-sm-4"
+                                 style="text-align: left">
+                                <div style="height: 15px;"></div>
+                                <b>主页地址</b></div>
+                            <div class="am-u-md-10 am-u-sm-8">
+                                <div style="height: 15px;"></div>
+                                <i class="am-icon-calendar"></i>
+                            ${loginU.html_url!''}
+                            </div>
+                        </#if>
                             <hr>
                             <div class="am-form-group" style="height: 52.2px;margin-bottom: 0px">
                                 <div class="am-u-md-2 am-u-sm-4"
@@ -83,7 +120,7 @@
                                     <b>账号/邮箱</b></div>
                                 <div class="am-u-md-10 am-u-sm-8">
                                     <div style="height: 15px;"></div>
-                                    <b>1960497367@163.com</b>
+                                    <b>${loginU.email!''}</b>
                                 </div>
                             </div>
                             <hr>
@@ -95,7 +132,9 @@
                                 <div class="am-u-md-10 am-u-sm-8">
                                     <div style="height: 15px;"></div>
                                     <i class="am-icon-calendar"></i>
-                                    2017-12-21 23:05:45
+                                <#if loginU.created_at??>
+                                ${loginU.created_at?string('yyyy-MM-dd HH:mm:ss')}
+                                </#if>
                                 </div>
                             </div>
                             <hr>
@@ -107,7 +146,9 @@
                                 <div class="am-u-md-10 am-u-sm-8">
                                     <div style="height: 15px;"></div>
                                     <i class="am-icon-calendar"></i>
-                                    2017-12-21 23:05:45
+                                <#if loginU.updated_at??>
+                                ${loginU.updated_at?string('yyyy-MM-dd HH:mm:ss')}
+                                </#if>
                                 </div>
                             </div>
                             <hr>
@@ -118,7 +159,15 @@
                                     <b>是否激活</b></div>
                                 <div class="am-u-md-10 am-u-sm-8">
                                     <div style="height: 15px;"></div>
+                                <#if loginU.state=='0'>
+                                    <span style="color: black"><b>未激活</b></span>
+                                </#if>
+                                <#if loginU.state=='1'>
                                     <span style="color: green"><b>已激活</b></span>
+                                </#if>
+                                <#if loginU.state=='-1'>
+                                    <span style="color: red"><b>账号不可用，请联系管理员</b></span>
+                                </#if>
                                 </div>
                             </div>
                             <hr>
@@ -133,14 +182,21 @@
 
 
                     <div class="am-tab-panel" id="tab-4-2" style="height: auto;">
+                    <#if loginU.isxing??>
                         <div class="up-img-cover" id="up-img-touch">
-                            <img class="am-circle" alt="点击图片上传" src="/images/hu.jpg"
+                            <img class="am-circle" alt="点击图片上传" src="http://www.myxinge.cn/${loginU.avatar_url!''}"
                                  data-am-popover="{content: '点击上传', trigger: 'hover focus'}">
                         </div>
                         <div style="text-align: left;margin-top: 20px"><label>点击头像上传</label></div>
+                    <#else >
+                        <div class="up-img-cover">
+                            <img class="am-circle" alt="头像" src="http://www.myxinge.cn/${loginU.avatar_url!''}">
+                        </div>
+                        <div style="text-align: left;margin-top: 20px"><label>第三方账号无法再此更改头像</label></div>
+                    </#if>
                     </div>
 
-
+                <#if loginU.isxing??>
                     <div class="am-tab-panel" id="tab-4-3">
                         <form class="am-form am-form-horizontal">
                             <div class="am-form-group am-form-feedback">
@@ -178,6 +234,7 @@
                             </div>
                         </form>
                     </div>
+                </#if>
                 </div>
             </div>
             <div style="height: 25px">

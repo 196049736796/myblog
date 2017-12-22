@@ -43,57 +43,61 @@
     <div id="content" class="am-u-md-12 am-u-sm-12 am-u-sm-centered" style="margin-top: 15px">
         <h3>留言(99+)</h3>
         <hr>
-        <div class="comment am-u-md-12 am-u-sm-12 am-u-sm-centered">
-            <div style="float: left;width: 5%;height: 120px">
-                <div><img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80"
-                          class="am-comment-avatar"/>
-                    <div style="text-align: center;font-size: 85%;margin-top: 10px">星尘0085</div>
-                </div>
-            </div>
-            <div class="content">
-                <div class="cont-box">
-                    <textarea class="text" placeholder="请先登录哦"></textarea>
-                </div>
-                <div class="tools-box">
-                    <div class="operator-box-btn">
-                        <span class="face-icon">☺</span>
-                    </div>
-                    <div class="submit-btn"><input style="vertical-align: top" type="button" onClick="out()"
-                                                   value="登录"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="info-show" class="am-u-md-12 am-u-sm-12 am-u-sm-centered">
-            <hr>
-            <ul class="am-comments-list">
-                <li class="am-comment">
-                    <a href="#link-to-user-home">
-                        <img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80"
-                             alt="" class="am-comment-avatar" width="48" height="48">
-                    </a>
-                    <div class="am-comment-main">
-                        <header class="am-comment-hd">
-                            <div class="am-comment-meta">
-                                <a href="#link-to-user" class="am-comment-author">某人</a>
+    <div class="comment">
+    <div style="height: 120px" class="am-u-md-1 am-u-sm-3">
 
-                            </div>
-                        </header>
-                        <div class="am-comment-bd">
-                            <p style="font-size: 100%">《永远的蝴蝶》一文，还吸收散文特长，多采用第一人称，淡化情节，体现一种思想寄托和艺术追求。</p>
-                            <div class="comment_footer">
-                                <time style="float: left" datetime="2013-07-27T04:54:29-07:00"
-                                      title="2013年7月27日 下午7:54 格林尼治标准时间+0800">
-                                    2014-7-12 15:30
-                                </time>
-                                <span style="float: right"><a href="#">回复(99+)</a><a href="#">点赞(99+)</a><a
-                                        href="#">删除</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+    <#--已登陆-->
+    <#if loginU??>
+        <div style="width: 100%;text-align: center;height: 50px"><img
+                src="http://www.myxinge.cn/${loginU.avatar_url}"
+                class="am-comment-avatar"/>
         </div>
+        <div style="margin-left:5px;font-size: 100%;margin-top: 10px;width: 100%;color: #0000cc">${loginU.name}</div>
+    </div>
+        <div class="content am-u-md-11 am-u-sm-9">
+            <div class="cont-box">
+                <textarea class="text" placeholder="有啥想说的？"></textarea>
+            </div>
+            <div class="tools-box">
+                <div class="operator-box-btn">
+                    <span class="face-icon">☺</span>
+                </div>
+                <div class="submit-btn"><input style="vertical-align: top" type="button" onClick="out()"
+                                               value="提交"/>
+                </div>
+            </div>
+        </div>
+
+
+
+    <#--未登录-->
+    <#else >
+        <div style="width: 100%;text-align: center;height: 50px">
+            <img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80"
+                 class="am-comment-avatar"/>
+        </div>
+        <div style="margin-left:5px;font-size: 100%;margin-top: 10px;width: 100%">未登录</div>
+    </div>
+        <div class="content am-u-md-11 am-u-sm-9">
+            <div class="cont-box">
+                <textarea class="text" placeholder="需要先登录哦"></textarea>
+            </div>
+            <div class="tools-box">
+                <div class="operator-box-btn">
+                    <span class="face-icon">☺</span>
+                </div>
+                <div class="submit-btn">
+                    <a href="/log.html"><input style="vertical-align: top" type="button"
+                                               value="登录"/></a>
+                </div>
+            </div>
+        </div>
+    </#if>
+    </div>
+    <div id="info-show" class="am-u-md-12 am-u-sm-12 am-u-sm-centered">
+        <hr>
+        <ul class="am-comments-list">
+        </ul>
     </div>
 </div>
 
@@ -116,6 +120,7 @@
 <script src="/lib/flowchart.min.js"></script>
 <script src="/lib/jquery.flowchart.min.js"></script>
 
+<#if loginU??>
 <script type="text/javascript">
     // 绑定表情
     $('.face-icon').SinaEmotion($('.text'));
@@ -126,7 +131,9 @@
     }
 
     function reply(content) {
-        var html = "<li class=\"am-comment\"><a href=\"#link-to-user-home\"><img src=\"http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80\" alt=\"\" class=\"am-comment-avatar\" width=\"48\" height=\"48\"><\/a><div class=\"am-comment-main\"><header class=\"am-comment-hd\"><div class=\"am-comment-meta\"><a href=\"#link-to-user\" class=\"am-comment-author\">某人<\/a><\/div><\/header><div class=\"am-comment-bd\"><p style=\"font-size:100%\">" + content + "<\/p><div class=\"comment_footer\"><time style=\"float:left\" datetime=\"2013-07-27T04:54:29-07:00\" title=\"2013年7月27日 下午7:54 格林尼治标准时间+0800\">2014-7-12 15:30<\/time> <span style=\"float:right\"><a href=\"#\">回复(99+)<\/a><a href=\"#\">点赞(99+)<\/a><a href=\"#\">删除<\/a><\/span><\/div><\/div><\/div><\/li>\n";
+        var html = "<li class=\"am-comment\"><a href=\"#link-to-user-home\">" +
+                "<img src=\"http://www.myxinge.cn/${loginU.avatar_url}\" alt=\"\" class=\"am-comment-avatar\" width=\"48\" height=\"48\"><\/a><div class=\"am-comment-main\"><header class=\"am-comment-hd\"><div class=\"am-comment-meta\"><a href=\"#link-to-user\" class=\"am-comment-author\">${loginU.name}<\/a><\/div><\/header><div class=\"am-comment-bd\"><p style=\"font-size:100%\">" + content + "<\/p><div class=\"comment_footer\"><time style=\"float:left\" datetime=\"2013-07-27T04:54:29-07:00\" title=\"2013年7月27日 下午7:54 格林尼治标准时间+0800\">2014-7-12 15:30<\/time> <span style=\"float:right\"><a href=\"#\">回复(99+)<\/a><a href=\"#\">点赞(99+)<\/a><a href=\"#\">删除<\/a><\/span><\/div><\/div><\/div><\/li>\n";
         return html;
     }
 </script>
+</#if>

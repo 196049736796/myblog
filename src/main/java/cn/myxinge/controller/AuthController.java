@@ -190,24 +190,26 @@ public class AuthController {
 
     @RequestMapping("/uploadUserAvatar")
     @ResponseBody
-    public String uploadUserAvatar(String image, HttpServletRequest request) {
+    public String uploadUserAvatar(String image, HttpServletRequest request) throws Exception {
         Map<String, Object> map = new HashMap<>();
         Object loginU = request.getSession().getAttribute("loginU");
         Integer usreId = null;
         String avatar = null;
         if (null != loginU) {
             usreId = ((User) loginU).getId();
-            avatar = ((User) loginU).getAvatar_url();
         }
         if (usreId == null) {
-            map.put("result", "ok");
+            map.put("result", "失败");
             return new JSONObject(map).toJSONString();
         }
+        String url = userService.uploadUserAvatar(image, usreId);
         map.put("result", "ok");
-        map.put("url", userService.uploadUserAvatar(image, usreId,avatar));
+        map.put("url", url);
+
+        ((User) loginU).setAvatar_url(url);
+        request.getSession().setAttribute("loginU", ((User) loginU));
         return new JSONObject(map).toJSONString();
     }
-
 
     private User jsonHandler(String userInfo) {
         User user = null;

@@ -57,11 +57,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String uploadUserAvatar(String image, Integer usreId, String avatar) {
+    public String uploadUserAvatar(String image, Integer usreId) {
         Map<String, String> map = new HashMap<>();
         map.put("image", image);
         map.put("userId", usreId + "");
-        map.put("avatar",avatar);
         return HttpClientUtil.post(url_uploadUserAvatar, map, "utf-8");
     }
 }

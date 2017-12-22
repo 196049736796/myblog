@@ -86,8 +86,9 @@
 
         <#--已登陆-->
         <#if loginU??>
-            <div style="width: 100%;text-align: center;height: 50px"><img src="${loginU.avatar_url}"
-                                                                          class="am-comment-avatar"/>
+            <div style="width: 100%;text-align: center;height: 50px"><img
+                    src="http://www.myxinge.cn/${loginU.avatar_url}"
+                    class="am-comment-avatar"/>
             </div>
             <div style="margin-left:5px;font-size: 100%;margin-top: 10px;width: 100%;color: #0000cc">${loginU.name}</div>
         </div>
@@ -205,7 +206,7 @@
 
     function reply(content) {
         var html = "<li class=\"am-comment\"><a href=\"#link-to-user-home\">" +
-                "<img src=\"${loginU.avatar_url}\" alt=\"\" class=\"am-comment-avatar\" width=\"48\" height=\"48\"><\/a><div class=\"am-comment-main\"><header class=\"am-comment-hd\"><div class=\"am-comment-meta\"><a href=\"#link-to-user\" class=\"am-comment-author\">${loginU.name}<\/a><\/div><\/header><div class=\"am-comment-bd\"><p style=\"font-size:100%\">" + content + "<\/p><div class=\"comment_footer\"><time style=\"float:left\" datetime=\"2013-07-27T04:54:29-07:00\" title=\"2013年7月27日 下午7:54 格林尼治标准时间+0800\">2014-7-12 15:30<\/time> <span style=\"float:right\"><a href=\"#\">回复(99+)<\/a><a href=\"#\">点赞(99+)<\/a><a href=\"#\">删除<\/a><\/span><\/div><\/div><\/div><\/li>\n";
+                "<img src=\"http://www.myxinge.cn/${loginU.avatar_url}\" alt=\"\" class=\"am-comment-avatar\" width=\"48\" height=\"48\"><\/a><div class=\"am-comment-main\"><header class=\"am-comment-hd\"><div class=\"am-comment-meta\"><a href=\"#link-to-user\" class=\"am-comment-author\">${loginU.name}<\/a><\/div><\/header><div class=\"am-comment-bd\"><p style=\"font-size:100%\">" + content + "<\/p><div class=\"comment_footer\"><time style=\"float:left\" datetime=\"2013-07-27T04:54:29-07:00\" title=\"2013年7月27日 下午7:54 格林尼治标准时间+0800\">2014-7-12 15:30<\/time> <span style=\"float:right\"><a href=\"#\">回复(99+)<\/a><a href=\"#\">点赞(99+)<\/a><a href=\"#\">删除<\/a><\/span><\/div><\/div><\/div><\/li>\n";
         return html;
     }
 </script>
