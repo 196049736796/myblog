@@ -137,70 +137,7 @@
                             <img class="am-circle" alt="点击图片上传" src="/images/hu.jpg"
                                  data-am-popover="{content: '点击上传', trigger: 'hover focus'}">
                         </div>
-                        <div class="up-img-txt"><label>上传图片名称:</label><a>hu.jpg</a></div>
-
-                        <!--图片上传框-->
-                        <div class="am-modal am-modal-no-btn up-modal-frame"
-                             id="up-modal-frame">
-                            <div class="am-modal-dialog up-frame-parent up-frame-radius">
-                                <div class="am-modal-hd up-frame-header">
-                                    <label>修改头像</label>
-                                    <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
-                                </div>
-                                <div class="am-modal-bd  up-frame-body">
-                                    <div class="am-g am-fl">
-
-                                        <div class="am-form-group am-form-file">
-                                            <div class="am-fl">
-                                                <button type="button" class="am-btn am-btn-default am-btn-sm">
-                                                    <i class="am-icon-cloud-upload"></i> 选择要上传的文件
-                                                </button>
-                                            </div>
-                                            <input type="file" class="up-img-file">
-                                        </div>
-                                    </div>
-                                    <div class="am-g am-fl">
-                                        <div class="up-pre-before up-frame-radius">
-                                            <img alt="" src="" class="up-img-show" id="up-img-show">
-                                        </div>
-                                        <div class="up-pre-after up-frame-radius">
-                                        </div>
-                                    </div>
-                                    <div class="am-g am-fl">
-                                        <div class="up-control-btns">
-                                            <span class="am-icon-rotate-left" id="up-btn-left"></span>
-                                            <span class="am-icon-rotate-right" id="up-btn-right"></span>
-                                            <span class="am-icon-check up-btn-ok" url="/admin/user/upload.action"
-                                                  parameter="{width:'100',height:'100'}"></span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--加载框-->
-                        <div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="up-modal-loading">
-                            <div class="am-modal-dialog">
-                                <div class="am-modal-hd">正在上传...</div>
-                                <div class="am-modal-bd">
-                                    <span class="am-icon-spinner am-icon-spin"></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--警告框-->
-                        <div class="am-modal am-modal-alert" tabindex="-1" id="up-modal-alert">
-                            <div class="am-modal-dialog">
-                                <div class="am-modal-hd">信息</div>
-                                <div class="am-modal-bd" id="alert_content">
-                                    成功了
-                                </div>
-                                <div class="am-modal-footer">
-                                    <span class="am-modal-btn">确定</span>
-                                </div>
-                            </div>
-                        </div>
+                        <div style="text-align: left;margin-top: 20px"><label>点击头像上传</label></div>
                     </div>
 
 
@@ -243,8 +180,71 @@
                     </div>
                 </div>
             </div>
-            <div style="margin-bottom: 30px">
+            <div style="height: 25px">
             </div>
+        </div>
+    </div>
+</div>
+
+<!--图片上传框-->
+<div class="am-modal am-modal-no-btn up-modal-frame"
+     id="up-modal-frame" style="width: 600px;background-color: white">
+    <div class="am-modal-dialog up-frame-parent up-frame-radius">
+        <div class="am-modal-hd up-frame-header" style="background-color: white">
+            <label>修改头像</label>
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd  up-frame-body" style="background-color: white">
+            <div class="am-g am-fl" style="background-color: white">
+
+                <div class="am-form-group am-form-file" style="background-color: white">
+                    <div class="am-fl">
+                        <button type="button" class="am-btn am-btn-default am-btn-sm">
+                            <i class="am-icon-cloud-upload"></i> 选择要上传的文件
+                        </button>
+                    </div>
+                    <input type="file" class="up-img-file">
+                </div>
+            </div>
+            <div class="am-g am-fl" style="background-color: white">
+                <div class="up-pre-before up-frame-radius">
+                    <img alt="" src="" class="up-img-show" id="up-img-show">
+                </div>
+                <div class="up-pre-after up-frame-radius">
+                </div>
+            </div>
+            <div class="am-g am-fl" style="background-color: white">
+                <div class="up-control-btns">
+                    <span class="am-icon-rotate-left" id="up-btn-left"></span>
+                    <span class="am-icon-rotate-right" id="up-btn-right"></span>
+                    <span class="am-icon-check up-btn-ok" url="/u/uploadUserAvatar"
+                          parameter="{width:'100',height:'100'}"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--加载框-->
+<div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="up-modal-loading">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">正在上传...</div>
+        <div class="am-modal-bd">
+            <span class="am-icon-spinner am-icon-spin"></span>
+        </div>
+    </div>
+</div>
+
+<!--警告框-->
+<div class="am-modal am-modal-alert" tabindex="-1" id="up-modal-alert">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">信息</div>
+        <div class="am-modal-bd" id="alert_content">
+            成功了
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn">确定</span>
         </div>
     </div>
 </div>

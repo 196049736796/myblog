@@ -11,4 +11,6 @@ public interface UserService {
     public String log(User user);
 
     String confirm(User user);
+
+    String uploadUserAvatar(String image, Integer usreId, String avatar);
 }

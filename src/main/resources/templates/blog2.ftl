@@ -81,17 +81,17 @@
         <div id="content" class="am-u-md-12 am-u-sm-12 am-u-sm-centered" style="margin-top: 15px">
             <h3>评论(99+)</h3>
             <hr>
-        <div class="comment am-u-md-12 am-u-sm-12 am-u-sm-centered">
-        <div style="float: left;width: 5%;height: 120px">
+        <div class="comment">
+        <div style="height: 120px" class="am-u-md-1 am-u-sm-3">
 
         <#--已登陆-->
         <#if loginU??>
-            <div><img src="${loginU.avatar_url}"
-                      class="am-comment-avatar"/>
-                <div style="text-align: center;font-size: 85%;margin-top: 10px">${loginU.name}</div>
+            <div style="width: 100%;text-align: center;height: 50px"><img src="${loginU.avatar_url}"
+                                                                          class="am-comment-avatar"/>
             </div>
+            <div style="margin-left:5px;font-size: 100%;margin-top: 10px;width: 100%;color: #0000cc">${loginU.name}</div>
         </div>
-            <div class="content">
+            <div class="content am-u-md-11 am-u-sm-9">
                 <div class="cont-box">
                     <textarea class="text" placeholder="写下你的评论"></textarea>
                 </div>
@@ -109,12 +109,13 @@
 
         <#--未登录-->
         <#else >
-            <div><img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80"
-                      class="am-comment-avatar"/>
-                <div style="text-align: center;font-size: 85%;margin-top: 10px">未登录</div>
+            <div style="width: 100%;text-align: center;height: 50px">
+                <img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80"
+                     class="am-comment-avatar"/>
             </div>
+            <div style="margin-left:5px;font-size: 100%;margin-top: 10px;width: 100%">未登录</div>
         </div>
-            <div class="content">
+            <div class="content am-u-md-11 am-u-sm-9">
                 <div class="cont-box">
                     <textarea class="text" placeholder="需要先登录哦"></textarea>
                 </div>

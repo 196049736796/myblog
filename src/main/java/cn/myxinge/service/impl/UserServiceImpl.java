@@ -24,6 +24,9 @@ public class UserServiceImpl implements UserService {
     @Value("${url_confirm}")
     private String url_confirm;
 
+    @Value("${url_uploadUserAvatar}")
+    private String url_uploadUserAvatar;
+
     @Override
     public String reg(User user) {
 
@@ -51,6 +54,15 @@ public class UserServiceImpl implements UserService {
         map.put("confirm_id", user.getConfirm_id());
         String rtn = HttpClientUtil.post(url_confirm, map, "utf-8");
         return rtn;
+    }
+
+    @Override
+    public String uploadUserAvatar(String image, Integer usreId, String avatar) {
+        Map<String, String> map = new HashMap<>();
+        map.put("image", image);
+        map.put("userId", usreId + "");
+        map.put("avatar",avatar);
+        return HttpClientUtil.post(url_uploadUserAvatar, map, "utf-8");
     }
 }
 

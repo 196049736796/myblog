@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by chenxinghua on 2017/12/20.
@@ -184,6 +186,26 @@ public class AuthController {
     public String logout(HttpServletRequest request) {
         request.getSession().setAttribute("loginU", null);
         return "/";
+    }
+
+    @RequestMapping("/uploadUserAvatar")
+    @ResponseBody
+    public String uploadUserAvatar(String image, HttpServletRequest request) {
+        Map<String, Object> map = new HashMap<>();
+        Object loginU = request.getSession().getAttribute("loginU");
+        Integer usreId = null;
+        String avatar = null;
+        if (null != loginU) {
+            usreId = ((User) loginU).getId();
+            avatar = ((User) loginU).getAvatar_url();
+        }
+        if (usreId == null) {
+            map.put("result", "ok");
+            return new JSONObject(map).toJSONString();
+        }
+        map.put("result", "ok");
+        map.put("url", userService.uploadUserAvatar(image, usreId,avatar));
+        return new JSONObject(map).toJSONString();
     }
 
 

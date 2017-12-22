@@ -10,6 +10,7 @@ public class User {
     public static final String STATE_UNACTIVATED = "0";//未激活
     public static final String STATE_ACTIVATED = "1";//已激活
     public static final String STATE_INVAITED = "-1";//无法使用
+    private Integer id;
     private String email;
     private String login;//账号
     private String pwd;
@@ -100,5 +101,13 @@ public class User {
 
     public void setConfirm_id(String confirm_id) {
         this.confirm_id = confirm_id;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
