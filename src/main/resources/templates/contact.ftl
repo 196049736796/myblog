@@ -18,9 +18,9 @@
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
     <link href="/css/style.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="/css/amazeui.min.css">
+    <link rel="stylesheet" href="/css/main.css"/>
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" type="text/css" href="/css/sinaFaceAndEffec.css"/>
-    <link rel="stylesheet" href="/css/main.css"/>
     <style type="text/css">
         .comment_footer {
             margin-top: 10px;
@@ -38,7 +38,7 @@
 <body class="chang_fontSize">
 <#include "header.ftl"/>
 <!-- Main Content -->
-<div class="am-g am-g-fixed blog-fixed blog-content main">
+<div class="am-g am-g-fixed blog-fixed blog-content">
 <#--留言-->
     <div id="content" class="am-u-md-12 am-u-sm-12 am-u-sm-centered" style="margin-top: 15px">
         <h3>留言(99+)</h3>
@@ -48,9 +48,17 @@
 
     <#--已登陆-->
     <#if loginU??>
-        <div style="width: 100%;text-align: center;height: 50px"><img
-                src="http://www.myxinge.cn/${loginU.avatar_url}"
-                class="am-comment-avatar"/>
+        <div style="width: 100%;text-align: center;height: 50px">
+		<#if loginU.isxing??>
+			<img
+			src="http://www.myxinge.cn/${loginU.avatar_url}"
+			class="am-comment-avatar"/>
+			<#else>
+			<img
+			src="${loginU.avatar_url}"
+			class="am-comment-avatar"/>
+		</#if>
+		
         </div>
         <div style="margin-left:5px;font-size: 100%;margin-top: 10px;width: 100%;color: #0000cc">${loginU.name}</div>
     </div>

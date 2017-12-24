@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -56,14 +56,16 @@
         <#else >
             <div class="am-alert" data-am-alert>
                 <button type="button" class="am-close">&times;</button>
-                <p>说明：如果您是第三方登录账号,无法再此页面更改资料哦。当您在第三方更改后，资料会同步到本网站。</p>
+                <p>说明：如果您是第三方登录账号,暂时无法在此页面更改资料。当您在第三方更改后，资料会同步到本网站。</p>
             </div>
         </#if>
             <div class="am-tabs" data-am-tabs>
                 <ul class="am-tabs-nav am-nav am-nav-tabs">
                     <li class="am-active"><a href="#tab-4-1">基础设置</a></li>
                     <li><a href="#tab-4-2">头像设置</a></li>
+		<#if loginU.isxing??>
                     <li><a href="#tab-4-3">修改密码</a></li>
+		</#if>
                 </ul>
                 <div class="am-tabs-bd am-tabs-bd-ofv">
                     <div class="am-tab-panel am-active" id="tab-4-1">
@@ -86,7 +88,6 @@
                                 <b>昵称</b></div>
                             <div class="am-u-md-10 am-u-sm-8">
                                 <div style="height: 15px;"></div>
-                                <i class="am-icon-calendar"></i>
                             ${loginU.name!''}
                             </div>
                         </#if>
@@ -108,7 +109,6 @@
                                 <b>主页地址</b></div>
                             <div class="am-u-md-10 am-u-sm-8">
                                 <div style="height: 15px;"></div>
-                                <i class="am-icon-calendar"></i>
                             ${loginU.html_url!''}
                             </div>
                         </#if>
@@ -120,7 +120,7 @@
                                     <b>账号/邮箱</b></div>
                                 <div class="am-u-md-10 am-u-sm-8">
                                     <div style="height: 15px;"></div>
-                                    <b>${loginU.email!''}</b>
+                                    <b>${loginU.email!'无'}</b>
                                 </div>
                             </div>
                             <hr>
@@ -151,6 +151,8 @@
                                 </#if>
                                 </div>
                             </div>
+
+			<#if loginU.state??>
                             <hr>
                             <div class="am-form-group">
                                 <div class="am-u-md-2 am-u-sm-4"
@@ -177,6 +179,7 @@
                                     取消
                                 </button>
                             </div>
+			</#if>
                         </form>
                     </div>
 
@@ -190,7 +193,7 @@
                         <div style="text-align: left;margin-top: 20px"><label>点击头像上传</label></div>
                     <#else >
                         <div class="up-img-cover">
-                            <img class="am-circle" alt="头像" src="http://www.myxinge.cn/${loginU.avatar_url!''}">
+                            <img class="am-circle" alt="头像" src="${loginU.avatar_url!''}">
                         </div>
                         <div style="text-align: left;margin-top: 20px"><label>第三方账号无法再此更改头像</label></div>
                     </#if>
