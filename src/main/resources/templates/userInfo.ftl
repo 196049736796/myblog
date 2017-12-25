@@ -187,7 +187,7 @@
                     <div class="am-tab-panel" id="tab-4-2" style="height: auto;">
                     <#if loginU.isxing??>
                         <div class="up-img-cover" id="up-img-touch">
-                            <img class="am-circle" alt="点击图片上传" src="http://www.myxinge.cn/${loginU.avatar_url!''}"
+                            <img class="am-circle" alt="点击图片上传" src="${loginU.avatar_url!''}"
                                  data-am-popover="{content: '点击上传', trigger: 'hover focus'}">
                         </div>
                         <div style="text-align: left;margin-top: 20px"><label>点击头像上传</label></div>

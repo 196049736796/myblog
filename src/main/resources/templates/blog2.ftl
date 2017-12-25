@@ -87,14 +87,8 @@
         <#--已登陆-->
         <#if loginU??>
             <div style="width: 100%;text-align: center;height: 50px">
-		<#if loginU.isxing??>
-			<img src="http://www.myxinge.cn/${loginU.avatar_url}"
-                    class="am-comment-avatar"/>
-		<#else>
-			<img src="${loginU.avatar_url}"
-                    class="am-comment-avatar"/>
-		</#if>
-		
+                <img src="${loginU.avatar_url}"
+                     class="am-comment-avatar"/>
             </div>
             <div style="margin-left:5px;font-size: 100%;margin-top: 10px;width: 100%;color: #0000cc">${loginU.name}</div>
         </div>

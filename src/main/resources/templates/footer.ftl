@@ -1,6 +1,6 @@
+<div style="height: 50px;width: 100%"></div>
 <footer style="border-top: 1px solid #eeeeee;
         padding: 10px 0;
-        margin-top: 50px;
         text-align: center;">
     <p>© 星尘<br>
         <small>

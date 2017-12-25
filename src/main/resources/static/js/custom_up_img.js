@@ -80,7 +80,7 @@ $(function () {
                 set_alert_info(data.result);
                 $modal_alert.modal();
                 if (data.result == "ok") {
-                    $("#up-img-touch img").attr("src", "http://www.myxinge.cn/" + data.url);
+                    $("#up-img-touch img").attr("src", data.url);
                     // var img_name = data.file.split('/')[2];
                     //console.log(img_name);
                     // $(".up-img-txt a").text(img_name);

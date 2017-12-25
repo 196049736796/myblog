@@ -185,7 +185,7 @@ public class AuthController {
     @RequestMapping("/logout")
     public String logout(HttpServletRequest request) {
         request.getSession().setAttribute("loginU", null);
-        return "/";
+        return "redirect:/";
     }
 
     @RequestMapping("/uploadUserAvatar")
