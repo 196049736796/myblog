@@ -48,9 +48,10 @@ public class AuthController {
     private String github_user_info;
 
     @RequestMapping("/auth")
-    public String code(String code, String state, HttpServletRequest request) {
+    public String code(String code, String state, HttpServletRequest request, Model model) {
         if (code == null) {
-            return "/";
+            model.addAttribute("loginMsg", "授权失败");
+            return "/log.html";
         }
 
         //url处理
@@ -71,13 +72,15 @@ public class AuthController {
                 token = token.substring(0, end);
             }
         } else {
-            return "/";
+            model.addAttribute("loginMsg", "授权失败");
+            return "/log.html";
         }
 
         //信息获取
         String userInfo = HttpClientUtil.get(github_user_info.concat("?").concat(token));
         if (userInfo == null) {
-            return "/";
+            model.addAttribute("loginMsg", "授权失败");
+            return "/log.html";
         }
 
         //数据处理

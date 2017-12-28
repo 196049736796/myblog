@@ -79,7 +79,7 @@
 
     <#--评论-->
         <div id="content" class="am-u-md-12 am-u-sm-12 am-u-sm-centered" style="margin-top: 15px">
-            <h3>评论(99+)</h3>
+            <h3>评论（<span id="comm_count">${total}</span>）</h3>
             <hr>
         <div class="comment">
         <div style="height: 120px" class="am-u-md-1 am-u-sm-3">
@@ -100,7 +100,7 @@
                     <div class="operator-box-btn">
                         <span class="face-icon">☺</span>
                     </div>
-                    <div class="submit-btn"><input style="vertical-align: top" type="button" onClick="out()"
+                    <div class="submit-btn"><input style="vertical-align: top" type="button" onClick="out(${blog.id})"
                                                    value="提交"/>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
         <#--未登录-->
         <#else >
             <div style="width: 100%;text-align: center;height: 50px">
-                <img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96/q/80"
+                <img src="/images/img.jpg"
                      class="am-comment-avatar"/>
             </div>
             <div style="margin-left:5px;font-size: 100%;margin-top: 10px;width: 100%">未登录</div>
@@ -135,6 +135,40 @@
         <div id="info-show" class="am-u-md-12 am-u-sm-12 am-u-sm-centered">
             <hr>
             <ul class="am-comments-list">
+            <#if comments??>
+                <#list comments as comment>
+
+                    <li class="am-comment"><a href="#link-to-user-home">
+                        <img src="${comment.user.avatar_url}" alt="" class="am-comment-avatar" width="48"
+                             height="48"></a>
+                        <div class="am-comment-main">
+                            <header class="am-comment-hd">
+                                <div class="am-comment-meta">
+                                    <a href="#link-to-user" class="am-comment-author">${comment.user.name}</a>
+                                </div>
+                            </header>
+                            <div class="am-comment-bd">
+                                <p style="font-size:100%" class="comment_text">
+                                ${comment.text}
+                                </p>
+                                <div class="comment_footer">
+                                    <time style="float:left"
+                                          datetime="${comment.createTime ?string('yyyy-MM-dd HH:mm:ss')}"
+                                          title="${comment.createTime ?string('yyyy-MM-dd HH:mm:ss')}">
+                                    ${comment.createTime ?string('yyyy-MM-dd HH:mm:ss')}</time>
+                                    <#if loginU??>
+                                        <#if loginU.id==comment.user.id>
+                                            <span style="float:right"><a href="javascript:void(0);"
+                                                                         onclick="comme_del(${comment.id},this)">删除</a></span>
+                                        </#if>
+                                    </#if>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                </#list>
+            </#if>
             </ul>
         </div>
     </div>
@@ -176,6 +210,18 @@
     </div>
 </div>
 
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">提示</div>
+        <div class="am-modal-bd">
+            请先写点东西吧.
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn">确定</span>
+        </div>
+    </div>
+</div>
+
 <#include "footer.ftl"/>
 </body>
 <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
@@ -193,21 +239,61 @@
 <script src="/lib/jquery.flowchart.min.js"></script>
 <script src="/js/editormd.js"></script>
 <script src="/js/jquery.mloading.js"></script>
+<script src="/js/date.js"></script>
 </html>
 <#if loginU??>
 <script type="text/javascript">
     // 绑定表情
     $('.face-icon').SinaEmotion($('.text'));
+
     // 测试本地解析
-    function out() {
+    function out(id) {
         var inputText = $('.text').val();
-        $('#info-show ul').append(reply(AnalyticEmotion(inputText)));
+        if ('' == inputText || null == inputText) {
+            $('#my-alert').modal();
+            return;
+        }
+
+        //sendPost
+        inputText = AnalyticEmotion(inputText);
+        var url = '/comments/add';
+        var data = {
+            'fid': id,
+            'fcat': '2',
+            'text': inputText
+        }
+        sendPost(url, data);
+
+        inputText = reply(inputText, new Date().Format("yyyy-MM-dd hh:mm:ss"), 0);
+        $('#info-show ul').prepend(inputText);
+        $('.text').val("");
+        var num = $('#comm_count').text();
+        num = parseInt(num);
+        $('#comm_count').text(num + 1);
     }
 
-    function reply(content) {
+    function reply(content, time, like_num) {
         var html = "<li class=\"am-comment\"><a href=\"#link-to-user-home\">" +
-                "<img src=\"http://www.myxinge.cn/${loginU.avatar_url}\" alt=\"\" class=\"am-comment-avatar\" width=\"48\" height=\"48\"><\/a><div class=\"am-comment-main\"><header class=\"am-comment-hd\"><div class=\"am-comment-meta\"><a href=\"#link-to-user\" class=\"am-comment-author\">${loginU.name}<\/a><\/div><\/header><div class=\"am-comment-bd\"><p style=\"font-size:100%\">" + content + "<\/p><div class=\"comment_footer\"><time style=\"float:left\" datetime=\"2013-07-27T04:54:29-07:00\" title=\"2013年7月27日 下午7:54 格林尼治标准时间+0800\">2014-7-12 15:30<\/time> <span style=\"float:right\"><a href=\"#\">回复(99+)<\/a><a href=\"#\">点赞(99+)<\/a><a href=\"#\">删除<\/a><\/span><\/div><\/div><\/div><\/li>\n";
+                "<img src=\"${loginU.avatar_url}\" alt=\"\" class=\"am-comment-avatar\" width=\"48\" height=\"48\"><\/a><div class=\"am-comment-main\"><header class=\"am-comment-hd\"><div class=\"am-comment-meta\"><a href=\"#link-to-user\" class=\"am-comment-author\">${loginU.name}<\/a><\/div><\/header><div class=\"am-comment-bd\"><p style=\"font-size:100%\">" + content + "<\/p><div class=\"comment_footer\"><time style=\"float:left\" datetime=\"" + time + "\" title=\"" + time + "\">" + time + "<\/time><\/div><\/div><\/div><\/li>\n";
         return html;
+    }
+
+    function sendPost(url, data) {
+        $.ajax({
+            url: url,
+            data: data,
+            dataType: 'json',
+            type: 'post',
+        });
+    }
+
+    function comme_del(comm_id, ele) {
+        var url = "/comments/del/" + comm_id;
+        $(ele).parent().parent().parent().parent().parent().remove();
+        sendPost(url, null);
+        var num = $('#comm_count').text();
+        num = parseInt(num);
+        $('#comm_count').text(num - 1 <= 0 ? 0 : num);
     }
 </script>
 </#if>
@@ -254,6 +340,7 @@
             });
             $("body").mLoading("hide");
         });
-    });
+    })
+    ;
 
 </script>

@@ -10,10 +10,7 @@ import java.util.Date;
  * Created by chenxinghua on 2017/11/9.
  * 博客类
  */
-@Entity
 public class Blog {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String title;
     private String subject;

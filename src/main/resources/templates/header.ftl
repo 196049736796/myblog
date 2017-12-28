@@ -13,7 +13,7 @@
                 <li><a href="/pe/archives">归档</a></li>
                 <li><a href="/p/tools">工具</a></li>
                 <li><a href="/p/about">关于</a></li>
-                <li><a href="/board/initBoard">留言</a></li>
+                <li><a href="/board/list">留言</a></li>
             </ul>
             <form class="am-topbar-form am-topbar-right am-form-inline" role="search">
                 <div class="am-form-group">
@@ -24,7 +24,7 @@
         <#if loginU??>
             <div class="am-topbar-right">
                 <div class="am-dropdown" data-am-dropdown="{boundary: '.am-topbar'}">
-                    <#--<img class="am-comment-avatar" width="48" height="48" src="${loginU.avatar_url}" alt="">-->
+                <#--<img class="am-comment-avatar" width="48" height="48" src="${loginU.avatar_url}" alt="">-->
                     <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle"
                             data-am-dropdown-toggle>${loginU.name}
                         <span class="am-icon-caret-down"></span></button>

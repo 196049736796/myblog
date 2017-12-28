@@ -36,6 +36,14 @@ public class ResponseUtil {
         return rtn;
     }
 
+    public static User loginUser(HttpServletRequest request) {
+        Object loginU = request.getSession().getAttribute("loginU");
+        if (null != loginU) {
+            return (User) loginU;
+        }
+        return null;
+    }
+
     /**
      * 清除seesion登录的用户
      */

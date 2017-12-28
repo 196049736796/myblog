@@ -81,13 +81,15 @@
             <h2 class="blog-text-center blog-title"><span>My Repositories</span></h2>
             <div>
                 <a href="javascript:void(0);" target="_blank">
-                    <div class="am-panel am-panel-danger" data-am-scrollspy="{animation: 'fade'}">
+                    <div class="am-panel am-panel-danger" data-am-scrollspy="{animation: 'fade'}"
+                         style="text-align: left">
 
-                        <div class="am-panel-hd">
-                            说明
+                        <div class="am-panel-hd" style="text-align: center">
+                            <b>公告</b>
                         </div>
                         <div class="am-panel-bd">
-                            <p>网站尚在开发，评论留言功能尚不可用，且未完全优化，可能会有卡顿。</p>
+                            <p>网站尚在开发，个人信息（包括密码）暂时无法修改，搜索功能未实现，页面加载速度尚在优化，欢迎评论留言。</p>
+                            <p align="right">更新时间：2017-12-27 16:40</p>
                         </div>
                     </div>
                 </a>

@@ -39,7 +39,8 @@ $(function () {
     });
 
     $("#github_auth").click(function () {
-        location.href = "https://github.com/login/oauth/authorize?client_id=f898f0826d59b3e21233&state=0&redirect_uri=http://www.myxinge.cn/u/auth";
+        var url = window.location.href;
+        location.href = "https://github.com/login/oauth/authorize?client_id=f898f0826d59b3e21233&state=" + url + "&redirect_uri=http://www.myxinge.cn/u/auth";
     });
 });
 
