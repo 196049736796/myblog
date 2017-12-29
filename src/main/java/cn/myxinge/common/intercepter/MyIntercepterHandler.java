@@ -66,9 +66,12 @@ public class MyIntercepterHandler implements HandlerInterceptor {
         if (loginU != null) {
             User u = (User) loginU;
             String name = u.getName();
-            if (name.length() > 10) {
+            if (!StringUtils.isEmpty(name) && name.length() > 10) {
                 name = name.substring(0, 10) + "...";
                 u.setName(name);
+            }
+            if (null == name) {
+                u.setName("无名氏");
             }
             //加入reqquest的值中
             httpServletRequest.setAttribute("loginU", loginU);

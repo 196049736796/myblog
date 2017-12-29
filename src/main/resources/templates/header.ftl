@@ -12,8 +12,7 @@
                 <li><a href="/">首页</a></li>
                 <li><a href="/pe/archives">归档</a></li>
                 <li><a href="/p/tools">工具</a></li>
-                <li><a href="/p/about">关于</a></li>
-                <li><a href="/board/list">留言</a></li>
+                <li><a href="/board/about"">关于</a></li>
             </ul>
             <form class="am-topbar-form am-topbar-right am-form-inline" role="search">
                 <div class="am-form-group">

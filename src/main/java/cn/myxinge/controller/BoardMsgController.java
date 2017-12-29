@@ -78,7 +78,7 @@ public class BoardMsgController {
     /**
      * 留言分页返回、JSON
      */
-    @RequestMapping("/list")
+    @RequestMapping("/about")
 //    @ResponseBody
     public String list(Integer page, Integer rows, Model m) {
 //        if (page == null) {
@@ -96,7 +96,7 @@ public class BoardMsgController {
             m.addAttribute("boardmsgList", all);
             m.addAttribute("total", all.size());
         }
-        return "contact";
+        return "about";
     }
 
     @RequestMapping(value = "/del/{id}", method = RequestMethod.POST)
