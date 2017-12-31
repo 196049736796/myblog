@@ -28,8 +28,8 @@
                             data-am-dropdown-toggle>${loginU.name}
                         <span class="am-icon-caret-down"></span></button>
                     <ul class="am-dropdown-content">
-                        <li><a href="#">提到我的(99+)</a></li>
-                        <li><a href="/p/userInfo">帐号设置</a></li>
+                        <#--<li><a href="#">提到我的<span class="am-badge am-badge-secondary am-round">3</span></a></li>-->
+                        <li><a href="/u/myself">帐号设置</a></li>
                         <li><a href="/u/logout">退出</a></li>
                     </ul>
                 </div>
@@ -37,11 +37,15 @@
 
         <#else >
             <div class="am-topbar-right">
-                <a href="/log.html">
-                    <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm">登录</button>
-                </a>
+                <button onclick="goLogin()" class="am-btn am-btn-primary am-topbar-btn am-btn-sm">登录</button>
             </div>
         </#if>
         </div>
     </nav>
 </header>
+<script type="text/javascript">
+    function goLogin() {
+        var url = window.location.href;
+        location.href = "/p/log?redirect=" + url;
+    }
+</script>

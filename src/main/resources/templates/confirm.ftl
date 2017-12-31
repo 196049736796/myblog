@@ -37,7 +37,7 @@
             <p align="left">
             ${c_user.name},您好,已经成功激活<span style="color: red">${c_user.email}</span>帐号，现在登录吧！
                 <br>
-                <a href="/log.html">
+                <a href="/p/log">
                     <button style="margin-top: 5px" type="button" class="am-btn am-btn-primary am-radius">登录</button>
                 </a>
             </p>

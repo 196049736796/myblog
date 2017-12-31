@@ -7,7 +7,7 @@
     <meta name="keywords" content="">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>登录</title>
+    <title>注册</title>
 
     <!-- Set render engine for 360 browser -->
     <meta name="renderer" content="webkit">
@@ -38,21 +38,23 @@
     </style>
 </head>
 <body class="chang_fontSize" style="background-color: #F1F1F1;"><!--1px 1px 10px #aaa-->
-<header>
-    <div class="log-re">
-        <a href="/reg.html">
-            <button type="button" class="am-btn am-btn-primary">注册</button>
-        </a>
-    </div>
-</header>
-
+<#include "header.ftl"/>
 <div class="log">
     <div class="am-g">
         <div class="am-u-lg-3 am-u-md-6 am-u-sm-8 am-u-sm-centered log-content">
-            <h2 class="log-title am-animation-slide-top">登录</h2>
+            <h2 class="log-title am-animation-slide-top"><span><a href="#">注册</a></span>&nbsp;•&nbsp;<span><a
+                    href="/p/log">登录</a></span></h2>
             <form class="am-form" id="log-form">
-                <div class="am-input-group am-radius am-animation-slide-left">
-                    <input type="email" name="email" id="doc-vld-email-2-1" class="am-radius"
+
+                <div class="am-input-group am-radius am-animation-slide-left ">
+                    <input type="text" name="name" class="am-form-field am-radius log-input"
+                           placeholder="昵称" minlength="1" maxlength="10" required/>
+                    <span class="am-input-group-label log-icon am-radius"><i
+                            class="am-icon-user am-icon-sm am-icon-fw"></i></span>
+                </div>
+                <br>
+                <div class="am-input-group am-radius am-animation-slide-left ">
+                    <input type="email" name="email" id="doc-vld-email-2-1" class="am-radius js-ajax-validate"
                            data-validation-message="请输入正确邮箱地址"
                            placeholder="邮箱" required/>
                     <span class="am-input-group-label log-icon am-radius"><i
@@ -60,38 +62,37 @@
                 </div>
                 <br>
                 <div class="am-input-group am-animation-slide-left log-animation-delay">
-                    <input type="password" class="am-form-field am-radius log-input" name="pwd" placeholder="密码"
-                           minlength="8"
-                           required>
+                    <input type="password" id="log-password" name="pwd" class="am-form-field am-radius log-input"
+                           placeholder="密码" minlength="8" required>
                     <span class="am-input-group-label log-icon am-radius"><i
                             class="am-icon-lock am-icon-sm am-icon-fw"></i></span>
                 </div>
                 <br>
-                <button id="logBtn"
-                        class="am-btn am-btn-primary am-btn-block">
-                    登 录
-                </button>
-                <p class="am-animation-slide-bottom log-animation-delay"><a href="#" style="color: #3bb4f2">忘记密码?</a>
-                </p>
-                <div class="am-btn-group  am-animation-slide-bottom log-animation-delay-b">
-                    <p>使用第三方登录</p>
-                    <a id="github_auth" href="javascript:void(0);"
-                       class="am-btn am-btn-secondary am-btn-sm"><i class="am-icon-github am-icon-sm"></i>
-                        Github</a>
+                <div class="am-input-group am-animation-slide-left log-animation-delay-a">
+                    <input type="password" data-equal-to="#log-password" name="repwd"
+                           class="am-form-field am-radius log-input" placeholder="确认密码"
+                           data-validation-message="请确认密码一致" required>
+                    <span class="am-input-group-label log-icon am-radius"><i
+                            class="am-icon-lock am-icon-sm am-icon-fw"></i></span>
                 </div>
+                <br>
+                <button id="regBtn"
+                        class="am-btn am-btn-primary am-btn-block">
+                    注册
+                </button>
             </form>
             <div style="height: 15px"></div>
         </div>
     </div>
 
     <!--alert-->
-    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert" style="z-index: 10000">
         <div class="am-modal-dialog">
             <div class="am-modal-hd">提示</div>
             <div class="am-modal-bd" id="msg">
             </div>
             <div class="am-modal-footer">
-                <button style="margin-top: 5px" type="button" onclick="ok()" class="am-btn am-btn-primary">确定</button>
+                <button style="margin-top: 5px" type="button" onclick="ok()" class="am-btn am-btn-primary">我知道了</button>
             </div>
         </div>
     </div>
@@ -109,8 +110,8 @@
 <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
 <script src="/js/jquery.mloading.js"></script>
 <script type="text/javascript">
-    msg = "登陆成功";
-    url = "/u/log";
+    msg = "你好，系统已经向<span style='margin-left: 5px;margin-right: 5px;color: red'>{email}</span>发送了一封确认邮件，请按照邮件提示完成后续注册。";
+    url = "/u/reg";
 </script>
 <script src="/js/jquery.serializejson.min.js"></script>
 <script src="/js/amazeui.ie8polyfill.min.js"></script>

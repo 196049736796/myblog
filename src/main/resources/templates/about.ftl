@@ -110,13 +110,13 @@
     <#if boardmsgList??>
         <#list boardmsgList as board>
 
-            <li class="am-comment"><a href="#link-to-user-home">
+            <li class="am-comment"><a href="/u/userInfo/${board.user.login}">
                 <img src="${board.user.avatar_url}" alt="" class="am-comment-avatar" width="48"
                      height="48"></a>
                 <div class="am-comment-main">
                     <header class="am-comment-hd">
                         <div class="am-comment-meta">
-                            <a href="#link-to-user" class="am-comment-author">${board.user.name}</a>
+                            <a href="/u/userInfo/${board.user.login}" class="am-comment-author">${board.user.name}</a>
                         </div>
                     </header>
                     <div class="am-comment-bd">
@@ -202,8 +202,8 @@
     }
 
     function reply(content, time, like_num) {
-        var html = "<li class=\"am-comment\"><a href=\"#link-to-user-home\">" +
-                "<img src=\"${loginU.avatar_url}\" alt=\"\" class=\"am-comment-avatar\" width=\"48\" height=\"48\"><\/a><div class=\"am-comment-main\"><header class=\"am-comment-hd\"><div class=\"am-comment-meta\"><a href=\"#link-to-user\" class=\"am-comment-author\">${loginU.name}<\/a><\/div><\/header><div class=\"am-comment-bd\"><p style=\"font-size:100%\">" + content + "<\/p><div class=\"comment_footer\"><time style=\"float:left\" datetime=\"" + time + "\" title=\"" + time + "\">" + time + "<\/time><\/div><\/div><\/div><\/li>\n";
+        var html = "<li class=\"am-comment\"><a href=\"/u/userInfo/${loginU.login}\">" +
+                "<img src=\"${loginU.avatar_url}\" alt=\"\" class=\"am-comment-avatar\" width=\"48\" height=\"48\"><\/a><div class=\"am-comment-main\"><header class=\"am-comment-hd\"><div class=\"am-comment-meta\"><a href=\"/u/userInfo/${loginU.login}\" class=\"am-comment-author\">${loginU.name}<\/a><\/div><\/header><div class=\"am-comment-bd\"><p style=\"font-size:100%\">" + content + "<\/p><div class=\"comment_footer\"><time style=\"float:left\" datetime=\"" + time + "\" title=\"" + time + "\">" + time + "<\/time><\/div><\/div><\/div><\/li>\n";
         return html;
     }
 

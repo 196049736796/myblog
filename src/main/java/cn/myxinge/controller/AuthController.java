@@ -15,10 +15,13 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,10 +51,10 @@ public class AuthController {
     private String github_user_info;
 
     @RequestMapping("/auth")
-    public String code(String code, String state, HttpServletRequest request, Model model) {
+    public String code(String code, String state, HttpServletRequest request, Model model, HttpServletResponse response) throws IOException {
         if (code == null) {
             model.addAttribute("loginMsg", "授权失败");
-            return "/log.html";
+            return "/log";
         }
 
         //url处理
@@ -73,21 +76,35 @@ public class AuthController {
             }
         } else {
             model.addAttribute("loginMsg", "授权失败");
-            return "/log.html";
+            return "/log";
         }
 
         //信息获取
         String userInfo = HttpClientUtil.get(github_user_info.concat("?").concat(token));
         if (userInfo == null) {
             model.addAttribute("loginMsg", "授权失败");
-            return "/log.html";
+            return "/log";
         }
 
         //数据处理
-        User user = jsonHandler(userInfo);
+        final User user = jsonHandler(userInfo);
 
-        request.getSession().setAttribute("loginU", user);
-        return "/";
+        //数据库存储，不使用第三的ID
+        String id = userService.regThreepart(user);
+
+        if (StringUtils.isEmpty(id)) {
+            model.addAttribute("loginMsg", "授权失败");
+            return "/log";
+        }
+
+        User loginU = user;
+        loginU.setId(Integer.parseInt(id));
+        request.getSession().setAttribute("loginU", loginU);
+        if ("/".equals(state)) {
+            response.sendRedirect("/");
+            return null;
+        }
+        return "redirect:" + state;
     }
 
     @RequestMapping("/reg")
@@ -190,6 +207,127 @@ public class AuthController {
         request.getSession().setAttribute("loginU", null);
         return "redirect:/";
     }
+
+    @RequestMapping("/myself")
+    public String myself(HttpServletRequest request, Model model) {
+        Object loginU = request.getSession().getAttribute("loginU");
+        if (null == loginU) {
+            return "/log";
+        }
+        User login = (User) loginU;
+        if (!StringUtils.isEmpty(login.getIsxing())) {
+            return "/myself";
+        } else {
+            model.addAttribute("user", login);
+            return "userInfo";
+        }
+    }
+
+    @RequestMapping("/userInfo/{login}")
+    public String userInfo(@PathVariable String login, HttpServletRequest request, Model model) {
+        if (null == login) {
+            return "/";
+        }
+        User user = userService.userInfo(login);
+        model.addAttribute("user", user);
+        return "userInfo";
+    }
+
+
+    @RequestMapping("/update")
+    @ResponseBody
+    public JSONObject update(User user, HttpServletRequest request, Model model) {
+
+        Object loginU = request.getSession().getAttribute("loginU");
+
+        if (null != loginU) {
+            User u = (User) loginU;
+            u = userNotNull(u, user);
+            userService.updateUser(u);
+            request.getSession().setAttribute("loginU", u);
+            return ResponseUtil.returnJson(true, "资料更新成功");
+        }
+        return ResponseUtil.returnJson(true, "资料更新失败");
+    }
+
+    @RequestMapping("/changePwd")
+    @ResponseBody
+
+
+    public JSONObject changePwd(String pwd, String opwd, HttpServletRequest request, String repwd) {
+        if (StringUtils.isEmpty(pwd) || StringUtils.isEmpty(opwd) || StringUtils.isEmpty(repwd)) {
+            return ResponseUtil.returnJson(false, "修改失败");
+        }
+
+        if (!repwd.equals(pwd)) {
+            return ResponseUtil.returnJson(false, "两次密码不一致，修改失败");
+        }
+
+        Object loginU = request.getSession().getAttribute("loginU");
+        if (null != loginU) {
+            User u = (User) loginU;
+            //检测原密码是否正确，先登录即可
+            //加密
+            Md5Hash hash = new Md5Hash(opwd, u.getEmail(), 2);
+            u.setPwd(hash.toHex());
+            String rtn = userService.log(u);
+
+            JSONObject jsonObject = JSONObject.parseObject(rtn);
+            String isOk = jsonObject.getString("success");
+            if ("success".equals(isOk)) {
+                //登陆成功
+                if (pwd.equals(opwd)) {
+                    return ResponseUtil.returnJson(false, "密码不能和原密码一致");
+                }
+                //加密
+                Md5Hash md5Hash = new Md5Hash(pwd, u.getEmail(), 2);
+                u.setPwd(md5Hash.toHex());
+                userService.updateUser(u);
+                request.getSession().setAttribute("loginU", null);
+                return ResponseUtil.returnJson(true, "密码更新成功");
+            } else {
+                return ResponseUtil.returnJson(false, "原密码错误，修改失败");
+            }
+        }
+        return ResponseUtil.returnJson(true, "资料更新失败");
+    }
+
+    @RequestMapping("/resetPwd")
+    @ResponseBody
+    public JSONObject resetPwd(String re_mail) {
+        if (StringUtils.isEmpty(re_mail)) {
+            return ResponseUtil.returnJson(false, "邮箱为空");
+        }
+        String rtn = userService.resetPwd(re_mail);
+        return JSONObject.parseObject(rtn);
+    }
+
+    @RequestMapping("/resetP")
+    @ResponseBody
+    public JSONObject resetP(String resetid, String pwd, String repwd) {
+        if (StringUtils.isEmpty(resetid)) {
+            return ResponseUtil.returnJson(false, "ID为空");
+        }
+        if (!StringUtils.isEmpty(repwd) && repwd.equals(pwd)) {
+            String rtn = userService.resetP(resetid, pwd);
+            return JSONObject.parseObject(rtn);
+        }
+        return ResponseUtil.returnJson(false, "密码不一致");
+    }
+
+    private User userNotNull(User byId, User user) {
+        if (null != user.getPwd()) {
+            byId.setPwd(user.getPwd());
+        }
+        if (null != user.getName()) {
+            byId.setName(user.getName());
+        }
+        if (null != user.getHtml_url()) {
+            byId.setHtml_url(user.getHtml_url());
+        }
+        return byId;
+    }
+
 
     @RequestMapping("/uploadUserAvatar")
     @ResponseBody

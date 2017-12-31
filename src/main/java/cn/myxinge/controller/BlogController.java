@@ -107,7 +107,7 @@ public class BlogController {
         Long totalPage = eval % rows == 0 ? eval / rows : (eval / rows) + 1;
         model.addAttribute("totalPage", totalPage);
 
-        return "show";
+        return "/show";
     }
 
     @RequestMapping("/pe/archives")

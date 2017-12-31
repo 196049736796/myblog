@@ -1,4 +1,7 @@
 var isF = false;
+var isV;
+
+
 $(function () {
     $("body").mLoading({
         text: "加载中...",
@@ -38,13 +41,72 @@ $(function () {
         },
     });
 
-    $("#github_auth").click(function () {
-        var url = window.location.href;
-        // location.href = "https://github.com/login/oauth/authorize?client_id=f898f0826d59b3e21233&state="
-        //     + url + "&redirect_uri=http://www.myxinge.cn/u/auth";
+    $("#resetForm").validator({
+        onValid: function (validity) {
+            $(validity.field).closest('.am-input-group').find('.am-alert').hide();
+        },
 
-        location.href = "https://github.com/login/oauth/authorize?client_id=29c3d398403800141e87&state="
-            + url + "&redirect_uri=http://localhost:8091/u/auth";
+        onInValid: function (validity) {
+            var $field = $(validity.field);
+            var $group = $field.closest('.am-input-group');
+            var $alert = $group.find('.am-alert');
+            // 使用自定义的提示信息 或 插件内置的提示信息
+            var msg = $field.data('validationMessage') || this.getValidationMessage(validity);
+
+            if (!$alert.length) {//class="log-alert am-alert am-alert-danger am-radius"
+                $alert = $('<div class="log-alert am-alert am-alert-danger am-radius"></div>').hide().appendTo($group);
+            }
+
+            $alert.html(msg).show();
+        },
+        submit: function () {
+            if (this.isFormValid()) {
+                confirmMail();
+            }
+
+            return false;
+        },
+    });
+
+    $("#pwdForm").validator({
+        onValid: function (validity) {
+            $(validity.field).closest('.am-input-group').find('.am-alert').hide();
+        },
+
+        onInValid: function (validity) {
+            var $field = $(validity.field);
+            var $group = $field.closest('.am-input-group');
+            var $alert = $group.find('.am-alert');
+            // 使用自定义的提示信息 或 插件内置的提示信息
+            var msg = $field.data('validationMessage') || this.getValidationMessage(validity);
+
+            if (!$alert.length) {//class="log-alert am-alert am-alert-danger am-radius"
+                $alert = $('<div class="log-alert am-alert am-alert-danger am-radius"></div>').hide().appendTo($group);
+            }
+
+            $alert.html(msg).show();
+        },
+        submit: function () {
+            if (this.isFormValid()) {
+                resetP();
+            }
+
+            return false;
+        },
+    });
+
+    $("#github_auth").click(function () {
+        var url = Request("redirect").redirect;
+
+        if (url == undefined || null == url) {
+            url = "/";
+        }
+
+        location.href = "https://github.com/login/oauth/authorize?client_id=f898f0826d59b3e21233&state="
+            + url + "&redirect_uri=http://www.myxinge.cn/u/auth";
+
+        // location.href = "https://github.com/login/oauth/authorize?client_id=29c3d398403800141e87&state="
+        //     + url + "&redirect_uri=http://localhost:8091/u/auth";
     });
 });
 
@@ -53,10 +115,16 @@ function ok() {
     $('#my-alert').modal("close");
     if (isF) {
         if ("/u/reg" == url) {
-            location.href = "/log.html";
+            location.href = "/p/log";
         }
         if ("/u/log" == url) {
-            location.href = "/";
+            var redirect = Request("redirect").redirect;
+            if (null != url || undefined != url) {
+                location.href = "/";
+                return;
+            }
+            console.log("即将跳转：" + redirect)
+            location.href = redirect;
         }
     }
 
@@ -65,6 +133,7 @@ function ok() {
 function submitForm(url, msg) {
     $("body").mLoading("show");
     var data = $('#log-form').serializeJSON();
+
     $.ajax({
         url: url,
         data: data,
@@ -97,8 +166,112 @@ function submitForm(url, msg) {
     });
 }
 
+
+function saveU() {
+    var data = $("#uUpdateForm").serializeJSON();
+    $.ajax({
+        url: "/u/update",
+        data: data,
+        dataType: 'json',
+        type: 'post',
+        success: function (rtn) {
+            $("#alert_content").text(rtn.message);
+            $('#up-modal-alert').modal();
+        }
+    });
+}
+
+function changeP() {
+    var data = $("#changePForm").serializeJSON();
+    $.ajax({
+        url: "/u/changePwd",
+        data: data,
+        dataType: 'json',
+        type: 'post',
+        success: function (rtn) {
+            $("#alert_content").text(rtn.message);
+            $('#up-modal-alert').modal();
+            $("#btnUpdate").click(function () {
+                if (rtn.success) {
+                    location.href = '/';
+                }
+            });
+        }
+    });
+}
+
+function resetForm(str) {
+    document.getElementById(str).reset();
+}
+
 function isContains(str, substr) {
     return str.indexOf(substr) >= 0;
+}
+
+function confirmMail() {
+
+    if (undefined == isV || false == isV) {
+        alert("验证未通过");
+        return;
+    }
+
+    var data = $("#resetForm").serializeJSON();
+    if (undefined == data.re_mail || '' == data.re_mail) {
+        alert("邮箱为空");
+        return;
+    }
+    $("#dialog_reset").modal('close');
+    $("#confirmMail").html("系统将会发送一封密码重置邮件到<span style='color: red'>" + data.re_mail + "</span>,请确认。");
+    $("#confirmReset").modal();
+}
+
+function cancelRest() {
+    location.href = "/p/log";
+}
+
+function resetPwd() {
+    var data = $("#resetForm").serializeJSON();
+    $.ajax({
+        url: "/u/resetPwd",
+        data: data,
+        dataType: 'json',
+        type: 'post',
+        async: false,
+        success: function (rtn) {
+            $("#re_msg").html(rtn.message);
+            $('#re_alert').modal();
+        }
+    });
+}
+
+function resetP() {
+    var resetid = Request("resetid").resetid;
+    if (undefined == resetid || '' == resetid) {
+        $("#re_msg").html("ID为空");
+        $('#re_alert').modal();
+        return;
+    }
+    var data = $("#pwdForm").serializeJSON();
+    data.resetid = resetid;
+    $.ajax({
+        url: '/u/resetP',
+        data: data,
+        dataType: 'json',
+        type: 'post',
+        success: function (rtn) {
+            $("#re_msg").html(rtn.message);
+            $('#re_alert').modal();
+        }
+    });
+}
+
+
+function closeW() {
+    $('#re_alert').modal('close');
+    location.reload();
+}
+function pwdreset() {
+    $("#dialog_reset").modal();
 }
 
 

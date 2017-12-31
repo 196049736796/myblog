@@ -125,8 +125,9 @@
                         <span class="face-icon">☺</span>
                     </div>
                     <div class="submit-btn">
-                        <a href="/log.html"><input style="vertical-align: top" type="button"
-                                                   value="登录"/></a>
+                        <a href="javascript:void(0);" onclick="goLogin()"><input style="vertical-align: top"
+                                                                                 type="button"
+                                                                                 value="登录"/></a>
                     </div>
                 </div>
             </div>
@@ -138,13 +139,14 @@
             <#if comments??>
                 <#list comments as comment>
 
-                    <li class="am-comment"><a href="#link-to-user-home">
+                    <li class="am-comment"><a href="/u/userInfo/${comment.user.login}">
                         <img src="${comment.user.avatar_url}" alt="" class="am-comment-avatar" width="48"
                              height="48"></a>
                         <div class="am-comment-main">
                             <header class="am-comment-hd">
                                 <div class="am-comment-meta">
-                                    <a href="#link-to-user" class="am-comment-author">${comment.user.name}</a>
+                                    <a href="/u/userInfo/${comment.user.login}"
+                                       class="am-comment-author">${comment.user.name}</a>
                                 </div>
                             </header>
                             <div class="am-comment-bd">
@@ -273,8 +275,8 @@
     }
 
     function reply(content, time, like_num) {
-        var html = "<li class=\"am-comment\"><a href=\"#link-to-user-home\">" +
-                "<img src=\"${loginU.avatar_url}\" alt=\"\" class=\"am-comment-avatar\" width=\"48\" height=\"48\"><\/a><div class=\"am-comment-main\"><header class=\"am-comment-hd\"><div class=\"am-comment-meta\"><a href=\"#link-to-user\" class=\"am-comment-author\">${loginU.name}<\/a><\/div><\/header><div class=\"am-comment-bd\"><p style=\"font-size:100%\">" + content + "<\/p><div class=\"comment_footer\"><time style=\"float:left\" datetime=\"" + time + "\" title=\"" + time + "\">" + time + "<\/time><\/div><\/div><\/div><\/li>\n";
+        var html = "<li class=\"am-comment\"><a href=\"/u/userInfo/${loginU.login}\">" +
+                "<img src=\"${loginU.avatar_url}\" alt=\"\" class=\"am-comment-avatar\" width=\"48\" height=\"48\"><\/a><div class=\"am-comment-main\"><header class=\"am-comment-hd\"><div class=\"am-comment-meta\"><a href=\"/u/userInfo/${loginU.login}\" class=\"am-comment-author\">${loginU.name!''}<\/a><\/div><\/header><div class=\"am-comment-bd\"><p style=\"font-size:100%\">" + content + "<\/p><div class=\"comment_footer\"><time style=\"float:left\" datetime=\"" + time + "\" title=\"" + time + "\">" + time + "<\/time><\/div><\/div><\/div><\/li>\n";
         return html;
     }
 

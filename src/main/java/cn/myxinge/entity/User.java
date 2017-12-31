@@ -119,4 +119,22 @@ public class User {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", login='" + login + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", name='" + name + '\'' +
+                ", html_url='" + html_url + '\'' +
+                ", avatar_url='" + avatar_url + '\'' +
+                ", created_at=" + created_at +
+                ", updated_at=" + updated_at +
+                ", confirm_id='" + confirm_id + '\'' +
+                ", state='" + state + '\'' +
+                ", isxing='" + isxing + '\'' +
+                '}';
+    }
 }
