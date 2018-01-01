@@ -9,10 +9,10 @@
 
         <div class="am-collapse am-topbar-collapse" id="blog-collapse">
             <ul class="am-nav am-nav-pills am-topbar-nav">
-                <li><a href="/">首页</a></li>
-                <li><a href="/pe/archives">归档</a></li>
-                <li><a href="/p/tools">工具</a></li>
-                <li><a href="/board/about"">关于</a></li>
+                <li><a href="/" >首页</a></li>
+                <li><a href="/pe/archives" >归档</a></li>
+                <li><a href="/p/tools" >工具</a></li>
+                <li><a href="/board/about" >关于</a></li>
             </ul>
             <form class="am-topbar-form am-topbar-right am-form-inline" role="search">
                 <div class="am-form-group">
@@ -28,8 +28,8 @@
                             data-am-dropdown-toggle>${loginU.name}
                         <span class="am-icon-caret-down"></span></button>
                     <ul class="am-dropdown-content">
-                        <#--<li><a href="#">提到我的<span class="am-badge am-badge-secondary am-round">3</span></a></li>-->
-                        <li><a href="/u/myself">帐号设置</a></li>
+                    <#--<li><a href="#">提到我的<span class="am-badge am-badge-secondary am-round">3</span></a></li>-->
+                        <li><a href="/u/myself" >帐号设置</a></li>
                         <li><a href="/u/logout">退出</a></li>
                     </ul>
                 </div>
@@ -37,7 +37,7 @@
 
         <#else >
             <div class="am-topbar-right">
-                <button onclick="goLogin()" class="am-btn am-btn-primary am-topbar-btn am-btn-sm">登录</button>
+                <button onclick="goLogin()"  class="am-btn am-btn-primary am-topbar-btn am-btn-sm">登录</button>
             </div>
         </#if>
         </div>

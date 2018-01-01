@@ -102,11 +102,11 @@ $(function () {
             url = "/";
         }
 
-        location.href = "https://github.com/login/oauth/authorize?client_id=f898f0826d59b3e21233&state="
-            + url + "&redirect_uri=http://www.myxinge.cn/u/auth";
+        // location.href = "https://github.com/login/oauth/authorize?client_id=f898f0826d59b3e21233&state="
+        //     + url + "&redirect_uri=http://www.myxinge.cn/u/auth";
 
-        // location.href = "https://github.com/login/oauth/authorize?client_id=29c3d398403800141e87&state="
-        //     + url + "&redirect_uri=http://localhost:8091/u/auth";
+        location.href = "https://github.com/login/oauth/authorize?client_id=29c3d398403800141e87&state="
+            + url + "&redirect_uri=http://localhost:8091/u/auth";
     });
 });
 

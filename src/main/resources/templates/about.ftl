@@ -96,8 +96,8 @@
                     <span class="face-icon">☺</span>
                 </div>
                 <div class="submit-btn">
-                    <a href="/log.html"><input style="vertical-align: top" type="button"
-                                               value="登录"/></a>
+                    <a href="/p/log"><input style="vertical-align: top" type="button"
+                                            value="登录"/></a>
                 </div>
             </div>
         </div>
