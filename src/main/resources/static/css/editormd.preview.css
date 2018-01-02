@@ -2641,6 +2641,7 @@
 }
 
 .markdown-body code {
+    color: #c7254e;;
     font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
     font-size: 12px;
 }
@@ -3130,7 +3131,7 @@
     border-left: 4px solid #ddd;
     padding-left: 20px;
     margin-left: 0;
-    font-family: 'Microsoft YaHei', "mononoki", "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Georgia', 'Microsoft YaHei', "mononoki", "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     /*  font-size: 14px;
       font-style: italic;*/
 }
@@ -3152,11 +3153,10 @@
 }
 
 .editormd-preview-container code, .editormd-html-preview code {
-    border: 1px solid #ddd;
-    background: #f6f6f6;
-    padding: 3px;
-    border-radius: 3px;
-    /*font-size: 14px;*/
+    /*border: 1px solid #ddd;*/
+    /*background: #f6f6f6;*/
+    /*padding: 3px;*/
+    /*border-radius: 3px;*/
     font-size: 100%;
 }
 

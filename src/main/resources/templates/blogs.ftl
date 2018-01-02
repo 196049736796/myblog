@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="/css/app.css">
 </head>
 
-<body class="chang_fontSize">
+<body class="chang_fontSize" >
 <#include "header.ftl"/>
 
 <!-- Post Content    col-lg-8 offset-lg-2 col-md-10 offset-md-1  -->

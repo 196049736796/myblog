@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="/css/sinaFaceAndEffec.css"/>
     <link rel="stylesheet" href="/css/main.css"/>
     <link rel="stylesheet" href="/css/editormd.preview.css"/>
+    <link rel="stylesheet" href="/css/zoomify.css"/>
     <style type="text/css">
         .comment_footer {
             margin-top: 10px;
@@ -139,14 +140,22 @@
             <#if comments??>
                 <#list comments as comment>
 
-                    <li class="am-comment"><a href="/u/userInfo/${comment.user.login}">
-                        <img src="${comment.user.avatar_url}" alt="" class="am-comment-avatar" width="48"
-                             height="48"></a>
-                        <div class="am-comment-main">
+                    <li class="am-comment">
+                        <a href="/u/userInfo/${comment.user.login}">
+                            <img src="${comment.user.avatar_url}" alt="" class="am-img-thumbnail am-comment-avatar"
+                                 width="52"
+                                 height="52">
+                        </a>
+                        <div class="am-comment-main" style="margin-left: 55px">
                             <header class="am-comment-hd">
                                 <div class="am-comment-meta">
                                     <a href="/u/userInfo/${comment.user.login}"
                                        class="am-comment-author">${comment.user.name}</a>
+                                    评论于
+                                    <time
+                                            datetime="${comment.createTime ?string('yyyy-MM-dd HH:mm:ss')}"
+                                            title="${comment.createTime ?string('yyyy-MM-dd HH:mm:ss')}">
+                                    ${comment.createTime ?string('yyyy-MM-dd HH:mm:ss')}</time>
                                 </div>
                             </header>
                             <div class="am-comment-bd">
@@ -154,10 +163,6 @@
                                 ${comment.text}
                                 </p>
                                 <div class="comment_footer">
-                                    <time style="float:left"
-                                          datetime="${comment.createTime ?string('yyyy-MM-dd HH:mm:ss')}"
-                                          title="${comment.createTime ?string('yyyy-MM-dd HH:mm:ss')}">
-                                    ${comment.createTime ?string('yyyy-MM-dd HH:mm:ss')}</time>
                                     <#if loginU??>
                                         <#if loginU.id==comment.user.id>
                                             <span style="float:right"><a href="javascript:void(0);"
@@ -224,6 +229,12 @@
     </div>
 </div>
 
+<div class="am-modal am-modal-no-btn" tabindex="-1" id="imgpre">
+    <div class="am-modal-dialog">
+        <img src="" id="im" class="am-img-responsive">
+    </div>
+</div>
+
 <#include "footer.ftl"/>
 </body>
 <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
@@ -242,6 +253,7 @@
 <script src="/js/editormd.js"></script>
 <script src="/js/jquery.mloading.js"></script>
 <script src="/js/date.js"></script>
+<script src="/js/zoomify.js"></script>
 </html>
 <#if loginU??>
 <script type="text/javascript">
@@ -301,7 +313,9 @@
 </#if>
 
 <script type="text/javascript">
+
     $(function () {
+
         $("body").mLoading({
             text: "加载中...",
             iconTag: "img",
@@ -340,9 +354,24 @@
                 flowChart: true,  // 默认不解析
                 sequenceDiagram: true,  // 默认不解析
             });
+
+            //图片处理
+            $('.markdown-body img').addClass("am-img-responsive am-img-thumbnail am-radius");
+            var imgs = $('.markdown-body img');
+            $.each(imgs, function (i, ele) {
+                var alt = $(ele).attr("alt");
+                if (undefined == alt || '' == alt || null == alt) {
+                    return true;
+                }
+                var strVar = "";
+                strVar += "<div style=\"color:#d9d9d9;\" align=\"center\">\n";
+                strVar += "	<span class='am-article-meta' style='padding:15px;border-bottom:1px solid #d9d9d9;font-size: 90%'>" + alt + "<\/span>\n";
+                strVar += "<\/div>";
+                $(ele).parent('a').after(strVar);
+            });
+            $('.markdown-body a').attr("target", "_blank");
             $("body").mLoading("hide");
         });
     })
-    ;
-
 </script>
+

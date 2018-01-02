@@ -40,8 +40,7 @@
             也会有一些常用开发环境配置，另外会有常用网址，工具集合等等。</p>
         <p>平时会看一些知识科普，天文知识，小时候还想着往这个方向发展，无奈机缘巧合，入了it这个坑，不过也会在一些犄角旮旯看看天文书籍，听听天文电台，浏览技术博客。
             我最喜欢的纪录片：『宇宙时空之旅』，最喜欢的电影：『星际穿越』，最向往的场景：『星际穿越男主人公掉进黑洞后看到五维时空的场景』</p>
-        <p>喜欢交朋友，如果有志同道合的朋友，可以&nbsp;<a href="/p/contact"
-                                       style="color: #00cd00">给我留言</a>，&nbsp;互相学习，共同进步，为中华民族软件崛起而敲代码<img
+        <p>喜欢交朋友，如果有志同道合的朋友，可以给我留言，&nbsp;互相学习，共同进步，为中华民族软件崛起而敲代码<img
                 src="http://img.baidu.com/hi/jx2/j_0007.gif"/>。</p>
         <p style="float: right"><img src="/images/name.png"></p>
     </div>
@@ -111,12 +110,17 @@
         <#list boardmsgList as board>
 
             <li class="am-comment"><a href="/u/userInfo/${board.user.login}">
-                <img src="${board.user.avatar_url}" alt="" class="am-comment-avatar" width="48"
-                     height="48"></a>
-                <div class="am-comment-main">
+                <img src="${board.user.avatar_url}" alt="" class="am-comment-avatar" width="50"
+                     height="50"></a>
+                <div class="am-comment-main" style="margin-left: 55px">
                     <header class="am-comment-hd">
                         <div class="am-comment-meta">
                             <a href="/u/userInfo/${board.user.login}" class="am-comment-author">${board.user.name}</a>
+                            留言于
+                            <time
+                                  datetime="${board.createtime ?string('yyyy-MM-dd HH:mm:ss')}"
+                                  title="${board.createtime ?string('yyyy-MM-dd HH:mm:ss')}">
+                            ${board.createtime ?string('yyyy-MM-dd HH:mm:ss')}</time>
                         </div>
                     </header>
                     <div class="am-comment-bd">
@@ -124,10 +128,6 @@
                         ${board.text}
                         </p>
                         <div class="comment_footer">
-                            <time style="float:left"
-                                  datetime="${board.createtime ?string('yyyy-MM-dd HH:mm:ss')}"
-                                  title="${board.createtime ?string('yyyy-MM-dd HH:mm:ss')}">
-                            ${board.createtime ?string('yyyy-MM-dd HH:mm:ss')}</time>
                             <#if loginU??>
                                 <#if loginU.id==board.user.id>
                                     <span style="float:right"><a href="javascript:void(0);"

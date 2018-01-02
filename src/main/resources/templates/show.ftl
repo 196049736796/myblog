@@ -49,7 +49,7 @@
 
                 <div class="am-u-lg-4 am-u-md-4 am-u-sm-4">
                     <img src="http://www.myxinge.cn/${blog.mainImgUrl}"
-                         alt="" class="am-img-thumbnail am-radius">
+                         alt="" class="am-img-thumbnail am-radius am-img-responsive">
                 </div>
             </article>
         </#list>

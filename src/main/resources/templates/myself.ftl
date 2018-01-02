@@ -233,7 +233,7 @@
 
 <!--图片上传框-->
 <div class="am-modal am-modal-no-btn up-modal-frame"
-     id="up-modal-frame" style="width: 600px;background-color: white">
+     id="up-modal-frame">
     <div class="am-modal-dialog up-frame-parent up-frame-radius">
         <div class="am-modal-hd up-frame-header" style="background-color: white">
             <label>修改头像</label>
@@ -263,7 +263,7 @@
                     <span class="am-icon-rotate-left" id="up-btn-left"></span>
                     <span class="am-icon-rotate-right" id="up-btn-right"></span>
                     <span class="am-icon-check up-btn-ok" url="/u/uploadUserAvatar"
-                          parameter="{width:'100',height:'100'}"></span>
+                          parameter="{width:'400',height:'400'}"></span>
                 </div>
             </div>
 
