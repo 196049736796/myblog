@@ -352,8 +352,8 @@ a:hover {
 
 .blog-entry-article {
     margin: 3rem 0;
-    padding-bottom: 3rem;
-    border-bottom: 1px solid #e5e5e5;
+    /*padding-bottom: 3rem;*/
+    /*border-bottom: 1px solid #e5e5e5;*/
 }
 
 @media only screen and (max-width: 640px) {

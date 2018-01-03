@@ -64,7 +64,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public String getBlogContent(String sysyUrl) {
-        String pre = "http://119.23.62.228/";
+        String pre = "https://myxinge.cn/";
         return HttpClientUtil.get(pre + sysyUrl);
     }
 
