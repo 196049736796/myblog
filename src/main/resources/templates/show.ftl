@@ -34,23 +34,42 @@
         </div>
     <#else >
         <#list blogs as blog>
+        <#--<article class="am-g blog-entry-article">
+            <div class="am-u-lg-8 am-u-md-8 am-u-sm-8">
+                <h2><a href="/blog/${blog.url}">${blog.title}</a></h2>
+                <p style="font-size:small;word-break:break-all;">
+                ${blog.subject}
+                </p>
+                <p style="font-size:small">
+                    <span><a href="" class="blog-color">@Post by &nbsp;</a></span>
+                    <span> ${blog.auth} &nbsp;</span>
+                    <span>${blog.createtime ?string('yyyy-MM-dd HH:mm:ss')}</span>
+                </p>
+            </div>
+
+            <div class="am-u-lg-4 am-u-md-4 am-u-sm-4">
+                <img src="http://www.myxinge.cn/${blog.mainImgUrl}"
+                     alt="" class="am-img-thumbnail am-radius am-img-responsive">
+            </div>
+        </article>-->
             <article class="am-g blog-entry-article">
-                <div class="am-u-lg-8 am-u-md-8 am-u-sm-8">
-                    <h2><a href="/blog/${blog.url}">${blog.title}</a></h2>
-                    <p style="font-size:small;word-break:break-all;">
+                <section class="am-panel am-panel-default">
+                    <header class="am-panel-hd">
+                        <h3 class="am-panel-title"><a href="/blog/${blog.url}">${blog.title}</a></h3>
+                    </header>
+                    <div class="am-panel-bd" style="min-height: 125px">
+                        <img src="https://www.myxinge.cn/${blog.mainImgUrl}" style="width: 100px;height: 100px;"
+                             class="am-img-thumbnail am-radius am-img-responsive am-align-right"
+                             alt="">
                     ${blog.subject}
-                    </p>
-                    <p style="font-size:small">
-                        <span><a href="" class="blog-color">@Post by &nbsp;</a></span>
+
+                    </div>
+                    <footer class="am-panel-footer" style="font-size: smaller">
+                        <span>@Post by &nbsp;</span>
                         <span> ${blog.auth} &nbsp;</span>
                         <span>${blog.createtime ?string('yyyy-MM-dd HH:mm:ss')}</span>
-                    </p>
-                </div>
-
-                <div class="am-u-lg-4 am-u-md-4 am-u-sm-4">
-                    <img src="http://www.myxinge.cn/${blog.mainImgUrl}"
-                         alt="" class="am-img-thumbnail am-radius am-img-responsive">
-                </div>
+                    </footer>
+                </section>
             </article>
         </#list>
         <ul class="am-pagination">
