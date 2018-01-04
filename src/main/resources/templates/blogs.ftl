@@ -19,6 +19,7 @@
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/css/amazeui.min.css">
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/editormd.preview.css"/>
 </head>
 
 <body class="chang_fontSize" >

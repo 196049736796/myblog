@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="/css/amazeui.min.css">
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/jquery.mloading.css">
+    <link rel="stylesheet" href="/css/editormd.preview.css"/>
     <style type="text/css">
         .my-footer {
             border-top: 1px solid #eeeeee;

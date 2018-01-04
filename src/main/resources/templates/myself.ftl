@@ -26,6 +26,7 @@
 <#-- 图片上传 -->
     <link rel="stylesheet" href="/css/amazeui.cropper.css">
     <link rel="stylesheet" href="/css/custom_up_img.css">
+    <link rel="stylesheet" href="/css/editormd.preview.css"/>
     <style type="text/css">
         .up-img-cover {
             width: 100px;

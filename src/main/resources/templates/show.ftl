@@ -15,6 +15,7 @@
     <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
     <meta name="msapplication-TileColor" content="#0e90d2">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="/css/editormd.preview.css"/>
     <link rel="stylesheet" href="/css/amazeui.min.css">
     <link rel="stylesheet" href="/css/app.css">
 </head>
@@ -62,11 +63,12 @@
                              class="am-img-thumbnail am-radius am-img-responsive am-align-right"
                              alt="">
                     ${blog.subject}
+                        <a href="/blog/${blog.url}" style="padding-left:5px;color: #3bb4f2">阅读全文</a>
 
                     </div>
                     <footer class="am-panel-footer" style="font-size: smaller">
-                        <span>@Post by &nbsp;</span>
-                        <span> ${blog.auth} &nbsp;</span>
+                        <span>@Post &nbsp;</span>
+                        <#--<span> ${blog.auth} &nbsp;</span>-->
                         <span>${blog.createtime ?string('yyyy-MM-dd HH:mm:ss')}</span>
                     </footer>
                 </section>
@@ -96,15 +98,16 @@
                 我的代码曾运行在几千万用户的机器上，作为一个程序员，还有什么比这更让人满足的呢？如果有，那就让这个用户数量再扩大 10 倍。
             </p>
         </div>
-        <div class="blog-sidebar-widget blog-bor">
-            <h2 class="blog-text-center blog-title"><span>My Repositories</span></h2>
+
+        <div class="blog-clear-margin blog-sidebar-widget blog-bor am-g ">
+            <h2 class="blog-title"><span>To you</span></h2>
             <div>
                 <a href="javascript:void(0);" target="_blank">
                     <div class="am-panel am-panel-danger" data-am-scrollspy="{animation: 'fade'}"
                          style="text-align: left">
 
                         <div class="am-panel-hd" style="text-align: center">
-                            <b>公告</b>
+                            <b>网站公告</b>
                         </div>
                         <div class="am-panel-bd">
                             <p>网站尚在开发，用户信息支持注册修改，搜索功能未实现，页面加载速度尚在优化，欢迎评论留言。</p>
@@ -113,21 +116,29 @@
                     </div>
                 </a>
             </div>
+        </div>
 
+        <div class="blog-sidebar-widget blog-bor">
+            <h2 class="blog-text-center blog-title"><span>Github Repositories</span></h2>
             <div>
-                <a href="https://github.com/xingchen0085/boot-demo" target="_blank">
-                    <div class="am-panel am-panel-primary" data-am-scrollspy="{animation: 'fade'}">
-
+                    <div class="am-panel am-panel-primary">
                         <div class="am-panel-hd">
-                            boot-demo
+                            <b>boot-demo</b>
                         </div>
                         <div class="am-panel-bd">
-                            SpringBoot入门使用
+                            <a href="https://github.com/xingchen0085/boot-demo" target="_blank">
+                                <p class="card-description"><b>Springboot学习demo</b></p>
+                            </a>
+                            <div class="card-footer">
+                                <span style="padding: 0 20px"><i class="fa fa-star"></i>8</span>
+                                <span style="padding: 0 10px"><i class="fa fa-code-fork"></i>3</span>
+                                <span style="padding: 0 10px"><i class="fa fa-clock-o"></i>2018-1-4</span>
+                            </div>
                         </div>
                     </div>
-                </a>
             </div>
         </div>
+
         <div class="blog-clear-margin blog-sidebar-widget blog-bor am-g ">
             <h2 class="blog-title"><span>TAG cloud</span></h2>
             <div class="am-u-sm-12 blog-clear-padding">

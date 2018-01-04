@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" type="text/css" href="/css/sinaFaceAndEffec.css"/>
     <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="stylesheet" href="/css/editormd.preview.css"/>
 </head>
 
 
