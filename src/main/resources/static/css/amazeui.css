@@ -389,13 +389,13 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  position: relative;
-  background: #fff;
-  font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
-  font-weight: normal;
-  line-height: 1.6;
-  color: #333333;
-  font-size: 1.6rem;
+    position: relative;
+    background: #fff;
+    font-family: "Open Sans","Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", FontAwesome, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(0, 0, 0, 0.75);
+    font-size: 1.6rem
 }
 /**
  * 1. http://usabilitypost.com/2012/11/15/w-optimizelegibility-on-mobile-devices/

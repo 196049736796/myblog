@@ -49,7 +49,7 @@ public class BlogServiceImpl implements BlogService {
         try {
             rtnJson = JSONObject.parseObject(rtn);
         } catch (Exception e) {
-            LOG.error("博客不存在，返回数据不是JSON",e);
+            LOG.error("博客不存在，返回数据不是JSON", e);
         }
 
         //rtn返回值？   1.curBlog 当前博客  2.preAndNext Map:key -preBlog  -nextBlog
@@ -64,7 +64,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public String getBlogContent(String sysyUrl) {
-        String pre = "http://119.23.62.228/";
+        String pre = "https://www.myxinge.cn/";
         return HttpClientUtil.get(pre + sysyUrl);
     }
 
