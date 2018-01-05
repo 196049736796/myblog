@@ -25,7 +25,6 @@
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/jquery.mloading.css">
     <link rel="stylesheet" type="text/css" href="/css/verify.css">
-    <link rel="stylesheet" href="/css/editormd.preview.css"/>
     <style type="text/css">
         .my-footer {
             border-top: 1px solid #eeeeee;

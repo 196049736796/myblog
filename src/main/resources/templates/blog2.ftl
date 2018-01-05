@@ -16,11 +16,11 @@
     <meta name="msapplication-TileColor" content="#0e90d2">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon"/>
     <link href="/css/style.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="/css/editormd.preview.css"/>
     <link rel="stylesheet" href="/css/amazeui.min.css">
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" type="text/css" href="/css/sinaFaceAndEffec.css"/>
     <link rel="stylesheet" href="/css/main.css"/>
-    <link rel="stylesheet" href="/css/editormd.preview.css"/>
     <link rel="stylesheet" href="/css/zoomify.css"/>
     <style type="text/css">
         .comment_footer {

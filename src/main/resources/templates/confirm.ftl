@@ -21,9 +21,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="stylesheet" href="/css/editormd.preview.css"/>
     <link rel="stylesheet" href="/css/amazeui.min.css">
     <link rel="stylesheet" href="/css/app.css">
-    <link rel="stylesheet" href="/css/editormd.preview.css"/>
 </head>
 <body class="chang_fontSize" style="background-color: #F1F1F1;"><!--1px 1px 10px #aaa-->
 

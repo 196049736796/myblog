@@ -21,10 +21,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="stylesheet" href="/css/editormd.preview.css"/>
     <link rel="stylesheet" href="/css/amazeui.min.css">
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/jquery.mloading.css">
-    <link rel="stylesheet" href="/css/editormd.preview.css"/>
     <style type="text/css">
         .my-footer {
             border-top: 1px solid #eeeeee;
