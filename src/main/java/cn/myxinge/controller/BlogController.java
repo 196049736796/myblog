@@ -97,7 +97,7 @@ public class BlogController {
                     List<Blog> blogs = JSONArray.parseArray(String.valueOf(content), Blog.class);
                     model.addAttribute("blogs", blogs);
                 } else {
-                    model.addAttribute("blogs", new ArrayList<>());
+                    model.addAttribute("blogs", new ArrayList<Blog>());
                 }
             }
         }
@@ -107,7 +107,7 @@ public class BlogController {
         Long totalPage = eval % rows == 0 ? eval / rows : (eval / rows) + 1;
         model.addAttribute("totalPage", totalPage);
 
-        return "/show";
+        return "/show2";
     }
 
     @RequestMapping("/pe/archives")

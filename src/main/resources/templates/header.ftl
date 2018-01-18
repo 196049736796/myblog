@@ -3,10 +3,12 @@
         <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
                 data-am-collapse="{target: '#blog-collapse'}"><span class="am-sr-only">导航切换</span> <span
                 class="am-icon-bars"></span></button>
-
+        <h1 class="am-topbar-brand">
+            <a href="/">X.</a>
+        </h1>
         <div class="am-collapse am-topbar-collapse" id="blog-collapse">
             <ul class="am-nav am-nav-pills am-topbar-nav">
-                <li><img src="/images/name-2.png"></li>
+            <#--<li><img src="/images/name-2.png"></li>-->
                 <li><a href="/">首页</a></li>
                 <li><a href="/pe/archives">归档</a></li>
                 <li><a href="/p/tools">工具</a></li>
